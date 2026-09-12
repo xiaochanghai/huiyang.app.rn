@@ -82,6 +82,7 @@ const client = z.object({
 
   // ADD YOUR CLIENT ENV VARS HERE
   API_URL: z.string(),
+  MALL_API_URL: z.string().url(),
   VAR_NUMBER: z.number(),
   VAR_BOOL: z.boolean(),
   LOGIN_REQUIRED: z.boolean(),
@@ -112,6 +113,8 @@ const _clientEnv = {
 
   // ADD YOUR ENV VARS HERE TOO
   API_URL: process.env.API_URL,
+  MALL_API_URL:
+    process.env.EXPO_PUBLIC_MALL_API_URL || 'http://47.87.129.28:6060',
   VAR_NUMBER: Number(process.env.VAR_NUMBER),
   VAR_BOOL: process.env.VAR_BOOL === 'true',
   LOGIN_REQUIRED: process.env.LOGIN_REQUIRED === 'true',

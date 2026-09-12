@@ -1,8 +1,16 @@
-import { Link, Stack } from 'expo-router';
+import { Link, Redirect, Stack, useLocalSearchParams } from 'expo-router';
 
 import { Text, View } from '@/components/ui';
+import { paths } from '@/features/mall/ui';
 
 export default function NotFoundScreen() {
+  const { messing, ...params } = useLocalSearchParams<{ messing: string[] }>();
+  const sourcePath =
+    '/' + (Array.isArray(messing) ? messing.join('/') : messing || '');
+  const match = Object.values(paths).find(
+    (path) => path.replace('/(app)', '') + '/index' === sourcePath
+  );
+  if (match) return <Redirect href={{ pathname: match, params }} />;
   return (
     <>
       <Stack.Screen options={{ title: 'Oops!' }} />
