@@ -87,7 +87,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.eucloud.erp'
+    namespace 'com.zhonghong.huiyang'
     defaultConfig {
         ndk {
 // @generated begin jpush-ndk-abi-filters - expo prebuild (DO NOT MODIFY) sync-31a752f49c3ef5558c6980db8a3f9c162a511eb7
@@ -95,7 +95,7 @@ android {
             abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
 // @generated end jpush-ndk-abi-filters
         }
-        applicationId 'com.eucloud.erp'
+        applicationId 'com.zhonghong.huiyang'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2
@@ -104,7 +104,7 @@ android {
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
 // @generated begin jpush-manifest-placeholders - expo prebuild (DO NOT MODIFY) sync-b7f05ae2b2e827caa2bd40aba87fb464a40d10ad
         manifestPlaceholders += [
-            JPUSH_PKGNAME: System.getenv("JPUSH_PKGNAME") ?: (project.findProperty("JPUSH_PKGNAME") ?: "com.eucloud.erp"),
+            JPUSH_PKGNAME: System.getenv("JPUSH_PKGNAME") ?: (project.findProperty("JPUSH_PKGNAME") ?: "com.zhonghong.huiyang"),
             JPUSH_APPKEY: System.getenv("JPUSH_APP_KEY") ?: (project.findProperty("JPUSH_APP_KEY") ?: "acb8dfd7a7a771f3710d143c"),
             JPUSH_CHANNEL: System.getenv("JPUSH_CHANNEL") ?: (project.findProperty("JPUSH_CHANNEL") ?: "production")
         ]

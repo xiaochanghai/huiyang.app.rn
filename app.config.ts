@@ -33,7 +33,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   // newArchEnabled: true,
   updates: {
     fallbackToCacheTimeout: 0,
-    url: 'https://u.expo.dev/9d0f9588-d00f-40cf-a15c-ffd7e8bc7654',
+    url: 'https://u.expo.dev/0f644159-d403-4bf6-a64b-1272b8595390',
   },
   // runtimeVersion: {
   //   policy: 'sdkVersion',

@@ -43,7 +43,7 @@ export default function AboutUsScreen() {
         公司介绍
       </Text>
       <Text className="mb-6 text-sm leading-6 text-gray-700 dark:text-gray-300">
-        苏州优智云有限公司是一家专注于人工智能技术研发与应用的创新型企业。我们致力于将前沿AI技术转化为实用工具，帮助用户提升工作效率、激发创造力，并简化复杂任务。
+        苏州汇洋酒水有限公司是一家专注于人工智能技术研发与应用的创新型企业。我们致力于将前沿AI技术转化为实用工具，帮助用户提升工作效率、激发创造力，并简化复杂任务。
       </Text>
 
       <Text className="mb-4 text-base font-semibold text-gray-900 dark:text-gray-100">
@@ -66,7 +66,7 @@ export default function AboutUsScreen() {
 
       <View className="mb-4 mt-6 items-center">
         <Text className="text-xs text-gray-400 dark:text-gray-500">
-          © 2025 苏州优智云有限公司
+          © 2025 苏州汇洋酒水有限公司
         </Text>
         <Text className="mt-1 text-xs text-gray-400 dark:text-gray-500">
           保留所有权利

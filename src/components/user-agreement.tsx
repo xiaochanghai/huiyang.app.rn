@@ -11,7 +11,7 @@ export default function UserAgreementScreen() {
       contentContainerStyle={{ paddingBottom: 24 }}
     >
       <Text className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
-        优智云用户协议
+        汇洋酒水用户协议
       </Text>
       <Text className="mb-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
         生效日期：2025年9月9日
@@ -19,8 +19,8 @@ export default function UserAgreementScreen() {
 
       <Text className="mb-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
         欢迎您使用由
-        [苏州优智云有限公司]（以下简称&quot;我们&quot;或&quot;本公司&quot;）提供的
-        优智云（以下简称&quot;本App&quot;）。本协议是您与本公司之间就您使用本App及相关服务所达成的具有法律约束力的协议。请您在使用本App前，仔细阅读并充分理解本协议的全部内容，特别是其中涉及您权利义务的条款、免责条款、争议解决方式等。一旦您开始使用本App，即表示您已接受并同意遵守本协议的所有条款。
+        [苏州汇洋酒水有限公司]（以下简称&quot;我们&quot;或&quot;本公司&quot;）提供的
+        汇洋酒水（以下简称&quot;本App&quot;）。本协议是您与本公司之间就您使用本App及相关服务所达成的具有法律约束力的协议。请您在使用本App前，仔细阅读并充分理解本协议的全部内容，特别是其中涉及您权利义务的条款、免责条款、争议解决方式等。一旦您开始使用本App，即表示您已接受并同意遵守本协议的所有条款。
       </Text>
 
       <Text className="mb-1 text-base font-semibold text-gray-900 dark:text-gray-100">

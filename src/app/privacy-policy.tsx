@@ -30,7 +30,7 @@ export default function PrivacyPolicyScreen() {
         contentContainerStyle={{ paddingBottom: 24 }}
       >
         <Text className="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">
-          优智云隐私政策
+          汇洋酒水隐私政策
         </Text>
         <Text className="mb-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
           生效日期：2025年9月9日
@@ -38,8 +38,8 @@ export default function PrivacyPolicyScreen() {
 
         <Text className="mb-4 text-sm leading-6 text-gray-700 dark:text-gray-300">
           欢迎您使用由
-          [苏州优智云有限公司]（以下简称&quot;我们&quot;或&quot;本公司&quot;）提供的
-          优智云（以下简称&quot;本App&quot;）。本隐私政策旨在帮助您了解我们如何收集、使用、存储和共享您的个人信息，以及您享有的相关权利。请您在使用本App前，仔细阅读并充分理解本政策的全部内容。
+          [苏州汇洋酒水有限公司]（以下简称&quot;我们&quot;或&quot;本公司&quot;）提供的
+          汇洋酒水（以下简称&quot;本App&quot;）。本隐私政策旨在帮助您了解我们如何收集、使用、存储和共享您的个人信息，以及您享有的相关权利。请您在使用本App前，仔细阅读并充分理解本政策的全部内容。
         </Text>
 
         <Text className="mb-1 text-base font-semibold text-gray-900 dark:text-gray-100">

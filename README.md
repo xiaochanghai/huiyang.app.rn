@@ -1,5 +1,5 @@
 <h1 align="center">
-  优智云 EUCloud
+  汇洋酒水 EUCloud
 </h1>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ## 📖 项目简介
 
-优智云（EUCloud）当前以商城订货为主，提供商品浏览、分类搜索、购物车、订单提交、历史订单及客户资料管理。页面入口位于 `src/app/(app)`，业务实现位于 `src/features/mall`。
+汇洋酒水（EUCloud）当前以商城订货为主，提供商品浏览、分类搜索、购物车、订单提交、历史订单及客户资料管理。页面入口位于 `src/app/(app)`，业务实现位于 `src/features/mall`。
 
 > 当前主入口为商城。生产、库存、设备、维修、质量、分析、物料及旧订单详情页面已移除，商城订单功能保留。详见 [旧业务清理记录](docs/legacy-business-cleanup.md)。
 
@@ -251,23 +251,25 @@ pnpm doctor
 
 ## 📱 应用信息
 
-- **应用名称**: 优智云 (EUCloud)
-- **Bundle ID**: com.eucloud.erp
-- **Package**: com.eucloud.erp
+- **应用名称**: 汇洋酒水 (EUCloud)
+- **Bundle ID**: com.zhonghong.huiyang
+- **Package**: com.zhonghong.huiyang
 - **Scheme**: eucloud
 - **版本**: 1.0.0
 - **构建号**: 2
-- **EAS Project ID**: 9d0f9588-d00f-40cf-a15c-ffd7e8bc7654
+- **EAS Project ID**: 0f644159-d403-4bf6-a64b-1272b8595390
 
 ## 🎯 主要功能模块
 
 ### 1. 首页模块
+
 - 用户欢迎和问候
 - 数据概览卡片（今日订单、生产任务、库存预警、质检合格率）
 - 功能模块快捷入口（物料、生产、库存、订单、质量、数据分析等）
 - 最近活动时间线
 
 ### 2. 生产管理模块
+
 - **生产计划** - 计划创建、排期、状态管理
 - **生产任务** - 任务分配、进度跟踪、完成报告
 - **工序管理** - 工序流程、工序状态、工时统计
@@ -275,16 +277,19 @@ pnpm doctor
 - **生产报表** - 生产数据统计、效率分析、质量报表
 
 ### 3. 库存管理模块
+
 - 库存实时查询
 - 库存预警提醒
 - 物料信息管理
 
 ### 4. 订单管理模块
+
 - 订单列表展示
 - 订单详情查看
 - 订单状态跟踪
 
 ### 5. 个人中心模块
+
 - 用户信息展示（头像、姓名、角色、部门）
 - 工作统计（待处理任务、今日完成、任务完成率）
 - 功能菜单（个人资料、账号安全、消息通知、在线客服）
@@ -292,12 +297,14 @@ pnpm doctor
 - 退出登录
 
 ### 6. 维修模块
+
 - 独立的维修业务系统
 - 设备列表、详情、新增和维护记录
 - 维修工单列表、详情、新增和进度跟踪
 - 设备、维修和效率数据分析
 
 ### 7. 系统功能
+
 - JWT Token 认证
 - 自动登录
 - 二维码扫描
@@ -311,6 +318,7 @@ pnpm doctor
 ## 🌟 技术亮点
 
 ### 性能优化
+
 - ✅ **React 19 + React Compiler** - 自动优化渲染性能
 - ✅ **Flash List** - 支持高性能长列表
 - ✅ **MMKV** - 提供高性能本地键值存储
@@ -318,6 +326,7 @@ pnpm doctor
 - ✅ **Reanimated** - GPU 加速动画，60fps 流畅体验
 
 ### 开发体验
+
 - ✅ **TypeScript 严格模式** - 完整的类型安全
 - ✅ **文件路由** - Expo Router 基于文件的路由系统
 - ✅ **自动化工作流** - Husky + Lint-staged 自动检查
@@ -325,6 +334,7 @@ pnpm doctor
 - ✅ **热更新** - EAS Update OTA 更新机制
 
 ### 代码质量
+
 - ✅ **多业务页面** - 覆盖生产、库存、订单、质量、设备和维修场景
 - ✅ **通用 UI 组件** - 提供表单、弹窗、列表、导航和文件查看组件
 - ✅ **模块化设计** - 清晰的代码结构
@@ -333,6 +343,7 @@ pnpm doctor
 - ✅ **E2E 测试** - Maestro 端到端测试
 
 ### 用户体验
+
 - ✅ **自定义 TabBar** - 浮动按钮设计
 - ✅ **统一导航** - 一致的页面导航体验
 - ✅ **暗色模式** - 支持深色主题切换
@@ -342,18 +353,21 @@ pnpm doctor
 ## 📚 开发规范
 
 ### 代码风格
+
 - 使用 ESLint + Prettier 保持代码一致性
 - 使用 TypeScript 严格模式
 - 遵循 React Hooks 最佳实践
 - 使用函数式组件
 
 ### 命名规范
+
 - 组件文件：PascalCase (例如: `UserProfile.tsx`)
 - 工具函数：camelCase (例如: `formatDate.ts`)
 - 常量：UPPER_SNAKE_CASE (例如: `API_BASE_URL`)
 - 类型定义：PascalCase (例如: `UserType`)
 
 ### Git 提交规范
+
 ```bash
 feat: 新功能
 fix: 修复 bug
@@ -365,6 +379,7 @@ chore: 构建工具或依赖更新
 ```
 
 ### 目录组织
+
 - 业务页面放在 `src/app/` 目录
 - 可复用组件放在 `src/components/` 目录
 - API 调用放在 `src/api/` 目录
@@ -374,18 +389,23 @@ chore: 构建工具或依赖更新
 ## 🔧 常见问题
 
 ### Q: 如何切换环境？
+
 A: 修改对应的 `.env.*` 文件，或使用 `APP_ENV=production` 环境变量。
 
 ### Q: 如何添加新的页面？
+
 A: 在 `src/app/` 目录下创建新的 `.tsx` 文件，Expo Router 会自动识别。
 
 ### Q: 如何调试？
+
 A: 使用 `pnpm start` 启动开发服务器，然后在设备或模拟器上按 `j` 打开调试菜单。
 
 ### Q: 如何发布更新？
+
 A: 使用 EAS Update 进行 OTA 更新：`pnpm update:prod`，或使用 EAS Build 构建新版本。
 
 ### Q: 构建失败怎么办？
+
 A: 尝试清除缓存：`pnpm build:production:ios --clear-cache`
 
 ## 🤝 贡献指南

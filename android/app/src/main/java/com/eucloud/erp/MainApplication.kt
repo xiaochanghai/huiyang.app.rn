@@ -1,4 +1,4 @@
-package com.eucloud.erp
+package com.zhonghong.huiyang
 import com.facebook.react.common.assets.ReactFontManager
 
 import android.app.Application

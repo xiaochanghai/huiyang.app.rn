@@ -35,11 +35,11 @@ require('dotenv').config({
 
 // TODO: Replace these values with your own
 
-const BUNDLE_ID = 'com.eucloud.erp'; // ios bundle id
-const PACKAGE = 'com.eucloud.erp'; // android package name
-const NAME = '优智云'; // app name
-const EXPO_ACCOUNT_OWNER = 'eu-cloud'; // expo account owner
-const EAS_PROJECT_ID = '9d0f9588-d00f-40cf-a15c-ffd7e8bc7654'; // eas project id
+const BUNDLE_ID = 'com.zhonghong.huiyang'; // ios bundle id
+const PACKAGE = 'com.zhonghong.huiyang'; // android package name
+const NAME = '汇洋酒水'; // app name
+const EXPO_ACCOUNT_OWNER = 'huiyang-liquor'; // expo account owner
+const EAS_PROJECT_ID = '0f644159-d403-4bf6-a64b-1272b8595390'; // eas project id
 const SCHEME = 'eucloud'; // app scheme
 const BUILD_NUMBER = 2; // build number for both iOS and Android
 

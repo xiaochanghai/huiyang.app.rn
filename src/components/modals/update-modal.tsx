@@ -156,7 +156,7 @@ const downloadAndInstallAPK = async (
 
     // 获取当前应用的包名
     const packageName =
-      Constants.expoConfig?.android?.package || 'com.eucloud.erp';
+      Constants.expoConfig?.android?.package || 'com.zhonghong.huiyang';
     console.log('Package name:', packageName);
     console.log('Download URI:', downloadResult.uri);
 
