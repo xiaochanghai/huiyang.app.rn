@@ -1,6 +1,6 @@
 # 商城页面迁移
 
-源项目：`E:\zhonghong\dahua-mall-uniapp`。页面已转换为 Expo / React Native 组件，页面入口位于 `src/app/(app)`，共享实现位于 `src/features/mall`。
+源项目：`E:\zhonghong\dahua-mall-uniapp`。页面已转换为 Expo / React Native 组件，页面入口位于 `src/app/(app)`，共享实现位于 `src/features/mall`。商城页面组件直接放在各自路由文件中（多数为 `index.tsx`，修改密码为 `password.tsx`）。`src/features/mall` 仅保留 API、hooks、公共 UI、订单内容组件 `order-body.tsx`、认证页面共用布局 `auth-frame.tsx`、目录共用图片组件、样式与标签跳转 `catalog-ui.tsx` 及数量草稿管理。
 
 ## 页面入口
 

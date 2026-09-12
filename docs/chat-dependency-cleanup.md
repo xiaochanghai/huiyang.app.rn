@@ -39,7 +39,7 @@
 
 ## 保留与另行评估
 
-- `lucide-react-native`：商城的 `catalog.tsx`、`detail.tsx`、`ui.tsx` 仍在使用，保留。
+- `lucide-react-native`：商城首页、商品详情路由文件和 `src/features/mall/ui.tsx` 仍在使用，保留。
 - `expo-image`、`expo-image-picker`、`expo-file-system`、`expo-haptics`、`moti`、`react-native-reanimated`、`react-native-keyboard-controller` 等公共依赖：仍有其他模块调用，保留。
 - `expo-system-ui`：虽然已无直接业务引用，但可能涉及主题与框架配置，不纳入本次待删除清单，另行核实。
 - `expo-web-browser`：仍在 `app.config.ts` 中注册插件，不纳入本次待删除清单，另行核实其用途。

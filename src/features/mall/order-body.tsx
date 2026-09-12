@@ -1,5 +1,5 @@
 import { useIsMutating, useQueryClient } from '@tanstack/react-query';
-import { router, useLocalSearchParams } from 'expo-router';
+import { router } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import {
   Image,
@@ -21,32 +21,10 @@ import {
   request,
   useMallSession,
 } from './api';
-import { useCurrentOrder, useMallQuery } from './hooks';
 import { QuantityDraftContext, QuantityDrafts } from './quantity-drafts';
-import { accent, Button, Header, paths, Quantity, s, Status } from './ui';
+import { accent, Button, paths, Quantity, s, Status } from './ui';
 
-export function CartScreen() {
-  const query = useCurrentOrder();
-  return (
-    <View style={s.page}>
-      <Header title="订单 (Carrito)" />
-      <Status
-        loading={query.isPending}
-        error={query.error}
-        retry={() => query.refetch()}
-      />
-      {query.data && (
-        <OrderBody
-          key={query.data.xsddList?.[0]?.xshth || 'empty'}
-          data={query.data}
-          refresh={() => query.refetch()}
-          refreshing={query.isRefetching}
-        />
-      )}
-    </View>
-  );
-}
-function OrderBody({
+export function OrderBody({
   data,
   readOnly = false,
   refresh,
@@ -302,96 +280,6 @@ function OrderSummary({ order }: { order: Order }) {
           </View>
         </View>
       ))}
-    </View>
-  );
-}
-export function OrdersScreen() {
-  const shop = useMallSession((state) => state.shop);
-  const query = useMallQuery<OrderData>('orders', '/xcx/Yw/Ddlb', {
-    xsddList: [{ dpbm: shop }],
-  });
-  return (
-    <View style={s.page}>
-      <Header title="订单列表 (Lista de pedidos)" back />
-      <ScrollView
-        refreshControl={
-          <RefreshControl
-            refreshing={query.isRefetching}
-            onRefresh={() => query.refetch()}
-            tintColor={accent}
-          />
-        }
-      >
-        <Status
-          loading={query.isPending}
-          error={query.error}
-          retry={() => query.refetch()}
-          empty={
-            !query.data?.xsddList?.length
-              ? '暂无历史订单\nNo hay pedidos'
-              : undefined
-          }
-        />
-        {query.data?.xsddList?.map((order) => (
-          <Pressable
-            key={order.xshth}
-            onPress={() =>
-              router.push({
-                pathname: '/(app)/sub-pages/order/order-detail',
-                params: { id: order.xshth },
-              })
-            }
-            style={[
-              s.card,
-              s.row,
-              { padding: 16, justifyContent: 'space-between' },
-            ]}
-          >
-            <View style={s.flex}>
-              <Text style={s.muted}>销售合同号 / N.º pedido</Text>
-              <Text
-                style={{ fontWeight: '600', fontSize: 16, marginVertical: 7 }}
-              >
-                {order.xshth}
-              </Text>
-              <Text style={s.muted}>{order.pcczsj}</Text>
-            </View>
-            <Text style={{ color: accent, fontSize: 17, fontWeight: '600' }}>
-              {money(order.jezj)}　›
-            </Text>
-          </Pressable>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
-export function OrderDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
-  const shop = useMallSession((state) => state.shop);
-  const query = useMallQuery<OrderData>(
-    'order-detail',
-    '/xcx/Yw/Ddck',
-    { xsddList: [{ dpbm: shop, xshth: id }] },
-    'POST',
-    !!id
-  );
-  return (
-    <View style={s.page}>
-      <Header title="订单详情 (Detalle del pedido)" back />
-      <Status
-        loading={query.isPending}
-        error={query.error}
-        retry={() => query.refetch()}
-      />
-      {query.data && (
-        <OrderBody
-          key={id}
-          data={query.data}
-          readOnly
-          refresh={() => query.refetch()}
-          refreshing={query.isRefetching}
-        />
-      )}
     </View>
   );
 }
