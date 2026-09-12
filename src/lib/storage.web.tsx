@@ -143,11 +143,3 @@ export function getAllKeys(): readonly string[] {
 export function contains(key: string): boolean {
   return storage.contains(key);
 }
-
-const messageKey = 'eucloud/chatId';
-
-export function getChatId(chatId?: string): string {
-  const value = chatId ?? storage.getString(messageKey) ?? crypto.randomUUID();
-  storage.set(messageKey, value);
-  return value;
-}

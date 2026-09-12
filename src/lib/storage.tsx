@@ -1,8 +1,6 @@
 import type { MMKV } from 'react-native-mmkv';
 import { createMMKV } from 'react-native-mmkv';
 
-import { generateUUID } from './utils';
-
 // 重新导出 MMKV hooks，便于统一从 storage 模块导入
 export {
   useMMKV,
@@ -70,28 +68,4 @@ export function getAllKeys(): readonly string[] {
  */
 export function contains(key: string): boolean {
   return storage.contains(key);
-}
-
-const keyPrefix = 'eucloud/';
-const messageKey = keyPrefix + 'chatId';
-
-/**
- * 获取或设置聊天ID
- * @param chatId1 可选的聊天ID，如果提供则更新存储
- * @returns 聊天ID
- */
-export function getChatId(chatId1?: string): string {
-  let chatId = storage.getString(messageKey);
-
-  if (chatId1) {
-    chatId = chatId1;
-    storage.set(messageKey, chatId);
-  }
-
-  if (!chatId) {
-    chatId = generateUUID();
-    storage.set(messageKey, chatId);
-  }
-
-  return chatId;
 }
