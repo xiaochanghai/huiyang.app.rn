@@ -27,25 +27,7 @@ export default function QRScannerScreen() {
           },
         ]);
       } else {
-        let parts = data.split('_');
-        if (parts.length !== 2) {
-          Alert.alert('扫描成功', `检测到: ${data}`, [
-            {
-              text: '确定',
-              onPress: () => {
-                console.log('parts[0]:' + parts[0]);
-              },
-            },
-          ]);
-        } else {
-          console.log('parts[0]:' + parts[0]);
-          if (parts[0] === 'Equip') {
-            router.push({
-              pathname: `/equipment/[id]`,
-              params: { id: parts[1] },
-            });
-          }
-        }
+        Alert.alert('扫描成功', `检测到: ${data}`, [{ text: '确定' }]);
       }
     },
     [router]

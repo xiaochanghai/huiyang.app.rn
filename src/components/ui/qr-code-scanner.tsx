@@ -62,7 +62,7 @@ export function QRCodeScanner({ onScan, onCancel }: Props) {
     <SafeAreaView className="relative flex-1 bg-black">
       {/* 摄像头全屏 */}
       <CameraView
-        style={StyleSheet.absoluteFillObject}
+        style={StyleSheet.absoluteFill}
         facing="back"
         onBarcodeScanned={scanning ? handleBarCodeScanned : undefined}
         barcodeScannerSettings={{

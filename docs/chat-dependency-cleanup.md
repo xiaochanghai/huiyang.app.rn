@@ -51,6 +51,6 @@
 3. 移除 `expo-document-picker` 时同步清理 [app.config.ts](../app.config.ts) 中对应插件。原生依赖变更需要重新构建 Android/iOS 安装包并验证，不能仅以 Web 页面通过作为完成依据。
 4. 检查锁文件差异，避免顺带升级其他依赖。执行 `git diff --check`、类型检查、Web 启动验证及受影响原生端验证。
 
-当前类型检查存在既有错误：`pnpm type-check` 会被 TypeScript 6 的 `baseUrl` 弃用提示阻断；使用 `pnpm exec tsc --noEmit --ignoreDeprecations 6.0` 后仍有旧列表组件、维修示例和测试类型等错误。后续验证应区分既有错误与新增问题。
+2026-09-12 已修复类型检查：移除弃用的 `baseUrl`，显式加载 Jest 与 Node 类型，并适配当前 FlashList、Reanimated 和 React Native API。`pnpm type-check` 已通过，无需额外弃用忽略参数。
 
 相关文件：[依赖清单](../package.json)、[锁文件](../pnpm-lock.yaml)、[商城迁移说明](mall-migration.md)。
