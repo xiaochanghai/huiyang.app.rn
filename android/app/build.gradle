@@ -102,7 +102,7 @@ android {
         versionName "1.0.0"
 
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
-// @generated begin jpush-manifest-placeholders - expo prebuild (DO NOT MODIFY) sync-b7f05ae2b2e827caa2bd40aba87fb464a40d10ad
+// @generated begin jpush-manifest-placeholders - expo prebuild (DO NOT MODIFY) sync-1d19f1662eb55e00336faadb042a2158f1567a7b
         manifestPlaceholders += [
             JPUSH_PKGNAME: System.getenv("JPUSH_PKGNAME") ?: (project.findProperty("JPUSH_PKGNAME") ?: "com.zhonghong.huiyang"),
             JPUSH_APPKEY: System.getenv("JPUSH_APP_KEY") ?: (project.findProperty("JPUSH_APP_KEY") ?: "acb8dfd7a7a771f3710d143c"),
