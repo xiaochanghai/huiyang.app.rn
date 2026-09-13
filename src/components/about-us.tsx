@@ -21,7 +21,7 @@ export default function AboutUsScreen() {
     >
       <View className="mb-6 items-center pt-4">
         <Image
-          source={require('../../assets/login-logo.png')}
+          source={require('../../assets/splash-icon.png')}
           className="mb-3 size-24"
           resizeMode="contain"
           style={{ width: 120, height: 120 }}
