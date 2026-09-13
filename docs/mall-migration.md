@@ -20,11 +20,13 @@ Expo 自动省略末尾的 `index`。源项目带 `/index` 的上述链接通过
 
 配套实现了搜索结果、标签商品列表、历史订单详情和活动海报查看，避免指定页面上的入口失效。源项目 `static/logo.png` 与底栏图标已复制至 `assets/mall`。
 
+首页按参考图使用居中标题、红色搜索按钮、全宽轮播、横幅与三列分类图片，商品分区使用浅灰底。活动海报入口位于标题左侧（有海报数据时显示），弹窗内可切换全部海报。图片继续使用接口返回的数据。
+
 ## 数据与配置
 
 - 使用源项目的 `/xcx/Authorize/*` 和 `/xcx/Yw/*` 接口、租户编号及 `Authorization` / `Token` 请求头；支持 `Data.Data` 响应。
-- 默认接口地址来自源项目开发配置：`http://47.87.129.28:6060`。可通过进程环境变量 `EXPO_PUBLIC_MALL_API_URL` 覆盖，修改后重新启动或构建 Expo。
-- 当前服务的 HTTPS 探测返回协议错误，因此保留原 HTTP 地址，为该主机配置 Android 域级网络例外和 iOS ATS 精确例外（[Apple 文档](https://developer.apple.com/documentation/BundleResources/Information-Property-List/NSAppTransportSecurity/NSExceptionDomains)）。未全局关闭正式包网络保护。`plugins/with-mall-network.js` 保证重新 prebuild 时配置仍有效，改用 HTTPS 后移除商城 HTTP 例外。调试包保留原有 Metro HTTP 支持。
+- 商城请求和相对图片地址统一使用 `API_URL`，由 `env.js` 从当前环境配置读取；不再提供独立商城地址或硬编码回退地址。修改后重新启动或构建 Expo。
+- `plugins/with-mall-network.js` 根据 `API_URL` 生成原生网络策略：HTTP 地址配置 Android 域级网络例外和 iOS ATS 精确例外；HTTPS 地址移除插件管理的 HTTP 例外。未全局关闭正式包网络保护，调试包保留原有 Metro HTTP 支持。
 - 环境变量经 `env.js` 注入运行配置，客户端与原生插件读取同一地址。修改主机或网络策略后需要重新 prebuild 并构建安装原生包，不能仅通过 OTA 生效。当前更改未做真机安装验证。HTTPS Web 部署仍要求后端提供 HTTPS 与跨域支持。
 - 商城登录态、记住用户名/密码与原有其他业务的登录存储隔离。退出或修改密码会清理商城登录态及查询缓存。
 - 数量增减调用 `Ddjia` / `Ddjian`，直接输入调用 `Ddtiao`，携带已知的订单号与行编号。修改成功后刷新商品和订单；失败显示错误并恢复显示数量。

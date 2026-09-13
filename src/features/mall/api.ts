@@ -5,7 +5,6 @@ import { create } from 'zustand';
 
 import { getItem, setItem } from '@/lib/storage';
 
-export const MALL_API_URL = Env.MALL_API_URL || 'http://47.87.129.28:6060';
 type Session = { token: string; shop: string };
 const emptySession: Session = { token: '', shop: '' };
 export const useMallSession = create<
@@ -44,7 +43,7 @@ export async function request<T>(
 ): Promise<T> {
   const { token } = useMallSession.getState();
   const response = await axios.request({
-    baseURL: MALL_API_URL,
+    baseURL: Env.API_URL,
     url: path,
     method,
     timeout: 60000,
@@ -174,6 +173,6 @@ export function imageSource(uri?: string) {
   return {
     uri: /^https?:\/\//.test(uri)
       ? uri
-      : `${MALL_API_URL.replace(/\/$/, '')}/${uri.replace(/^\//, '')}`,
+      : `${Env.API_URL.replace(/\/$/, '')}/${uri.replace(/^\//, '')}`,
   };
 }

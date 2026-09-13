@@ -1,6 +1,5 @@
 import { router } from 'expo-router';
-import { useState } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 import { imageSource, type Tag } from './api';
 import { accent, paths } from './ui';
@@ -60,22 +59,11 @@ export const c = StyleSheet.create({
 });
 
 export function RemoteImage({ uri }: { uri?: string }) {
-  const [ratio, setRatio] = useState(2);
-  const [width, setWidth] = useState(0);
   return (
-    <View
-      onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
-      style={{ width: '100%' }}
-    >
-      <Image
-        source={imageSource(uri)}
-        onLoad={(event) => {
-          const { width, height } = event.nativeEvent.source;
-          if (width && height) setRatio(width / height);
-        }}
-        style={{ width: '100%', height: width / ratio }}
-        resizeMode="contain"
-      />
-    </View>
+    <Image
+      source={imageSource(uri)}
+      style={{ width: '100%', height: 120 }}
+      resizeMode="contain"
+    />
   );
 }

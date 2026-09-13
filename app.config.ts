@@ -75,7 +75,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     // output: 'server',
   },
   plugins: [
-    ['./plugins/with-mall-network', { url: ClientEnv.MALL_API_URL }],
+    ['./plugins/with-mall-network', { url: ClientEnv.API_URL }],
     [
       'expo-splash-screen',
       {
