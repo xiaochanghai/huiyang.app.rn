@@ -264,6 +264,7 @@ export function Quantity({
   const draftRef = useRef(String(quantity));
   const confirmed = useRef(quantity);
   const pending = useRef<Promise<void> | null>(null);
+  const operations = useRef<((quantity: number) => number)[]>([]);
   const registry = useContext(QuantityDraftContext);
   const registrationKey = useRef({});
   useEffect(() => {
@@ -275,42 +276,66 @@ export function Quantity({
   }, [quantity]);
   const { mutateAsync } = mutation;
   const commit = useCallback(
-    async (
-      value: number,
-      operation: 'set' | 'increase' | 'decrease' = 'set'
-    ) => {
-      if (pending.current) await pending.current;
-      if (!Number.isFinite(value)) {
-        throw new Error('请输入有效的商品数量');
-      }
-      const next = Math.max(0, Math.floor(value));
-      draftRef.current = String(next);
-      setDraft(String(next));
-      if (next === confirmed.current) return;
+    (value: number, operation: 'set' | 'increase' | 'decrease' = 'set') => {
+      if (!Number.isFinite(value))
+        return Promise.reject(new Error('请输入有效的商品数量'));
+      const apply = (current: number) =>
+        Math.max(
+          0,
+          Math.floor(
+            operation === 'increase'
+              ? current + 1
+              : operation === 'decrease'
+                ? current - 1
+                : value
+          )
+        );
+      if (operation === 'decrease' && Number(draftRef.current) <= 0)
+        return Promise.resolve();
+      operations.current.push(apply);
+      const showPending = () => {
+        draftRef.current = String(
+          operations.current.reduce(
+            (current, change) => change(current),
+            confirmed.current
+          )
+        );
+        setDraft(draftRef.current);
+      };
+      // Reflect every tap immediately; responses reconcile the remaining queued taps.
+      showPending();
+      const previous = pending.current;
       const work = (async () => {
+        await previous?.catch(() => {});
         try {
-          await mutateAsync({ code, quantity: next, operation });
-          confirmed.current = next;
-        } catch (error) {
-          draftRef.current = String(confirmed.current);
-          setDraft(draftRef.current);
-          throw error;
+          const next = apply(confirmed.current);
+          if (next === confirmed.current) return;
+          const result = await mutateAsync({ code, quantity: next, operation });
+          confirmed.current = Array.isArray(result?.xsddmxList)
+            ? Number(
+                result.xsddmxList.find((item) => item.wlbm === code)?.sl ?? 0
+              )
+            : next;
+        } finally {
+          operations.current = operations.current.filter(
+            (change) => change !== apply
+          );
+          showPending();
         }
       })();
       pending.current = work;
-      try {
-        await work;
-      } finally {
+      return work.finally(() => {
         if (pending.current === work) pending.current = null;
-      }
+      });
     },
     [code, mutateAsync]
   );
   useEffect(
     () =>
-      registry?.register(registrationKey.current, () =>
-        commit(Number(draftRef.current))
-      ),
+      registry?.register(registrationKey.current, async () => {
+        while (pending.current) await pending.current;
+        await commit(Number(draftRef.current));
+      }),
     [registry, commit]
   );
   const update = (
@@ -323,20 +348,13 @@ export function Quantity({
   };
   return (
     <View>
-      <View
-        style={[
-          s.quantity,
-          quantity > 0 && { borderColor: accent },
-          busy && { opacity: 0.5 },
-        ]}
-      >
+      <View style={[s.quantity, Number(draft) > 0 && { borderColor: accent }]}>
         <Pressable
           accessibilityLabel="减少数量"
-          disabled={busy || quantity <= 0}
           onPress={() => update(quantity - 1, 'decrease')}
           style={s.qtyButton}
         >
-          <Minus size={17} color={quantity <= 0 ? '#ccc' : '#666'} />
+          <Minus size={17} color={Number(draft) <= 0 ? '#ccc' : '#666'} />
         </Pressable>
         <TextInput
           accessibilityLabel="商品数量"
@@ -347,12 +365,13 @@ export function Quantity({
             draftRef.current = value;
             setDraft(value);
           }}
-          onEndEditing={() => update(Number(draftRef.current))}
+          onEndEditing={() => {
+            if (!pending.current) update(Number(draftRef.current));
+          }}
           style={s.qtyInput}
         />
         <Pressable
           accessibilityLabel="增加数量"
-          disabled={busy}
           onPress={() => update(quantity + 1, 'increase')}
           style={s.qtyButton}
         >

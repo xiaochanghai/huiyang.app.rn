@@ -1,6 +1,18 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  type InfiniteData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 
-import { type OrderData, request, useMallSession } from './api';
+import {
+  type CategoryData,
+  type HomeData,
+  type OrderData,
+  type Product,
+  request,
+  useMallSession,
+} from './api';
 
 export function useMallQuery<T>(
   key: string,
@@ -67,12 +79,65 @@ export function useQuantity() {
       );
     },
     onSuccess: async (data) => {
-      if (data?.xsddList)
-        client.setQueriesData(
-          { queryKey: ['mall', shop, token, 'cart'] },
+      const accountKey = ['mall', shop, token];
+      if (Array.isArray(data?.xsddmxList)) {
+        // Prevent an older in-flight response from overwriting the saved order.
+        await client.cancelQueries({
+          queryKey: accountKey,
+          predicate: (query) =>
+            [
+              'home',
+              'cart',
+              'categories',
+              'category-tags',
+              'detail',
+              'products',
+            ].includes(String(query.queryKey[3])),
+        });
+        client.setQueryData(
+          [...accountKey, 'cart', { xsddList: [{ dpbm: shop }] }],
           data
         );
-      await client.invalidateQueries({ queryKey: ['mall'] });
+        client.setQueriesData({ queryKey: [...accountKey, 'cart'] }, data);
+        const quantities = new Map(
+          data.xsddmxList.map((item) => [item.wlbm, Number(item.sl)])
+        );
+        const updateProducts = (products?: Product[]) =>
+          products?.map((product) => ({
+            ...product,
+            wlsl: quantities.get(product.wlbm) ?? 0,
+          }));
+        client.setQueriesData<HomeData>(
+          { queryKey: [...accountKey, 'home'] },
+          (home) =>
+            home && {
+              ...home,
+              cpxxsyList: updateProducts(home.cpxxsyList),
+              cpbqsyList: home.cpbqsyList?.map((section) => ({
+                ...section,
+                cpxxsyList: updateProducts(section.cpxxsyList),
+              })),
+            }
+        );
+        for (const key of ['categories', 'category-tags', 'detail']) {
+          client.setQueriesData<CategoryData>(
+            { queryKey: [...accountKey, key] },
+            (page) =>
+              page && { ...page, cpxxList: updateProducts(page.cpxxList) }
+          );
+        }
+        client.setQueriesData<InfiniteData<{ cpxxList?: Product[] }>>(
+          { queryKey: [...accountKey, 'products'] },
+          (list) =>
+            list && {
+              ...list,
+              pages: list.pages.map((page) => ({
+                ...page,
+                cpxxList: updateProducts(page.cpxxList),
+              })),
+            }
+        );
+      }
     },
   });
 }
