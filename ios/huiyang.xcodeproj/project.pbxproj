@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07AEF39C7792A567AFDC6A2F /* libPods-EUCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D5884BAB66A85DF769A525 /* libPods-EUCloud.a */; };
+		00B6ADB8D7502AFBD823CF72 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5FDFCF3440DA51FD30220 /* ExpoModulesProvider.swift */; };
+		0B2ADF81B7574886B3C034ED /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6C89629151C43829024AC3C /* Inter.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2EB5CC2C0A0CEE966030FAEA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = CA023089103FB25A2A91525C /* PrivacyInfo.xcprivacy */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		657C7CE544DE43BEB969DB10 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56C0B4ECE60E4C5AAF877E94 /* Inter.ttf */; };
+		550B1599DF5663F9573BDD0D /* libPods-huiyang.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A496DF37484CB2B1F2D48B0 /* libPods-huiyang.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		BF02E407F0FAB5DF1F0B9605 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D01460D6410B380842D921 /* ExpoModulesProvider.swift */; };
+		D53FB0BDB85EFD34BC29C636 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 77D4A066407AAB82FD2EFD75 /* PrivacyInfo.xcprivacy */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1156E540ED9E8549D8538BA3 /* Pods-EUCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EUCloud.debug.xcconfig"; path = "Target Support Files/Pods-EUCloud/Pods-EUCloud.debug.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* EUCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EUCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EUCloud/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EUCloud/Info.plist; sourceTree = "<group>"; };
-		2EE8C2AFB2A3FB1F91233E43 /* Pods-EUCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EUCloud.release.xcconfig"; path = "Target Support Files/Pods-EUCloud/Pods-EUCloud.release.xcconfig"; sourceTree = "<group>"; };
-		56C0B4ECE60E4C5AAF877E94 /* Inter.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Inter.ttf; path = ../assets/fonts/Inter.ttf; sourceTree = "<group>"; };
-		57D01460D6410B380842D921 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-EUCloud/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		86D5884BAB66A85DF769A525 /* libPods-EUCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EUCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = EUCloud/SplashScreen.storyboard; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* huiyang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = huiyang.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = huiyang/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = huiyang/Info.plist; sourceTree = "<group>"; };
+		1AD5FDFCF3440DA51FD30220 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-huiyang/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		77D4A066407AAB82FD2EFD75 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = huiyang/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		8A496DF37484CB2B1F2D48B0 /* libPods-huiyang.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-huiyang.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F9432357E918F5D991BA4F9 /* Pods-huiyang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-huiyang.debug.xcconfig"; path = "Target Support Files/Pods-huiyang/Pods-huiyang.debug.xcconfig"; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = huiyang/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		CA023089103FB25A2A91525C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = EUCloud/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		D0701492A1AAA2C2EEB1D329 /* Pods-huiyang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-huiyang.release.xcconfig"; path = "Target Support Files/Pods-huiyang/Pods-huiyang.release.xcconfig"; sourceTree = "<group>"; };
+		D6C89629151C43829024AC3C /* Inter.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Inter.ttf; path = ../assets/fonts/Inter.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = EUCloud/AppDelegate.swift; sourceTree = "<group>"; };
-		F11748442D0722820044C1D9 /* EUCloud-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "EUCloud-Bridging-Header.h"; path = "EUCloud/EUCloud-Bridging-Header.h"; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = huiyang/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* huiyang-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "huiyang-Bridging-Header.h"; path = "huiyang/huiyang-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,57 +39,65 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07AEF39C7792A567AFDC6A2F /* libPods-EUCloud.a in Frameworks */,
+				550B1599DF5663F9573BDD0D /* libPods-huiyang.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E5602B3B0B6F18696E172E1 /* EUCloud */ = {
-			isa = PBXGroup;
-			children = (
-				57D01460D6410B380842D921 /* ExpoModulesProvider.swift */,
-			);
-			name = EUCloud;
-			sourceTree = "<group>";
-		};
-		13B07FAE1A68108700A75B9A /* EUCloud */ = {
+		13B07FAE1A68108700A75B9A /* huiyang */ = {
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
-				F11748442D0722820044C1D9 /* EUCloud-Bridging-Header.h */,
+				F11748442D0722820044C1D9 /* huiyang-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				CA023089103FB25A2A91525C /* PrivacyInfo.xcprivacy */,
+				77D4A066407AAB82FD2EFD75 /* PrivacyInfo.xcprivacy */,
 			);
-			name = EUCloud;
+			name = huiyang;
+			sourceTree = "<group>";
+		};
+		1FFFE4F0B68137B1CC6DAF7B /* huiyang */ = {
+			isa = PBXGroup;
+			children = (
+				1AD5FDFCF3440DA51FD30220 /* ExpoModulesProvider.swift */,
+			);
+			name = huiyang;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				86D5884BAB66A85DF769A525 /* libPods-EUCloud.a */,
+				8A496DF37484CB2B1F2D48B0 /* libPods-huiyang.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		716DA3779EA9BCB93A3D420B /* Pods */ = {
+		3D1BD91DB08172ECB9EC20F7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1156E540ED9E8549D8538BA3 /* Pods-EUCloud.debug.xcconfig */,
-				2EE8C2AFB2A3FB1F91233E43 /* Pods-EUCloud.release.xcconfig */,
+				8F9432357E918F5D991BA4F9 /* Pods-huiyang.debug.xcconfig */,
+				D0701492A1AAA2C2EEB1D329 /* Pods-huiyang.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		75D01A4A8FD64513A4530B6A /* Resources */ = {
+		48AE9DAFD361B9F5C299A79C /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				56C0B4ECE60E4C5AAF877E94 /* Inter.ttf */,
+				1FFFE4F0B68137B1CC6DAF7B /* huiyang */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		73A0BF3E13934FDF84169244 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D6C89629151C43829024AC3C /* Inter.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -104,13 +112,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* EUCloud */,
+				13B07FAE1A68108700A75B9A /* huiyang */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				75D01A4A8FD64513A4530B6A /* Resources */,
-				716DA3779EA9BCB93A3D420B /* Pods */,
-				E36295B43C4BC1AEEDABB9DE /* ExpoModulesProviders */,
+				73A0BF3E13934FDF84169244 /* Resources */,
+				3D1BD91DB08172ECB9EC20F7 /* Pods */,
+				48AE9DAFD361B9F5C299A79C /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -120,7 +128,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* EUCloud.app */,
+				13B07F961A680F5B00A75B9A /* huiyang.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,41 +139,33 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = EUCloud/Supporting;
-			sourceTree = "<group>";
-		};
-		E36295B43C4BC1AEEDABB9DE /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				0E5602B3B0B6F18696E172E1 /* EUCloud */,
-			);
-			name = ExpoModulesProviders;
+			path = huiyang/Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* EUCloud */ = {
+		13B07F861A680F5B00A75B9A /* huiyang */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EUCloud" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "huiyang" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				DF54DB6A23812835B6480C22 /* [Expo] Configure project */,
+				E062D901F4618C5CB0285473 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				B10CB588B0CC40C090AC4F79 /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
-				12C018139133F1EC9A9F20AE /* [CP] Embed Pods Frameworks */,
+				BBEACF61DBEC4514B19E7417 /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
+				6F9E753279FB5DB3F2417D9D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = EUCloud;
-			productName = EUCloud;
-			productReference = 13B07F961A680F5B00A75B9A /* EUCloud.app */;
+			name = huiyang;
+			productName = huiyang;
+			productReference = 13B07F961A680F5B00A75B9A /* huiyang.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -181,7 +181,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "EUCloud" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "huiyang" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -194,7 +194,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* EUCloud */,
+				13B07F861A680F5B00A75B9A /* huiyang */,
 			);
 		};
 /* End PBXProject section */
@@ -207,8 +207,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				657C7CE544DE43BEB969DB10 /* Inter.ttf in Resources */,
-				2EB5CC2C0A0CEE966030FAEA /* PrivacyInfo.xcprivacy in Resources */,
+				0B2ADF81B7574886B3C034ED /* Inter.ttf in Resources */,
+				D53FB0BDB85EFD34BC29C636 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,20 +247,20 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EUCloud-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-huiyang-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		12C018139133F1EC9A9F20AE /* [CP] Embed Pods Frameworks */ = {
+		6F9E753279FB5DB3F2417D9D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EUCloud/Pods-EUCloud-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-huiyang/Pods-huiyang-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoCamera/ExpoCamera.framework/ExpoCamera",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoCameraBarcodeScanning/ExpoCameraBarcodeScanning.framework/ExpoCameraBarcodeScanning",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoCameraBarcodeScanning/ZXingObjC.framework/ZXingObjC",
@@ -303,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EUCloud/Pods-EUCloud-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-huiyang/Pods-huiyang-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
@@ -312,7 +312,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EUCloud/Pods-EUCloud-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-huiyang/Pods-huiyang-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
@@ -353,10 +353,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EUCloud/Pods-EUCloud-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-huiyang/Pods-huiyang-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B10CB588B0CC40C090AC4F79 /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
+		BBEACF61DBEC4514B19E7417 /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,7 +370,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Strip dev-launcher-specific local network permission keys from non-Debug builds\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n\nif [ \"$CONFIGURATION\" != \"Debug\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
 		};
-		DF54DB6A23812835B6480C22 /* [Expo] Configure project */ = {
+		E062D901F4618C5CB0285473 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -381,18 +381,18 @@
 			inputPaths = (
 				"$(SRCROOT)/.xcode.env",
 				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/EUCloud/EUCloud.entitlements",
-				"$(SRCROOT)/Pods/Target Support Files/Pods-EUCloud/expo-configure-project.sh",
+				"$(SRCROOT)/huiyang/huiyang.entitlements",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-huiyang/expo-configure-project.sh",
 			);
 			name = "[Expo] Configure project";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Pods/Target Support Files/Pods-EUCloud/ExpoModulesProvider.swift",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-huiyang/ExpoModulesProvider.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-EUCloud/expo-configure-project.sh\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-huiyang/expo-configure-project.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -402,7 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				BF02E407F0FAB5DF1F0B9605 /* ExpoModulesProvider.swift in Sources */,
+				00B6ADB8D7502AFBD823CF72 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,11 +411,11 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1156E540ED9E8549D8538BA3 /* Pods-EUCloud.debug.xcconfig */;
+			baseConfigurationReference = 8F9432357E918F5D991BA4F9 /* Pods-huiyang.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = EUCloud/EUCloud.entitlements;
+				CODE_SIGN_ENTITLEMENTS = huiyang/huiyang.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9522BKSSDG;
 				ENABLE_BITCODE = NO;
@@ -423,7 +423,7 @@
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = EUCloud/Info.plist;
+				INFOPLIST_FILE = huiyang/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -438,8 +438,8 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhonghong.huiyang;
-				PRODUCT_NAME = EUCloud;
-				SWIFT_OBJC_BRIDGING_HEADER = "EUCloud/EUCloud-Bridging-Header.h";
+				PRODUCT_NAME = huiyang;
+				SWIFT_OBJC_BRIDGING_HEADER = "huiyang/huiyang-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,14 +449,14 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EE8C2AFB2A3FB1F91233E43 /* Pods-EUCloud.release.xcconfig */;
+			baseConfigurationReference = D0701492A1AAA2C2EEB1D329 /* Pods-huiyang.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = EUCloud/EUCloud.entitlements;
+				CODE_SIGN_ENTITLEMENTS = huiyang/huiyang.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9522BKSSDG;
-				INFOPLIST_FILE = EUCloud/Info.plist;
+				INFOPLIST_FILE = huiyang/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -471,8 +471,8 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhonghong.huiyang;
-				PRODUCT_NAME = EUCloud;
-				SWIFT_OBJC_BRIDGING_HEADER = "EUCloud/EUCloud-Bridging-Header.h";
+				PRODUCT_NAME = huiyang;
+				SWIFT_OBJC_BRIDGING_HEADER = "huiyang/huiyang-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -618,7 +618,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EUCloud" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "huiyang" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -627,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "EUCloud" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "huiyang" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

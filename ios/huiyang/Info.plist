@@ -27,14 +27,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>eucloud</string>
+				<string>huiyangliquor</string>
 				<string>com.zhonghong.huiyang</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>exp+eu-cloud</string>
+				<string>exp+huiyang-liquor</string>
 			</array>
 		</dict>
 	</array>
@@ -59,15 +59,7 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 		<key>NSExceptionDomains</key>
-		<dict>
-			<key>47.87.129.28</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<false/>
-			</dict>
-		</dict>
+		<dict/>
 	</dict>
 	<key>NSBonjourServices</key>
 	<array>
