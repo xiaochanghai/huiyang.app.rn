@@ -86,7 +86,15 @@ export default function MallLayout() {
             animation: 'slide_from_right',
             contentStyle: { backgroundColor: '#fff' },
           }}
-        />
+        >
+          {tabs.map((tab) => (
+            <Stack.Screen
+              key={tab.path}
+              name={`${tab.suffix.slice(1)}/index`}
+              options={{ animation: 'none' }}
+            />
+          ))}
+        </Stack>
       </View>
       {showTabs && <MallTabs pathname={pathname} />}
     </SafeAreaView>
