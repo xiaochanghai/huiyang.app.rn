@@ -1,9 +1,8 @@
 import { router } from 'expo-router';
-import { ClipboardPlus, Search } from 'lucide-react-native';
+import { Search } from 'lucide-react-native';
 import { useEffect, useRef, useState } from 'react';
 import {
   Image,
-  Modal,
   Pressable,
   RefreshControl,
   ScrollView,
@@ -14,7 +13,6 @@ import {
 } from 'react-native';
 
 import {
-  type Catalog,
   type HomeData,
   imageSource,
   type Tag,
@@ -22,7 +20,7 @@ import {
 } from '@/features/mall/api';
 import { openTag, RemoteImage } from '@/features/mall/catalog-ui';
 import { useMallQuery } from '@/features/mall/hooks';
-import { accent, paths, ProductGrid, Status } from '@/features/mall/ui';
+import { accent, Header, paths, ProductGrid, Status } from '@/features/mall/ui';
 
 export default function HomeScreen() {
   const query = useMallQuery<HomeData>('home', '/xcx/Yw/Cxsy', {
@@ -32,7 +30,6 @@ export default function HomeScreen() {
     sxlx: 0,
   });
   const [keyword, setKeyword] = useState('');
-  const [catalog, setCatalog] = useState<Catalog | null>(null);
   const data = query.data;
   const sections = data?.cpbqsyList?.length
     ? data.cpbqsyList
@@ -58,19 +55,7 @@ export default function HomeScreen() {
         }
         contentContainerStyle={{ paddingBottom: 20 }}
       >
-        <View style={home.header}>
-          {!!data?.cpcList?.length && (
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="活动海报 (PDF Catalogo)"
-              onPress={() => setCatalog(data.cpcList?.[0] ?? null)}
-              style={home.catalogButton}
-            >
-              <ClipboardPlus size={24} color="#26343c" />
-            </Pressable>
-          )}
-          <Text style={home.headerTitle}>首页 (Inicio)</Text>
-        </View>
+        <Header title="首页 (Inicio)" />
         <View style={home.searchArea}>
           <View style={home.search}>
             <Search size={20} color="#999" />
@@ -143,41 +128,6 @@ export default function HomeScreen() {
           empty={!sections.length ? '暂无商品' : undefined}
         />
       </ScrollView>
-      <Modal
-        visible={!!catalog}
-        animationType="slide"
-        onRequestClose={() => setCatalog(null)}
-      >
-        <View style={{ flex: 1, paddingTop: 40, backgroundColor: '#fff' }}>
-          <Pressable onPress={() => setCatalog(null)} style={{ padding: 16 }}>
-            <Text>关闭 / Cerrar</Text>
-          </Pressable>
-          <ScrollView>
-            <View style={home.catalogChoices}>
-              {data?.cpcList?.map((item) => (
-                <Pressable
-                  key={item.bh}
-                  onPress={() => setCatalog(item)}
-                  accessibilityLabel={'查看海报 ' + item.bh}
-                >
-                  <Image
-                    source={imageSource(item.cpcft)}
-                    style={{ width: 90, height: 90 }}
-                    resizeMode="contain"
-                  />
-                </Pressable>
-              ))}
-            </View>
-            {catalog?.cpcctList?.length ? (
-              catalog.cpcctList.map((item) => (
-                <RemoteImage key={item.bh} uri={item.cpcct} />
-              ))
-            ) : (
-              <RemoteImage uri={catalog?.cpcft} />
-            )}
-          </ScrollView>
-        </View>
-      </Modal>
     </View>
   );
 }
@@ -245,21 +195,6 @@ function Banner({ tags }: { tags: Tag[] }) {
 
 const home = StyleSheet.create({
   page: { flex: 1, backgroundColor: '#fff' },
-  header: {
-    height: 59,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerTitle: { fontSize: 23, fontWeight: '700', color: '#111' },
-  catalogButton: {
-    position: 'absolute',
-    left: 16,
-    width: 44,
-    height: 44,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   searchArea: {
     backgroundColor: '#f8f8f8',
     paddingHorizontal: 16,
@@ -328,10 +263,4 @@ const home = StyleSheet.create({
   },
   sectionTitle: { color: '#111', fontSize: 22, fontWeight: '700' },
   more: { color: '#ff2044', fontSize: 18 },
-  catalogChoices: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    padding: 16,
-  },
 });
