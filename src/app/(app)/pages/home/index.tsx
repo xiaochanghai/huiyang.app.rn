@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -53,12 +54,15 @@ export default function HomeScreen() {
             tintColor={accent}
           />
         }
-        contentContainerStyle={{ paddingBottom: 20 }}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 24 }}
       >
         <Header title="首页 (Inicio)" />
         <View style={home.searchArea}>
           <View style={home.search}>
-            <Search size={20} color="#999" />
+            <Search size={18} color="#8b8b8b" />
             <TextInput
               accessibilityLabel="搜索商品"
               placeholder="搜索商品 / Buscar artículos"
@@ -66,19 +70,20 @@ export default function HomeScreen() {
               onChangeText={setKeyword}
               onSubmitEditing={search}
               returnKeyType="search"
-              placeholderTextColor="#888"
+              placeholderTextColor="#8b8b8b"
+              autoCorrect={false}
+              autoCapitalize="none"
               style={home.searchInput}
             />
-            <Pressable
+            <TouchableOpacity
               accessibilityRole="button"
-              style={({ pressed }) => [
-                home.searchButton,
-                { opacity: pressed ? 0.75 : 1 },
-              ]}
+              accessibilityLabel="搜索商品"
+              activeOpacity={0.75}
+              style={home.searchButton}
               onPress={search}
             >
-              <Text style={{ color: '#fff', fontSize: 18 }}>搜索</Text>
-            </Pressable>
+              <Text style={home.searchButtonText}>搜索</Text>
+            </TouchableOpacity>
           </View>
         </View>
         {!!data?.cpbqsygdtList?.length && (
@@ -113,7 +118,12 @@ export default function HomeScreen() {
             {!!section.cpbq && (
               <View style={home.sectionHeading}>
                 <Text style={home.sectionTitle}>{section.cpbq}</Text>
-                <Pressable onPress={() => openTag(section)}>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={`查看更多${section.cpbq}`}
+                  onPress={() => openTag(section)}
+                  style={home.moreButton}
+                >
                   <Text style={home.more}>更多 &gt;</Text>
                 </Pressable>
               </View>
@@ -185,7 +195,7 @@ function Banner({ tags }: { tags: Tag[] }) {
         {tags.map((tag, i) => (
           <View
             key={tag.bm}
-            style={[home.dot, { opacity: index === i ? 1 : 0.5 }]}
+            style={[home.dot, index === i && home.activeDot]}
           />
         ))}
       </View>
@@ -196,50 +206,59 @@ function Banner({ tags }: { tags: Tag[] }) {
 const home = StyleSheet.create({
   page: { flex: 1, backgroundColor: '#fff' },
   searchArea: {
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#fff',
     paddingHorizontal: 16,
-    paddingTop: 10,
-    paddingBottom: 13,
+    paddingTop: 8,
+    paddingBottom: 16,
   },
   search: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    backgroundColor: '#efefef',
+    backgroundColor: '#f5f5f5',
     borderRadius: 12,
-    paddingLeft: 16,
-    paddingRight: 8,
-    height: 51,
+    paddingLeft: 12,
+    paddingRight: 4,
+    minHeight: 52,
   },
   searchInput: {
     flex: 1,
     minWidth: 0,
-    fontSize: 19,
-    height: 51,
+    fontSize: 14,
+    height: 48,
+    paddingVertical: 0,
     color: '#222',
   },
   searchButton: {
-    backgroundColor: '#ff2044',
-    height: 38,
-    paddingHorizontal: 13,
+    backgroundColor: accent,
+    minHeight: 44,
+    minWidth: 60,
+    paddingHorizontal: 14,
     borderRadius: 9,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  searchButtonText: { color: '#fff', fontSize: 14, fontWeight: '600' },
   banner: { backgroundColor: '#1b130d' },
   dots: {
     position: 'absolute',
     bottom: 10,
     alignSelf: 'center',
     flexDirection: 'row',
-    gap: 8,
+    gap: 5,
   },
-  dot: { width: 8, height: 8, borderRadius: 4, backgroundColor: '#fff' },
+  dot: {
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: '#ffffff80',
+  },
+  activeDot: { width: 16, backgroundColor: '#fff' },
   promotion: {
     marginHorizontal: 16,
-    marginTop: 12,
-    marginBottom: 8,
-    borderRadius: 6,
+    marginTop: 16,
+    marginBottom: 4,
+    borderRadius: 8,
     overflow: 'hidden',
   },
   categories: {
@@ -247,7 +266,7 @@ const home = StyleSheet.create({
     flexWrap: 'wrap',
     paddingHorizontal: 16,
     paddingTop: 12,
-    paddingBottom: 24,
+    paddingBottom: 16,
     backgroundColor: '#fff',
   },
   category: { width: '33.333333%', paddingHorizontal: 4 },
@@ -258,9 +277,11 @@ const home = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingTop: 24,
-    paddingBottom: 16,
+    paddingTop: 8,
+    paddingBottom: 4,
+    gap: 12,
   },
-  sectionTitle: { color: '#111', fontSize: 22, fontWeight: '700' },
-  more: { color: '#ff2044', fontSize: 18 },
+  sectionTitle: { flex: 1, color: '#222', fontSize: 18, fontWeight: '700' },
+  moreButton: { minHeight: 44, justifyContent: 'center', paddingLeft: 8 },
+  more: { color: accent, fontSize: 13, fontWeight: '500' },
 });
