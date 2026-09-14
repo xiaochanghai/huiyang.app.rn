@@ -91,12 +91,16 @@ export function Button({
   gradient?: boolean;
   radius?: number;
 }) {
+  const [pressed, setPressed] = useState(false);
   return (
     <Pressable
       accessibilityRole="button"
       disabled={disabled}
+      accessibilityState={{ disabled: !!disabled }}
       onPress={onPress}
-      style={({ pressed }) => [
+      onPressIn={() => setPressed(true)}
+      onPressOut={() => setPressed(false)}
+      style={[
         s.button,
         { backgroundColor: '#ff694d', borderRadius: radius },
         outline && s.outline,

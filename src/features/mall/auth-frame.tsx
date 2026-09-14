@@ -6,6 +6,7 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Header } from './ui';
 
@@ -27,13 +28,15 @@ export function AuthFrame({
         colors={['#fff2ef', '#fff8f6', '#ffffff']}
         style={[StyleSheet.absoluteFill, { height: '65%' }]}
       />
-      {back && <Header title="" back />}
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={[a.content, compact && { paddingTop: 20 }]}
-      >
-        {children}
-      </ScrollView>
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+        {back && <Header title="" back />}
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={[a.content, compact && { paddingTop: 20 }]}
+        >
+          {children}
+        </ScrollView>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 }

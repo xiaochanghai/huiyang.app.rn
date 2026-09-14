@@ -3,12 +3,10 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 
-import { getItem, setItem } from '@/lib/storage';
-
 import { request, useMallSession } from '@/features/mall/api';
+import { a, AuthFrame } from '@/features/mall/auth-frame';
 import { Button, Checkbox, Field, paths, s } from '@/features/mall/ui';
-
-import { AuthFrame, a } from '@/features/mall/auth-frame';
+import { getItem, setItem } from '@/lib/storage';
 
 export default function LoginScreen() {
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
@@ -24,7 +22,6 @@ export default function LoginScreen() {
   const [rememberPassword, setRememberPassword] = useState(
     () => !!getItem<string>('mall-password')
   );
-  const [agreement, setAgreement] = useState(false);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const login = useMallSession((state) => state.login);
@@ -33,10 +30,6 @@ export default function LoginScreen() {
     if (busy) return;
     if (!username.trim() || !password) {
       setError('请输入账号和密码');
-      return;
-    }
-    if (!agreement) {
-      setError('请阅读并同意用户协议和隐私政策');
       return;
     }
     setBusy(true);
@@ -145,29 +138,6 @@ export default function LoginScreen() {
       <Text onPress={() => router.push(paths.register)} style={a.link}>
         账号注册 / Registro de cuenta
       </Text>
-      <View style={a.agreement}>
-        <Checkbox
-          value={agreement}
-          onPress={() => setAgreement(!agreement)}
-          title=""
-        />
-        <Text style={{ flex: 1, color: '#aaa', fontSize: 11 }}>
-          登录即代表您同意
-          <Text
-            style={{ color: '#4d8eff' }}
-            onPress={() => router.push('/user-agreement')}
-          >
-            《用户协议》
-          </Text>
-          和
-          <Text
-            style={{ color: '#4d8eff' }}
-            onPress={() => router.push('/privacy-policy')}
-          >
-            《隐私政策》
-          </Text>
-        </Text>
-      </View>
     </AuthFrame>
   );
 }

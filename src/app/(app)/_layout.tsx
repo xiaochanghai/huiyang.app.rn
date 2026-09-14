@@ -76,7 +76,7 @@ export default function MallLayout() {
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: '#fff' }}
-      edges={['top', 'bottom']}
+      edges={isPublic ? ['bottom'] : ['top', 'bottom']}
     >
       <StatusBar style="dark" />
       <View style={{ flex: 1 }}>
