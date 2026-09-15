@@ -38,7 +38,7 @@ require('dotenv').config({
 const BUNDLE_ID = 'com.zhonghong.huiyang'; // ios bundle id
 const PACKAGE = 'com.zhonghong.huiyang'; // android package name
 const NAME = '汇洋酒水'; // app name
-const EXPO_ACCOUNT_OWNER = 'huiyang-liquor'; // expo account owner
+const EXPO_ACCOUNT_OWNER = 'zhong-hong'; // expo account owner
 const EAS_PROJECT_ID = '0f644159-d403-4bf6-a64b-1272b8595390'; // eas project id
 const SCHEME = 'huiyangliquor'; // app scheme
 const BUILD_NUMBER = 2; // build number for both iOS and Android
