@@ -109,21 +109,19 @@ export function OrderBody({
       >
         {order && (
           <View style={o.orderCard}>
-            <View style={[s.row, o.top]}>
-              <View style={s.flex}>
+            <View className={s.row} style={o.top}>
+              <View className={s.flex}>
                 <Text style={o.customer}>
                   {String(order.kh_sw || order.kh || '')}
                 </Text>
-                <Text style={s.hint}>税号 {String(order.khsh || '')}</Text>
+                <Text className={s.hint}>税号 {String(order.khsh || '')}</Text>
               </View>
               <Text style={o.shopCode}>{String(order.dp || order.xshth)}</Text>
             </View>
             <View style={{ padding: 12 }}>
               <View
-                style={[
-                  s.row,
-                  { justifyContent: 'space-between', marginBottom: 8 },
-                ]}
+                className={s.row}
+                style={{ justifyContent: 'space-between', marginBottom: 8 }}
               >
                 <Text style={o.small}>
                   地区 Zona: {String(order.dq_sw || order.dq || '-')}
@@ -177,13 +175,17 @@ export function OrderBody({
                 <Text style={o.small}>
                   {expanded ? '收起 ⌄' : '查看更多订单信息 ›'}
                 </Text>
-                {!expanded && <Text style={s.hint}>Ver más pedidos</Text>}
+                {!expanded && <Text className={s.hint}>Ver más pedidos</Text>}
               </View>
             </Pressable>
           </View>
         )}
         {!!error && (
-          <Text accessibilityRole="alert" style={[s.error, { margin: 12 }]}>
+          <Text
+            accessibilityRole="alert"
+            className={s.error}
+            style={{ margin: 12 }}
+          >
             {error}
           </Text>
         )}
@@ -205,7 +207,7 @@ export function OrderBody({
                     resizeMode="contain"
                   />
                 </Pressable>
-                <View style={s.flex}>
+                <View className={s.flex}>
                   <Text
                     numberOfLines={2}
                     style={{ fontSize: 13, marginBottom: 12 }}
@@ -213,10 +215,8 @@ export function OrderBody({
                     {item.wlmc}
                   </Text>
                   <View
-                    style={[
-                      s.row,
-                      { justifyContent: 'space-between', gap: 10 },
-                    ]}
+                    className={s.row}
+                    style={{ justifyContent: 'space-between', gap: 10 }}
                   >
                     <Text
                       style={{
@@ -273,9 +273,10 @@ function OrderSummary({ order }: { order: Order }) {
         <View key={String(cn)} style={{ width: '47%', paddingVertical: 9 }}>
           <Text style={{ fontSize: 12 }}>{cn}</Text>
           <View
-            style={[s.row, { justifyContent: 'space-between', marginTop: 5 }]}
+            className={s.row}
+            style={{ justifyContent: 'space-between', marginTop: 5 }}
           >
-            <Text style={s.hint}>{es}</Text>
+            <Text className={s.hint}>{es}</Text>
             <Text style={{ fontSize: 12 }}>{money(value)}</Text>
           </View>
         </View>

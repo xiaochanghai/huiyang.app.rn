@@ -58,7 +58,7 @@ export default function RegisterScreen() {
         <Button title="提交" subtitle="ENVIAR" onPress={submit} gradient />
       </View>
       {!!message && (
-        <Text accessibilityRole="alert" style={s.error}>
+        <Text accessibilityRole="alert" className={s.error}>
           {message}
         </Text>
       )}

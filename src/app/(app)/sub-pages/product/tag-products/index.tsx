@@ -38,7 +38,7 @@ export default function ProductsScreen() {
     ).values(),
   ];
   return (
-    <View style={s.page}>
+    <View className={s.page}>
       <Header
         title={keyword ? `搜索：${keyword}` : tagName || '商品列表'}
         back

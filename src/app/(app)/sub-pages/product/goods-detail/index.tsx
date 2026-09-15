@@ -110,10 +110,10 @@ export default function DetailScreen() {
               >
                 {product.wlmc}
               </Text>
-              <Text style={s.muted}>
+              <Text className={s.muted}>
                 商品编号 (Cód. prod.) · {product.wlbm}　{product.gystm}
               </Text>
-              <View style={[s.row, { paddingTop: 18 }]}>
+              <View className={s.row} style={{ paddingTop: 18 }}>
                 <Meta
                   title="税率 (T. impuesto)"
                   value={product.iva_sw || '-'}
@@ -131,9 +131,9 @@ export default function DetailScreen() {
                   }}
                 >
                   {discount && (
-                    <Text style={s.oldPrice}>单价 {money(product.dj)}</Text>
+                    <Text className={s.oldPrice}>单价 {money(product.dj)}</Text>
                   )}
-                  <Text style={s.hint}>{discount ? '折后价' : '单价'}</Text>
+                  <Text className={s.hint}>{discount ? '折后价' : '单价'}</Text>
                   <Text
                     style={{ color: accent, fontSize: 20, fontWeight: '700' }}
                   >
@@ -143,8 +143,8 @@ export default function DetailScreen() {
               </View>
             </View>
             <View
+              className={s.row}
               style={[
-                s.row,
                 {
                   marginHorizontal: 12,
                   padding: 12,
@@ -163,7 +163,7 @@ export default function DetailScreen() {
                   style={{ flex: 1, alignItems: 'center', gap: 5 }}
                 >
                   <Text style={{ fontSize: 12 }}>{cn}</Text>
-                  <Text style={s.hint}>{es}</Text>
+                  <Text className={s.hint}>{es}</Text>
                   <Text style={{ fontSize: 13 }}>{money(value)}</Text>
                 </View>
               ))}
@@ -172,8 +172,8 @@ export default function DetailScreen() {
         )}
       </ScrollView>
       <View
+        className={s.row}
         style={[
-          s.row,
           {
             minHeight: 60,
             paddingHorizontal: 16,

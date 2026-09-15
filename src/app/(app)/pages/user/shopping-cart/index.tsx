@@ -8,7 +8,7 @@ import { Header, s, Status } from '@/features/mall/ui';
 export default function CartScreen() {
   const query = useCurrentOrder();
   return (
-    <View style={s.page}>
+    <View className={s.page}>
       <Header title="订单 (Carrito)" />
       <Status
         loading={query.isPending}

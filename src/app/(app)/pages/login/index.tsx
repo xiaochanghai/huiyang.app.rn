@@ -99,7 +99,8 @@ export default function LoginScreen() {
         autoComplete="current-password"
       />
       <View
-        style={[s.row, { justifyContent: 'space-between', marginBottom: 22 }]}
+        className={s.row}
+        style={{ justifyContent: 'space-between', marginBottom: 22 }}
       >
         <Checkbox
           title="记住用户名"
@@ -126,7 +127,7 @@ export default function LoginScreen() {
         />
       </View>
       {!!error && (
-        <Text accessibilityRole="alert" style={s.error}>
+        <Text accessibilityRole="alert" className={s.error}>
           {error}
         </Text>
       )}

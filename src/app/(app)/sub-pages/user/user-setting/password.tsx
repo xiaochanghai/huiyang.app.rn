@@ -76,7 +76,7 @@ export default function PasswordScreen() {
         onSubmitEditing={submit}
       />
       {!!error && (
-        <Text accessibilityRole="alert" style={s.error}>
+        <Text accessibilityRole="alert" className={s.error}>
           {error}
         </Text>
       )}

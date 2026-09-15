@@ -18,7 +18,7 @@ export default function OrdersScreen() {
     xsddList: [{ dpbm: shop }],
   });
   return (
-    <View style={s.page}>
+    <View className={s.page}>
       <Header title="订单列表 (Lista de pedidos)" back />
       <ScrollView
         refreshControl={
@@ -48,20 +48,17 @@ export default function OrdersScreen() {
                 params: { id: order.xshth },
               })
             }
-            style={[
-              s.card,
-              s.row,
-              { padding: 16, justifyContent: 'space-between' },
-            ]}
+            className={`${s.card} ${s.row}`}
+            style={{ padding: 16, justifyContent: 'space-between' }}
           >
-            <View style={s.flex}>
-              <Text style={s.muted}>销售合同号 / N.º pedido</Text>
+            <View className={s.flex}>
+              <Text className={s.muted}>销售合同号 / N.º pedido</Text>
               <Text
                 style={{ fontWeight: '600', fontSize: 16, marginVertical: 7 }}
               >
                 {order.xshth}
               </Text>
-              <Text style={s.muted}>{order.pcczsj}</Text>
+              <Text className={s.muted}>{order.pcczsj}</Text>
             </View>
             <Text style={{ color: accent, fontSize: 17, fontWeight: '600' }}>
               {money(order.jezj)}　›

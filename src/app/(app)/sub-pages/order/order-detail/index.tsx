@@ -18,7 +18,7 @@ export default function OrderDetailScreen() {
     !!id
   );
   return (
-    <View style={s.page}>
+    <View className={s.page}>
       <Header title="订单详情 (Detalle del pedido)" back />
       <Status
         loading={query.isPending}

@@ -54,19 +54,19 @@ export function Header({
   back?: boolean;
 }) {
   return (
-    <View style={s.header}>
+    <View className={s.header}>
       {back && (
         <Pressable
           accessibilityLabel="返回"
           onPress={() =>
             router.canGoBack() ? router.back() : router.replace(paths.home)
           }
-          style={s.back}
+          className={s.back}
         >
           <ArrowLeft size={21} color="#1a1a1a" />
         </Pressable>
       )}
-      <Text numberOfLines={1} style={s.headerTitle}>
+      <Text numberOfLines={1} className={s.headerTitle}>
         {title}
       </Text>
     </View>
@@ -100,16 +100,14 @@ export function Button({
       onPress={onPress}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
-      style={[
-        s.button,
-        { backgroundColor: '#ff694d', borderRadius: radius },
-        outline && s.outline,
-        muted && { backgroundColor: '#f8f8f8', borderColor: '#e0e0e0' },
-        {
-          opacity: disabled ? 0.5 : pressed ? 0.8 : 1,
-          transform: [{ scale: pressed ? 0.98 : 1 }],
-        },
-      ]}
+      className={`${s.button} ${outline ? 'border' : ''}`}
+      style={{
+        backgroundColor: muted ? '#f8f8f8' : outline ? '#fff' : '#ff694d',
+        borderRadius: radius,
+        borderColor: muted ? '#e0e0e0' : outline ? accent : undefined,
+        opacity: disabled ? 0.5 : pressed ? 0.8 : 1,
+        transform: [{ scale: pressed ? 0.98 : 1 }],
+      }}
     >
       {!outline && gradient && (
         <LinearGradient
@@ -120,21 +118,16 @@ export function Button({
         />
       )}
       <Text
-        style={[
-          s.buttonTitle,
-          outline && { color: accent },
-          muted && { color: '#333' },
-        ]}
+        className={s.buttonTitle}
+        style={
+          muted ? { color: '#333' } : outline ? { color: accent } : undefined
+        }
       >
         {title}
       </Text>
       {subtitle && (
         <Text
-          style={[
-            s.buttonSubtitle,
-            outline && { color: '#ff9a85' },
-            muted && { color: '#999' },
-          ]}
+          className={`${s.buttonSubtitle} ${muted ? 'text-[#999]' : outline ? 'text-[#ff9a85]' : 'text-[#ffffffc0]'}`}
         >
           {subtitle}
         </Text>
@@ -150,24 +143,26 @@ export function Field({
   const [visible, setVisible] = useState(false);
   const [focused, setFocused] = useState(false);
   return (
-    <View style={[s.field, focused && { borderColor: '#f5b6a8' }]}>
+    <View
+      className={`${s.field} ${focused ? 'border-[#f5b6a8]' : 'border-[#f0e8e5]'}`}
+    >
       {password ? (
         <LockKeyhole size={20} color="#c5bdba" />
       ) : (
         <UserRound size={20} color="#c5bdba" />
       )}
-      <View style={s.flex}>
+      <View className={s.flex}>
         <TextInput
           {...props}
           accessibilityLabel={props.placeholder}
           secureTextEntry={password && !visible}
           autoCapitalize="none"
           placeholderTextColor="#c0b8b5"
-          style={s.input}
+          className={s.input}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
-        <Text style={s.hint}>{hint}</Text>
+        <Text className={s.hint}>{hint}</Text>
       </View>
       {password && (
         <Pressable
@@ -201,21 +196,19 @@ export function Checkbox({
       accessibilityRole="checkbox"
       accessibilityState={{ checked: value }}
       onPress={onPress}
-      style={[s.row, { gap: 6, minHeight: 40 }]}
+      className={`${s.row} min-h-10 gap-1.5`}
     >
       <View
-        style={[
-          s.check,
-          value && { backgroundColor: accent, borderColor: accent },
-        ]}
+        className={s.check}
+        style={
+          value ? { backgroundColor: accent, borderColor: accent } : undefined
+        }
       >
         {value && <Check size={12} color="white" />}
       </View>
       <View>
-        <Text style={{ fontSize: 11, color: '#666' }}>{title}</Text>
-        {subtitle && (
-          <Text style={{ fontSize: 9, color: '#aaa' }}>{subtitle}</Text>
-        )}
+        <Text className="text-[11px] text-[#666]">{title}</Text>
+        {subtitle && <Text className="text-[9px] text-[#aaa]">{subtitle}</Text>}
       </View>
     </Pressable>
   );
@@ -233,25 +226,25 @@ export function Status({
 }) {
   if (loading)
     return (
-      <View style={s.status}>
+      <View className={s.status}>
         <ActivityIndicator color={accent} />
-        <Text style={s.muted}>加载中...</Text>
+        <Text className={s.muted}>加载中...</Text>
       </View>
     );
   if (error)
     return (
-      <View style={s.status}>
-        <Text style={s.error}>{error.message}</Text>
+      <View className={s.status}>
+        <Text className={s.error}>{error.message}</Text>
         {retry && (
-          <Pressable onPress={retry} style={s.retry}>
+          <Pressable onPress={retry} className={s.retry}>
             <Text style={{ color: accent }}>重试 / Reintentar</Text>
           </Pressable>
         )}
       </View>
     );
   return empty ? (
-    <View style={s.status}>
-      <Text style={s.muted}>{empty}</Text>
+    <View className={s.status}>
+      <Text className={s.muted}>{empty}</Text>
     </View>
   ) : null;
 }
@@ -352,11 +345,14 @@ export function Quantity({
   };
   return (
     <View>
-      <View style={[s.quantity, Number(draft) > 0 && { borderColor: accent }]}>
+      <View
+        className={s.quantity}
+        style={Number(draft) > 0 ? { borderColor: accent } : undefined}
+      >
         <Pressable
           accessibilityLabel="减少数量"
           onPress={() => update(quantity - 1, 'decrease')}
-          style={s.qtyButton}
+          className={s.qtyButton}
         >
           <Minus size={17} color={Number(draft) <= 0 ? '#ccc' : '#666'} />
         </Pressable>
@@ -372,25 +368,27 @@ export function Quantity({
           onEndEditing={() => {
             if (!pending.current) update(Number(draftRef.current));
           }}
-          style={s.qtyInput}
+          className={s.qtyInput}
         />
         <Pressable
           accessibilityLabel="增加数量"
           onPress={() => update(quantity + 1, 'increase')}
-          style={s.qtyButton}
+          className={s.qtyButton}
         >
           <Plus size={17} color="#666" />
         </Pressable>
       </View>
-      {mutation.error && <Text style={s.error}>{mutation.error.message}</Text>}
+      {mutation.error && (
+        <Text className={s.error}>{mutation.error.message}</Text>
+      )}
     </View>
   );
 }
 export function ProductGrid({ products }: { products: Product[] }) {
   return (
-    <View style={s.grid}>
+    <View className={s.grid}>
       {products.map((product) => (
-        <View style={s.product} key={product.wlbm}>
+        <View className={s.product} key={product.wlbm}>
           <Pressable
             onPress={() =>
               router.push({
@@ -399,38 +397,35 @@ export function ProductGrid({ products }: { products: Product[] }) {
               })
             }
           >
-            <View style={s.productImage}>
+            <View className={s.productImage}>
               <Image
                 source={imageSource(product.cpft)}
-                style={{ width: '80%', height: '80%' }}
+                className="size-4/5"
                 resizeMode="contain"
               />
             </View>
-            <View style={{ padding: 10 }}>
-              <Text
-                numberOfLines={1}
-                style={{ fontSize: 13, fontWeight: '500' }}
-              >
+            <View className="p-2.5">
+              <Text numberOfLines={1} className="text-[13px] font-medium">
                 {product.wlmc}
               </Text>
-              <Text numberOfLines={1} style={s.hint}>
+              <Text numberOfLines={1} className={s.hint}>
                 {product.gystm}
               </Text>
-              <View style={[s.row, { marginTop: 6 }]}>
-                <Text style={{ fontWeight: '600' }}>
+              <View className={`${s.row} mt-1.5`}>
+                <Text className="font-semibold">
                   {money(productPrice(product), '')}
                 </Text>
                 {Number(product.zhj) > 0 &&
                   Number(product.zhj) !== Number(product.dj) && (
-                    <Text style={s.oldPrice}>{money(product.dj, '')}</Text>
+                    <Text className={s.oldPrice}>{money(product.dj, '')}</Text>
                   )}
-                <Text style={[s.muted, { marginLeft: 'auto', fontSize: 11 }]}>
+                <Text className="ml-auto text-[11px] text-[#999]">
                   {product.jldw_sw || product.jldw}
                 </Text>
               </View>
             </View>
           </Pressable>
-          <View style={{ paddingHorizontal: 10 }}>
+          <View className="px-2.5">
             <Quantity code={product.wlbm} quantity={product.wlsl || 0} />
           </View>
         </View>
@@ -438,135 +433,37 @@ export function ProductGrid({ products }: { products: Product[] }) {
     </View>
   );
 }
-export const s = StyleSheet.create({
-  flex: { flex: 1 },
-  page: { flex: 1, backgroundColor: '#f5f5f5' },
-  row: { flexDirection: 'row', alignItems: 'center' },
-  header: {
-    height: 44,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomColor: '#f0f0f0',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  headerTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1a1a1a',
-    maxWidth: '78%',
-  },
-  back: { position: 'absolute', left: 12, padding: 10, zIndex: 1 },
-  button: {
-    minHeight: 52,
-    borderRadius: 8,
-    overflow: 'hidden',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 7,
-  },
-  outline: { backgroundColor: '#fff', borderWidth: 1, borderColor: accent },
-  buttonTitle: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-    letterSpacing: 3,
-  },
-  buttonSubtitle: {
-    fontSize: 10,
-    color: '#ffffffc0',
-    letterSpacing: 1,
-    marginTop: 2,
-  },
-  field: {
-    flexDirection: 'row',
-    gap: 8,
-    alignItems: 'center',
-    paddingHorizontal: 12,
-    paddingVertical: 9,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#f0e8e5',
-    borderRadius: 7,
-    marginBottom: 11,
-  },
-  input: { minHeight: 25, padding: 0, fontSize: 14, color: '#1a1a1a' },
-  hint: { color: '#b5adaa', fontSize: 10, marginTop: 3 },
-  check: {
-    width: 16,
-    height: 16,
-    borderWidth: 1,
-    borderColor: '#d5cdca',
-    borderRadius: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  status: { padding: 24, alignItems: 'center', gap: 10 },
-  muted: { fontSize: 12, color: '#999' },
-  error: { color: '#c44731', fontSize: 12, paddingVertical: 6 },
-  retry: { padding: 10 },
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    paddingHorizontal: 12,
-    gap: 10,
-  },
-  product: {
-    width: '48%',
-    flexGrow: 1,
-    maxWidth: '50%',
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    overflow: 'hidden',
-    paddingBottom: 10,
-  },
-  productImage: {
-    height: 140,
-    backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  oldPrice: {
-    fontSize: 11,
-    color: '#999',
-    textDecorationLine: 'line-through',
-    marginLeft: 4,
-  },
-  quantity: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 36,
-    borderWidth: 1,
-    borderColor: '#e0e0e0',
-    borderRadius: 6,
-  },
-  qtyButton: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: 30,
-    height: 34,
-  },
-  qtyInput: {
-    width: 38,
-    textAlign: 'center',
-    padding: 0,
-    fontSize: 12,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderColor: '#e0e0e0',
-    color: '#555',
-  },
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 7,
-    marginHorizontal: 8,
-    marginTop: 8,
-    padding: 10,
-  },
-  divider: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#f0f0f0',
-    paddingVertical: 10,
-  },
-});
+export const s = {
+  flex: 'flex-1',
+  page: 'flex-1 bg-neutral-100',
+  row: 'flex-row items-center',
+  header:
+    'h-11 items-center justify-center border-b-hairline web:border-b border-b-[#f0f0f0] bg-white',
+  headerTitle: 'max-w-[78%] text-[16px] font-semibold text-[#1a1a1a]',
+  back: 'absolute left-3 z-[1] p-2.5',
+  button:
+    'my-[7px] min-h-[52px] items-center justify-center overflow-hidden rounded-lg',
+  buttonTitle: 'text-[16px] font-semibold tracking-[3px] text-white',
+  buttonSubtitle: 'mt-0.5 text-[10px] tracking-[1px]',
+  field:
+    'mb-[11px] flex-row items-center gap-2 rounded-[7px] border bg-white px-3 py-[9px]',
+  input: 'min-h-[25px] p-0 text-[14px] text-[#1a1a1a]',
+  hint: 'mt-[3px] text-[10px] text-[#b5adaa]',
+  check:
+    'size-4 items-center justify-center rounded-[3px] border border-[#d5cdca]',
+  status: 'items-center gap-2.5 p-6',
+  muted: 'text-[12px] text-[#999]',
+  error: 'py-1.5 text-[12px] text-[#c44731]',
+  retry: 'p-2.5',
+  grid: 'flex-row flex-wrap gap-2.5 px-3',
+  product:
+    'w-[48%] max-w-[50%] grow overflow-hidden rounded-lg bg-white pb-2.5',
+  productImage: 'h-[140px] items-center justify-center bg-neutral-100',
+  oldPrice: 'ml-1 text-[11px] text-[#999] line-through',
+  quantity: 'h-9 flex-row items-center rounded-md border border-[#e0e0e0]',
+  qtyButton: 'h-[34px] min-w-[30px] flex-1 items-center justify-center',
+  qtyInput:
+    'w-[38px] border-x border-[#e0e0e0] p-0 text-center text-[12px] text-[#555]',
+  card: 'mx-2 mt-2 rounded-[7px] bg-white p-2.5',
+  divider: 'border-b-hairline web:border-b border-[#f0f0f0] py-2.5',
+};

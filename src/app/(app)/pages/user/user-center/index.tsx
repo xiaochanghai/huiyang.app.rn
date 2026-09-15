@@ -35,7 +35,7 @@ export default function ProfileScreen() {
     router.replace(paths.login);
   };
   return (
-    <View style={s.page}>
+    <View className={s.page}>
       <Header title="我的 (Mi cuenta)" />
       <ScrollView
         refreshControl={
@@ -52,15 +52,12 @@ export default function ProfileScreen() {
           error={query.error}
           retry={() => query.refetch()}
         />
-        <View style={s.card}>
+        <View className={s.card}>
           {fields.map(([cn, es, key]) => (
             <View
               key={key}
-              style={[
-                s.row,
-                s.divider,
-                { justifyContent: 'space-between', gap: 8 },
-              ]}
+              className={`${s.row} ${s.divider}`}
+              style={{ justifyContent: 'space-between', gap: 8 }}
             >
               <View
                 style={{
