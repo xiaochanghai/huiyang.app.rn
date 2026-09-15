@@ -45,7 +45,7 @@ export default function ProfileScreen() {
             tintColor={accent}
           />
         }
-        contentContainerStyle={{ paddingBottom: 25 }}
+        contentContainerClassName="pb-[25px]"
       >
         <Status
           loading={query.isPending}
@@ -56,36 +56,24 @@ export default function ProfileScreen() {
           {fields.map(([cn, es, key]) => (
             <View
               key={key}
-              className={`${s.row} ${s.divider}`}
-              style={{ justifyContent: 'space-between', gap: 8 }}
+              className={`${s.row} ${s.divider} justify-between gap-2`}
             >
               <View
-                style={{
-                  flexShrink: 1,
-                  flexDirection: key === 'dpdz' ? 'column' : 'row',
-                  alignItems: 'baseline',
-                  gap: 4,
-                  flexWrap: 'wrap',
-                }}
+                className={`shrink flex-wrap items-baseline gap-1 ${key === 'dpdz' ? 'flex-col' : 'flex-row'}`}
               >
-                <Text style={{ fontSize: 14, fontWeight: '500' }}>{cn}</Text>
-                <Text style={{ color: '#999', fontSize: 10 }}>{es}</Text>
+                <Text className="text-[14px] font-medium">{cn}</Text>
+                <Text className="text-[10px] text-[#999]">{es}</Text>
               </View>
               <Text
                 numberOfLines={2}
-                style={{
-                  fontSize: key === 'dpdzyx' ? 11 : 13,
-                  color: '#666',
-                  textAlign: 'right',
-                  maxWidth: '48%',
-                }}
+                className={`max-w-[48%] text-right text-[#666] ${key === 'dpdzyx' ? 'text-[11px]' : 'text-[13px]'}`}
               >
                 {shop?.[key] || '-'}
               </Text>
             </View>
           ))}
         </View>
-        <View style={{ paddingHorizontal: 16, marginTop: 12 }}>
+        <View className="mt-3 px-4">
           <Button
             title="订单列表　›"
             subtitle="LISTA DE PEDIDOS"
@@ -112,21 +100,12 @@ export default function ProfileScreen() {
         animationType="fade"
         onRequestClose={() => setConfirm(false)}
       >
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: '#0005',
-            justifyContent: 'center',
-            padding: 30,
-          }}
-        >
-          <View
-            style={{ backgroundColor: '#fff', borderRadius: 12, padding: 20 }}
-          >
-            <Text style={{ fontSize: 16, fontWeight: '600', marginBottom: 12 }}>
+        <View className="flex-1 justify-center bg-[#0005] p-[30px]">
+          <View className="rounded-xl bg-white p-5">
+            <Text className="mb-3 text-[16px] font-semibold">
               退出登录 (Cerrar sesión)
             </Text>
-            <Text style={{ lineHeight: 22 }}>
+            <Text className="leading-[22px]">
               确认退出当前账号？{'\n'}¿Confirmas que deseas cerrar sesión?
             </Text>
             <Button title="确认 / Confirmar" onPress={logout} />
