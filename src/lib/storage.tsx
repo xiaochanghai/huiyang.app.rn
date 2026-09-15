@@ -15,7 +15,7 @@ export {
 
 // 初始化 MMKV 实例
 export const storage: MMKV = createMMKV({
-  id: 'eucloud',
+  id: 'huiyangliquor',
 });
 
 /**

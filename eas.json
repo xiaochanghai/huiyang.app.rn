@@ -10,7 +10,7 @@
       "pnpm": "10.12.3",
       "ios": {
         "image": "latest",
-        "scheme": "EUCloud",
+        "scheme": "huiyangliquor",
         "buildConfiguration": "Release"
       },
       "android": {
