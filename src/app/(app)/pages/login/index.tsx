@@ -74,11 +74,13 @@ export default function LoginScreen() {
   };
   return (
     <AuthFrame>
-      <View style={a.heading}>
-        <Text style={a.title}>欢迎回来</Text>
-        <Text style={a.subtitle}>Bienvenido de vuelta</Text>
-        <Text style={a.description}>登录账号，开启便捷下单体验</Text>
-        <Text style={a.descriptionEs}>Inicia sesión, pide de forma fácil.</Text>
+      <View className={a.heading}>
+        <Text className={a.title}>欢迎回来</Text>
+        <Text className={a.subtitle}>Bienvenido de vuelta</Text>
+        <Text className={a.description}>登录账号，开启便捷下单体验</Text>
+        <Text className={a.descriptionEs}>
+          Inicia sesión, pide de forma fácil.
+        </Text>
       </View>
       <Field
         placeholder="请输入账号"
@@ -135,7 +137,7 @@ export default function LoginScreen() {
         onPress={submit}
         disabled={busy}
       />
-      <Text onPress={() => router.push(paths.register)} style={a.link}>
+      <Text onPress={() => router.push(paths.register)} className={a.link}>
         账号注册 / Registro de cuenta
       </Text>
     </AuthFrame>

@@ -22,17 +22,17 @@ export function AuthFrame({
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={{ flex: 1, backgroundColor: '#fff' }}
+      className="flex-1 bg-white"
     >
       <LinearGradient
         colors={['#fff2ef', '#fff8f6', '#ffffff']}
         style={[StyleSheet.absoluteFill, { height: '65%' }]}
       />
-      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
+      <SafeAreaView edges={['top']} className="flex-1">
         {back && <Header title="" back />}
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={[a.content, compact && { paddingTop: 20 }]}
+          contentContainerClassName={`grow px-[22px] pb-6 ${compact ? 'pt-5' : 'pt-[70px]'}`}
         >
           {children}
         </ScrollView>
@@ -40,34 +40,12 @@ export function AuthFrame({
     </KeyboardAvoidingView>
   );
 }
-export const a = StyleSheet.create({
-  content: {
-    flexGrow: 1,
-    paddingHorizontal: 22,
-    paddingTop: 70,
-    paddingBottom: 24,
-  },
-  heading: { marginBottom: 28 },
-  title: {
-    fontSize: 27,
-    fontWeight: '700',
-    color: '#1a1a1a',
-    letterSpacing: 1,
-  },
-  subtitle: { color: '#b5adaa', fontSize: 14, marginTop: 3 },
-  description: { color: '#555', fontSize: 13, marginTop: 18 },
-  descriptionEs: { color: '#c5bdba', fontSize: 11, marginTop: 2 },
-  link: {
-    color: '#999',
-    textAlign: 'center',
-    fontSize: 12,
-    lineHeight: 20,
-    paddingVertical: 18,
-  },
-  agreement: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 'auto',
-    paddingTop: 30,
-  },
-});
+export const a = {
+  heading: 'mb-7',
+  title: 'text-[27px] font-bold text-[#1a1a1a] tracking-[1px]',
+  subtitle: 'mt-[3px] text-[14px] text-[#b5adaa]',
+  description: 'mt-[18px] text-[13px] text-[#555]',
+  descriptionEs: 'mt-0.5 text-[11px] text-[#c5bdba]',
+  link: 'py-[18px] text-center text-[12px] leading-5 text-[#999]',
+  agreement: 'mt-auto flex-row items-center pt-[30px]',
+};

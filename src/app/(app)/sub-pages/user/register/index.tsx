@@ -2,9 +2,8 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 
+import { a, AuthFrame } from '@/features/mall/auth-frame';
 import { Button, Field, paths, s } from '@/features/mall/ui';
-
-import { AuthFrame, a } from '@/features/mall/auth-frame';
 
 export default function RegisterScreen() {
   const [form, setForm] = useState({
@@ -35,9 +34,9 @@ export default function RegisterScreen() {
   };
   return (
     <AuthFrame back>
-      <View style={a.heading}>
-        <Text style={a.title}>账号注册</Text>
-        <Text style={a.subtitle}>Registro de cuenta</Text>
+      <View className={a.heading}>
+        <Text className={a.title}>账号注册</Text>
+        <Text className={a.subtitle}>Registro de cuenta</Text>
       </View>
       {fields.map(([key, title, hint]) => (
         <Field
@@ -63,7 +62,7 @@ export default function RegisterScreen() {
           {message}
         </Text>
       )}
-      <Text style={a.link} onPress={() => router.replace(paths.login)}>
+      <Text className={a.link} onPress={() => router.replace(paths.login)}>
         已有账号？去登录{'\n'}¿Ya tienes cuenta? Inicia sesión
       </Text>
     </AuthFrame>

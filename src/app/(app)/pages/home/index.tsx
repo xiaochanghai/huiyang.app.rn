@@ -6,7 +6,6 @@ import {
   Pressable,
   RefreshControl,
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -45,7 +44,8 @@ export default function HomeScreen() {
       });
   };
   return (
-    <View style={home.page}>
+    <View className="flex-1 bg-white">
+      <Header title="首页 (Inicio)" />
       <ScrollView
         refreshControl={
           <RefreshControl
@@ -57,11 +57,10 @@ export default function HomeScreen() {
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 24 }}
+        contentContainerClassName="pb-6"
       >
-        <Header title="首页 (Inicio)" />
-        <View style={home.searchArea}>
-          <View style={home.search}>
+        <View className="bg-white px-4 pb-4 pt-2">
+          <View className="min-h-[52px] flex-row items-center gap-2 rounded-xl bg-neutral-100 pl-3 pr-1">
             <Search size={18} color="#8b8b8b" />
             <TextInput
               accessibilityLabel="搜索商品"
@@ -73,16 +72,17 @@ export default function HomeScreen() {
               placeholderTextColor="#8b8b8b"
               autoCorrect={false}
               autoCapitalize="none"
-              style={home.searchInput}
+              className="h-12 min-w-0 flex-1 py-0 text-[14px] text-[#222]"
             />
             <TouchableOpacity
               accessibilityRole="button"
               accessibilityLabel="搜索商品"
               activeOpacity={0.75}
-              style={home.searchButton}
+              className="min-h-11 min-w-[60px] items-center justify-center rounded-[9px] px-3.5"
+              style={{ backgroundColor: accent }}
               onPress={search}
             >
-              <Text style={home.searchButtonText}>搜索</Text>
+              <Text className="text-[14px] font-semibold text-white">搜索</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -93,38 +93,45 @@ export default function HomeScreen() {
           <Pressable
             key={tag.bm}
             onPress={() => openTag(tag)}
-            style={home.promotion}
+            className="mx-4 mb-1 mt-4 overflow-hidden rounded-lg"
           >
             <RemoteImage uri={tag.bqsyct} />
           </Pressable>
         ))}
-        <View style={home.categories}>
+        <View className="flex-row flex-wrap bg-white px-4 pb-4 pt-3">
           {data?.cpbqsyftList?.map((tag) => (
             <Pressable
               key={tag.bm}
               onPress={() => openTag(tag)}
-              style={home.category}
+              className="w-1/3 px-1"
             >
               <Image
                 source={imageSource(tag.bqft)}
-                style={home.categoryImage}
+                className="aspect-square w-full"
                 resizeMode="contain"
               />
             </Pressable>
           ))}
         </View>
         {sections.map((section, index) => (
-          <View key={section.bm || index} style={home.productSection}>
+          <View key={section.bm || index} className="pb-4">
             {!!section.cpbq && (
-              <View style={home.sectionHeading}>
-                <Text style={home.sectionTitle}>{section.cpbq}</Text>
+              <View className="flex-row items-center justify-between gap-3 px-4 pb-1 mb-1 pt-2  border-b border-gray-200">
+                <Text className="flex-1 text-[18px] font-bold text-[#222]">
+                  {section.cpbq}
+                </Text>
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel={`查看更多${section.cpbq}`}
                   onPress={() => openTag(section)}
-                  style={home.moreButton}
+                  className="min-h-11 justify-center pl-2"
                 >
-                  <Text style={home.more}>更多 &gt;</Text>
+                  <Text
+                    className="text-[13px] font-medium"
+                    style={{ color: accent }}
+                  >
+                    更多 &gt;
+                  </Text>
                 </Pressable>
               </View>
             )}
@@ -159,7 +166,7 @@ function Banner({ tags }: { tags: Tag[] }) {
   );
   return (
     <View
-      style={home.banner}
+      className="bg-[#1b130d]"
       onLayout={(event) => setWidth(event.nativeEvent.layout.width)}
     >
       <ScrollView
@@ -181,107 +188,25 @@ function Banner({ tags }: { tags: Tag[] }) {
           <Pressable key={tag.bm} onPress={() => openTag(tag)}>
             <Image
               source={imageSource(tag.bqsygdt)}
+              className="bg-[#1b130d]"
               style={{
                 width,
                 height: width * (187 / 485),
-                backgroundColor: '#1b130d',
               }}
               resizeMode="contain"
             />
           </Pressable>
         ))}
       </ScrollView>
-      <View style={home.dots}>
+      <View className="absolute bottom-2.5 flex-row gap-[5px] self-center">
         {tags.map((tag, i) => (
           <View
             key={tag.bm}
-            style={[home.dot, index === i && home.activeDot]}
+            className={`h-[5px] rounded-[3px] ${index === i ? 'w-4 bg-white' : 'w-[5px] bg-[#ffffff80]'
+              }`}
           />
         ))}
       </View>
     </View>
   );
 }
-
-const home = StyleSheet.create({
-  page: { flex: 1, backgroundColor: '#fff' },
-  searchArea: {
-    backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingTop: 8,
-    paddingBottom: 16,
-  },
-  search: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: '#f5f5f5',
-    borderRadius: 12,
-    paddingLeft: 12,
-    paddingRight: 4,
-    minHeight: 52,
-  },
-  searchInput: {
-    flex: 1,
-    minWidth: 0,
-    fontSize: 14,
-    height: 48,
-    paddingVertical: 0,
-    color: '#222',
-  },
-  searchButton: {
-    backgroundColor: accent,
-    minHeight: 44,
-    minWidth: 60,
-    paddingHorizontal: 14,
-    borderRadius: 9,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  searchButtonText: { color: '#fff', fontSize: 14, fontWeight: '600' },
-  banner: { backgroundColor: '#1b130d' },
-  dots: {
-    position: 'absolute',
-    bottom: 10,
-    alignSelf: 'center',
-    flexDirection: 'row',
-    gap: 5,
-  },
-  dot: {
-    width: 5,
-    height: 5,
-    borderRadius: 3,
-    backgroundColor: '#ffffff80',
-  },
-  activeDot: { width: 16, backgroundColor: '#fff' },
-  promotion: {
-    marginHorizontal: 16,
-    marginTop: 16,
-    marginBottom: 4,
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  categories: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 16,
-    backgroundColor: '#fff',
-  },
-  category: { width: '33.333333%', paddingHorizontal: 4 },
-  categoryImage: { width: '100%', aspectRatio: 1 },
-  productSection: { paddingBottom: 16, backgroundColor: '#f7f7f7' },
-  sectionHeading: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingTop: 8,
-    paddingBottom: 4,
-    gap: 12,
-  },
-  sectionTitle: { flex: 1, color: '#222', fontSize: 18, fontWeight: '700' },
-  moreButton: { minHeight: 44, justifyContent: 'center', paddingLeft: 8 },
-  more: { color: accent, fontSize: 13, fontWeight: '500' },
-});

@@ -3,12 +3,10 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 
-import { setItem } from '@/lib/storage';
-
 import { request, useMallSession } from '@/features/mall/api';
+import { a, AuthFrame } from '@/features/mall/auth-frame';
 import { Button, Field, paths, s } from '@/features/mall/ui';
-
-import { AuthFrame, a } from '@/features/mall/auth-frame';
+import { setItem } from '@/lib/storage';
 
 export default function PasswordScreen() {
   const [oldPassword, setOld] = useState('');
@@ -51,9 +49,9 @@ export default function PasswordScreen() {
   };
   return (
     <AuthFrame back compact>
-      <View style={a.heading}>
-        <Text style={a.title}>修改密码</Text>
-        <Text style={a.subtitle}>Modificación de contraseña</Text>
+      <View className={a.heading}>
+        <Text className={a.title}>修改密码</Text>
+        <Text className={a.subtitle}>Modificación de contraseña</Text>
       </View>
       <Field
         password

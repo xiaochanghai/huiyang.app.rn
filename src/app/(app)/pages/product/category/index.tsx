@@ -6,10 +6,9 @@ import {
   imageSource,
   useMallSession,
 } from '@/features/mall/api';
+import { openTag, RemoteImage } from '@/features/mall/catalog-ui';
 import { useMallQuery } from '@/features/mall/hooks';
-import { accent, Header, s, Status } from '@/features/mall/ui';
-
-import { c, openTag, RemoteImage } from '@/features/mall/catalog-ui';
+import { accent, Header, Status } from '@/features/mall/ui';
 
 export default function CategoryScreen() {
   const shop = useMallSession((state) => state.shop);
@@ -27,68 +26,57 @@ export default function CategoryScreen() {
   );
   const tags = tagQuery.data?.cpbqList || [];
   return (
-    <View style={s.page}>
+    <View className="flex-1 bg-neutral-100">
       <Header title="分类 (Categorías)" />
-      <View style={[s.row, { flex: 1, alignItems: 'stretch' }]}>
-        <ScrollView
-          style={{ width: 95, flexGrow: 0, backgroundColor: '#f5f5f5' }}
-        >
+      <View className="flex-1 flex-row items-stretch">
+        <ScrollView className="w-[95px] grow-0 bg-neutral-100">
           {query.data?.cpdlList?.map((item) => (
             <Pressable
               key={item.bm}
               onPress={() => setSelected(item.bm)}
-              style={[c.category, current?.bm === item.bm && c.selected]}
+              className={`min-h-[55px] justify-center border-l-[3px] border-l-transparent p-2.5 ${current?.bm === item.bm ? 'bg-white' : ''}`}
+              style={
+                current?.bm === item.bm
+                  ? { borderLeftColor: accent }
+                  : undefined
+              }
             >
               <Text
-                style={{
-                  fontSize: 13,
-                  color: current?.bm === item.bm ? accent : '#666',
-                  textAlign: 'center',
-                }}
+                className="text-center text-[13px] text-[#666]"
+                style={current?.bm === item.bm ? { color: accent } : undefined}
               >
                 {item.cpdl}
               </Text>
             </Pressable>
           ))}
         </ScrollView>
-        <ScrollView
-          style={{ flex: 1, backgroundColor: '#fff' }}
-          contentContainerStyle={{ padding: 12 }}
-        >
+        <ScrollView className="flex-1 bg-white" contentContainerClassName="p-3">
           {!!(current?.dlct || current?.dlft) && (
             <RemoteImage uri={current.dlct || current.dlft} />
           )}
-          <Text style={[c.title, { marginTop: 12 }]}>
+          <Text className="mt-3 text-[16px] font-semibold text-[#1a1a1a]">
             {current?.cpdl || '产品标签'}
           </Text>
-          <Text style={[s.hint, { marginBottom: 20 }]}>
+          <Text className="mb-5 mt-[3px] text-[10px] text-[#b5adaa]">
             选择产品标签 · Selecciona una etiqueta
           </Text>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+          <View className="flex-row flex-wrap gap-3">
             {tags.map((tag) => (
               <Pressable
                 key={tag.bm}
                 onPress={() => openTag(tag)}
-                style={{ width: '29%', alignItems: 'center' }}
+                className="w-[29%] items-center"
               >
                 {tag.bqft ? (
                   <Image
                     source={imageSource(tag.bqft)}
-                    style={{ width: 56, height: 56 }}
+                    className="size-14"
                     resizeMode="contain"
                   />
                 ) : (
-                  <View style={{ width: 56, height: 56 }} />
+                  <View className="size-14" />
                 )}
-                <Text
-                  style={{
-                    fontSize: 12,
-                    textAlign: 'center',
-                    marginVertical: 8,
-                  }}
-                >
-                  {tag.cpbq}
-                </Text>
+                <Text className="my-2 text-center text-[12px]">{tag.cpbq}</Text>
               </Pressable>
             ))}
           </View>
