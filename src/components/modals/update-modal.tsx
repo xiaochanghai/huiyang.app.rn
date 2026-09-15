@@ -39,13 +39,7 @@ import Constants from 'expo-constants';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as IntentLauncher from 'expo-intent-launcher';
 import * as React from 'react';
-import {
-  Alert,
-  Linking,
-  PermissionsAndroid,
-  Platform,
-  View,
-} from 'react-native';
+import { Alert, Linking, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
 import { renderBackdrop } from '@/components/ui/modal';
@@ -100,25 +94,8 @@ const downloadAndInstallAPK = async (
   onProgress?: (progress: number) => void
 ): Promise<void> => {
   try {
-    // 请求存储权限
-    if (Platform.OS === 'android') {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-        {
-          title: '存储权限',
-          message: '需要存储权限来下载更新文件',
-          buttonNeutral: '稍后询问',
-          buttonNegative: '取消',
-          buttonPositive: '确定',
-        }
-      );
-
-      if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
-        throw new Error('存储权限被拒绝');
-      }
-    }
-
     console.log('Starting APK download from:', downloadUrl);
+    // APK 写入应用私有缓存目录，无需申请外部存储权限。
     const fileUri = FileSystem.cacheDirectory + 'update.apk';
     console.log(`Downloading to: ${fileUri}`);
 
