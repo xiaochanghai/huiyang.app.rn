@@ -31,7 +31,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
 }
 expoAutolinking.useExpoModules()
 
-rootProject.name = 'huiyang'
+rootProject.name = '汇洋酒水'
 
 expoAutolinking.useExpoVersionCatalog()
 // @generated begin jpush-modules - expo prebuild (DO NOT MODIFY) sync-e50cdfd9b69c03343796d9d0d4e4d37016802d8c
