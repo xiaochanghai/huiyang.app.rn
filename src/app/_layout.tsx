@@ -107,7 +107,7 @@ function RootLayout() {
 
   // 推送注册成功后记录设备信息。
   useEffect(() => {
-    if (!isWeb && registrationId) {
+    if (!isWeb) {
       // 获取设备唯一ID并记录设备信息
       getUniqueId()
         .then(async (uniqueId) => {

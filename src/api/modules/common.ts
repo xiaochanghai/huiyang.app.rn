@@ -18,7 +18,7 @@ import { type SmLov } from '@/types';
 
 /** 查询最新版本信息 */
 export const queryLatestVersion = () => {
-  return http.get<VersionInfo>('/api/SmApplicationVersion/latest');
+  return http.get<VersionInfo>('/api/SmApplicationVersion/latest/huiyang');
 };
 
 /** 记录设备信息 */
