@@ -1,0 +1,97 @@
+{
+  "common": {
+    "cancel": "Cancelar"
+  },
+  "copyright": "© 2025 Suzhou Huiyang Liquor Technology Co., Ltd.",
+  "login": {
+    "account": "Introduce tu cuenta",
+    "credentials_required": "Introduce tu cuenta y contraseña",
+    "description": "Inicia sesión y haz tus pedidos fácilmente",
+    "failed": "No se pudo iniciar sesión. Inténtalo de nuevo.",
+    "hide_password": "Ocultar contraseña",
+    "invalid_response": "No se pudo iniciar sesión: faltan datos de la cuenta",
+    "login_button": "Iniciar sesión",
+    "login_loading": "Iniciando sesión…",
+    "login_success": "Sesión iniciada",
+    "other_login_way": "Otras formas de acceso",
+    "password": "Introduce tu contraseña",
+    "password_null": "Introduce tu contraseña",
+    "password_placeholder": "Contraseña",
+    "register": "Crear una cuenta",
+    "remember_password": "Recordar contraseña",
+    "remember_username": "Recordar usuario",
+    "show_password": "Mostrar contraseña",
+    "sub_title": "Sistema de gestión de fabricación inteligente",
+    "username_null": "Introduce tu usuario o teléfono",
+    "username_placeholder": "Usuario / teléfono",
+    "welcome": "Bienvenido de vuelta"
+  },
+  "onboarding": {
+    "message": "Bienvenido a Huiyang"
+  },
+  "profile": {
+    "about": "Acerca de nosotros",
+    "feedback": "Comentarios",
+    "help": "Centro de ayuda"
+  },
+  "settings": {
+    "about": {
+      "about_us": "Acerca de Huiyang Liquor",
+      "contact_support": "Contactar con soporte",
+      "help": "Centro de ayuda",
+      "title": "Acerca de",
+      "user_agreement": "Acuerdo de usuario"
+    },
+    "app_name": "Nombre de la aplicación",
+    "arabic": "Árabe",
+    "data_storage": {
+      "auto_sync": "Sincronizar datos automáticamente",
+      "clear_cache": "Borrar caché",
+      "title": "Datos y almacenamiento",
+      "wifi_only_sync": "Sincronizar solo con Wi-Fi"
+    },
+    "english": "Inglés",
+    "generale": "General",
+    "github": "GitHub",
+    "language": "Idioma",
+    "links": "Enlaces",
+    "logout": "Cerrar sesión",
+    "more": "Más",
+    "notification": {
+      "email": "Notificaciones por correo",
+      "notification": "Notificaciones push",
+      "sound": "Alertas de sonido",
+      "sub_email": "Solo notificaciones importantes",
+      "sub_notification": "Recibir todas las notificaciones",
+      "title": "Ajustes de notificaciones"
+    },
+    "privacy": "Política de privacidad",
+    "privacy_security": {
+      "2FA": "Autenticación de dos factores",
+      "password": "Cambiar contraseña",
+      "privacy": "Ajustes de privacidad",
+      "title": "Privacidad y seguridad"
+    },
+    "rate": "Valorar la aplicación",
+    "share": "Compartir",
+    "support": "Soporte",
+    "support_us": "Apóyanos",
+    "system": {
+      "font_size": "Tamaño de letra",
+      "language": "Idioma",
+      "theme": "Tema",
+      "title": "Ajustes del sistema"
+    },
+    "terms": "Condiciones del servicio",
+    "theme": {
+      "dark": "Oscuro",
+      "light": "Claro",
+      "system": "Sistema",
+      "title": "Tema"
+    },
+    "title": "Ajustes",
+    "version": "Versión",
+    "website": "Sitio web"
+  },
+  "welcome": "Bienvenido a Huiyang"
+}

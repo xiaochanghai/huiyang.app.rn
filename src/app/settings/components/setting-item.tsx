@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Switch, Text, TouchableOpacity, View } from 'react-native';
 
 import { FontAwesome } from '@/components/ui/icons';
 import type { TxKeyPath } from '@/lib/i18n';
-import { translate } from '@/lib/i18n';
 
 /**
  * 设置项组件属性定义
@@ -53,6 +53,7 @@ const SettingItem: React.FC<SettingItemProps> = ({
   tx,
   subtx,
 }) => {
+  const { t } = useTranslation();
   // 开关状态管理
   const [isEnabled, setIsEnabled] = useState(defaultToggleValue);
 
@@ -87,13 +88,13 @@ const SettingItem: React.FC<SettingItemProps> = ({
         <View>
           {/* 主标题 - 优先使用国际化文本 */}
           <Text className="text-base font-medium text-[#333] dark:text-gray-100">
-            {tx ? translate(tx) : title}
+            {tx ? t(tx) : title}
           </Text>
 
           {/* 副标题（如果存在） */}
           {(subtitle || subtx) && (
             <Text className="mt-0.5 text-xs text-[#9ca3af] dark:text-gray-400">
-              {subtx ? translate(subtx) : subtitle}
+              {subtx ? t(subtx) : subtitle}
             </Text>
           )}
         </View>

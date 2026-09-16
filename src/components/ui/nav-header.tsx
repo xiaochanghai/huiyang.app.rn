@@ -4,11 +4,12 @@ import {
   useRouter,
 } from 'expo-router';
 import React from 'react';
-import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { StatusBar, TouchableOpacity, View } from 'react-native';
 
 import { isWeb } from '@/lib';
 import { useAppColorScheme } from '@/lib/hooks';
-import { translate, type TxKeyPath } from '@/lib/i18n';
+import { type TxKeyPath } from '@/lib/i18n';
 
 import { FontAwesome, GroupEnum } from './icons';
 
@@ -28,6 +29,7 @@ export const NavHeader = ({
   right = null,
   tx,
 }: NavHeaderProps) => {
+  const { t } = useTranslation();
   const router = useRouter();
   // const pathName = usePathname();
   const { isDark } = useAppColorScheme();
@@ -46,7 +48,7 @@ export const NavHeader = ({
       />
       <Stack.Screen
         options={{
-          title: tx ? translate(tx) : title,
+          title: tx ? t(tx) : title,
           headerTintColor: isDark ? '#fff' : '#000',
           headerBackTitle: headerBackTitle,
           headerBackButtonDisplayMode: 'minimal',

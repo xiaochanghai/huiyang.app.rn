@@ -1,83 +1,97 @@
 {
-  "copyright": "© 2025 苏州汇洋酒水科技有限公司",
+  "common": {
+    "cancel": "Cancel"
+  },
+  "copyright": "© 2025 Suzhou Huiyang Liquor Technology Co., Ltd.",
   "login": {
-    "login_button": "登 录",
-    "login_loading": "用户验证中...",
-    "login_success": "登录成功！",
-    "other_login_way": "其他登录方式",
-    "password_null": "密码不能为空！",
-    "password_placeholder": "密码",
-    "remember_password": "记住密码",
-    "sub_title": "智能制造管理系统",
-    "username_null": "用户名/手机号不能为空！",
-    "username_placeholder": "用户名/手机号"
+    "account": "Enter your account",
+    "credentials_required": "Please enter your account and password",
+    "description": "Log in to place orders easily",
+    "failed": "Login failed. Please try again.",
+    "hide_password": "Hide password",
+    "invalid_response": "Login failed: account information is missing",
+    "login_button": "Log in",
+    "login_loading": "Logging in…",
+    "login_success": "Logged in successfully",
+    "other_login_way": "Other login methods",
+    "password": "Enter your password",
+    "password_null": "Please enter your password",
+    "password_placeholder": "Password",
+    "register": "Create an account",
+    "remember_password": "Remember password",
+    "remember_username": "Remember username",
+    "show_password": "Show password",
+    "sub_title": "Smart manufacturing management system",
+    "username_null": "Please enter your username or phone number",
+    "username_placeholder": "Username / phone number",
+    "welcome": "Welcome back"
   },
   "onboarding": {
-    "message": "Welcome to eu-cloud app site"
+    "message": "Welcome to Huiyang"
   },
   "profile": {
-    "about": "关于我们",
+    "about": "About us",
     "feedback": "Feedback",
-    "help": "帮助中心"
+    "help": "Help center"
   },
   "settings": {
     "about": {
-      "about_us": "关于汇洋酒水",
-      "contact_support": "联系客服",
-      "help": "帮助中心",
-      "title": "关于",
-      "user_agreement": "用户协议"
+      "about_us": "About Huiyang Liquor",
+      "contact_support": "Contact support",
+      "help": "Help center",
+      "title": "About",
+      "user_agreement": "User agreement"
     },
-    "app_name": "App Name",
+    "app_name": "App name",
     "arabic": "Arabic",
     "data_storage": {
-      "auto_sync": "自动同步数据",
-      "clear_cache": "清除缓存",
-      "title": "数据与存储",
-      "wifi_only_sync": "仅在WIFI下同步"
+      "auto_sync": "Automatically sync data",
+      "clear_cache": "Clear cache",
+      "title": "Data and storage",
+      "wifi_only_sync": "Sync over Wi-Fi only"
     },
     "english": "English",
     "generale": "General",
-    "github": "Github",
-    "language": "语言",
+    "github": "GitHub",
+    "language": "Language",
     "links": "Links",
-    "logout": "退出登录",
+    "logout": "Log out",
     "more": "More",
     "notification": {
-      "email": "邮件通知",
-      "notification": "推送通知",
-      "sound": "声音提醒",
-      "sub_email": "仅接收重要通知",
-      "sub_notification": "接收所有通知",
-      "title": "通知设置"
+      "email": "Email notifications",
+      "notification": "Push notifications",
+      "sound": "Sound alerts",
+      "sub_email": "Important notifications only",
+      "sub_notification": "Receive all notifications",
+      "title": "Notification settings"
     },
-    "privacy": "Privacy Policy",
+    "privacy": "Privacy policy",
     "privacy_security": {
-      "2FA": "双因素认证",
-      "password": "修改密码",
-      "privacy": "隐私设置",
-      "title": "隐私与安全"
+      "2FA": "Two-factor authentication",
+      "password": "Change password",
+      "privacy": "Privacy settings",
+      "title": "Privacy and security"
     },
-    "rate": "Rate",
+    "rate": "Rate the app",
     "share": "Share",
     "support": "Support",
-    "support_us": "Support Us",
+    "support_us": "Support us",
     "system": {
-      "font_size": "字体大小",
-      "language": "语言",
-      "theme": "主题",
-      "title": "系统设置"
+      "font_size": "Font size",
+      "language": "Language",
+      "theme": "Theme",
+      "title": "System settings"
     },
-    "terms": "Terms of Service",
+    "terms": "Terms of service",
     "theme": {
       "dark": "Dark",
       "light": "Light",
       "system": "System",
       "title": "Theme"
     },
-    "title": "设置",
+    "title": "Settings",
     "version": "Version",
     "website": "Website"
   },
-  "welcome": "Welcome to eucloud"
+  "welcome": "Welcome to Huiyang"
 }

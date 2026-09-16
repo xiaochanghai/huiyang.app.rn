@@ -1,14 +1,17 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
 
+import { LanguageSelector } from '@/components/language-selector';
 import { request, useMallSession } from '@/features/mall/api';
 import { a, AuthFrame } from '@/features/mall/auth-frame';
 import { Button, Checkbox, Field, paths, s } from '@/features/mall/ui';
 import { getItem, setItem } from '@/lib/storage';
 
 export default function LoginScreen() {
+  const { t } = useTranslation();
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
   const [username, setUsername] = useState(
     () => getItem<string>('mall-username') || ''
@@ -29,7 +32,7 @@ export default function LoginScreen() {
   const submit = async () => {
     if (busy) return;
     if (!username.trim() || !password) {
-      setError('请输入账号和密码');
+      setError(t('login.credentials_required'));
       return;
     }
     setBusy(true);
@@ -44,8 +47,7 @@ export default function LoginScreen() {
         PassWord: password,
       });
       const shop = data.UserId || data.UserInfo?.UserId;
-      if (!data.Token || !shop)
-        throw new Error('登录响应中缺少 Token 或店铺编号');
+      if (!data.Token || !shop) throw new Error(t('login.invalid_response'));
       client.removeQueries({ queryKey: ['mall'] });
       setItem('mall-username', rememberUser ? username.trim() : '');
       setItem('mall-password', rememberPassword ? password : '');
@@ -67,31 +69,28 @@ export default function LoginScreen() {
           : paths.home
       );
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : '登录失败，请重试');
+      setError(cause instanceof Error ? cause.message : t('login.failed'));
     } finally {
       setBusy(false);
     }
   };
   return (
     <AuthFrame>
+      <View className="mb-5">
+        <LanguageSelector />
+      </View>
       <View className={a.heading}>
-        <Text className={a.title}>欢迎回来</Text>
-        <Text className={a.subtitle}>Bienvenido de vuelta</Text>
-        <Text className={a.description}>登录账号，开启便捷下单体验</Text>
-        <Text className={a.descriptionEs}>
-          Inicia sesión, pide de forma fácil.
-        </Text>
+        <Text className={a.title}>{t('login.welcome')}</Text>
+        <Text className={a.description}>{t('login.description')}</Text>
       </View>
       <Field
-        placeholder="请输入账号"
-        hint="Introduce tu cuenta"
+        placeholder={t('login.account')}
         value={username}
         onChangeText={setUsername}
         autoComplete="username"
       />
       <Field
-        placeholder="请输入密码"
-        hint="Por favor, introduce tu contraseña"
+        placeholder={t('login.password')}
         password
         value={password}
         onChangeText={setPassword}
@@ -100,11 +99,15 @@ export default function LoginScreen() {
       />
       <View
         className={s.row}
-        style={{ justifyContent: 'space-between', marginBottom: 22 }}
+        style={{
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 8,
+          marginBottom: 22,
+        }}
       >
         <Checkbox
-          title="记住用户名"
-          subtitle="Recordar usuario"
+          title={t('login.remember_username')}
           value={rememberUser}
           onPress={() => {
             setRememberUser(!rememberUser);
@@ -116,8 +119,7 @@ export default function LoginScreen() {
           }}
         />
         <Checkbox
-          title="记住密码"
-          subtitle="Recordar contraseña"
+          title={t('login.remember_password')}
           value={rememberPassword}
           onPress={() => {
             setRememberPassword(!rememberPassword);
@@ -132,14 +134,13 @@ export default function LoginScreen() {
         </Text>
       )}
       <Button
-        title={busy ? '登录中...' : '登 录'}
-        subtitle="ENTRAR"
+        title={t(busy ? 'login.login_loading' : 'login.login_button')}
         gradient
         onPress={submit}
         disabled={busy}
       />
       <Text onPress={() => router.push(paths.register)} className={a.link}>
-        账号注册 / Registro de cuenta
+        {t('login.register')}
       </Text>
     </AuthFrame>
   );

@@ -18,6 +18,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ActivityIndicator,
   Image,
@@ -139,7 +140,8 @@ export function Field({
   hint,
   password,
   ...props
-}: TextInputProps & { hint: string; password?: boolean }) {
+}: TextInputProps & { hint?: string; password?: boolean }) {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [focused, setFocused] = useState(false);
   return (
@@ -162,11 +164,13 @@ export function Field({
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
-        <Text className={s.hint}>{hint}</Text>
+        {!!hint && <Text className={s.hint}>{hint}</Text>}
       </View>
       {password && (
         <Pressable
-          accessibilityLabel={visible ? '隐藏密码' : '显示密码'}
+          accessibilityLabel={t(
+            visible ? 'login.hide_password' : 'login.show_password'
+          )}
           hitSlop={10}
           onPress={() => setVisible(!visible)}
         >

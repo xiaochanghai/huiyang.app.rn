@@ -1,0 +1,97 @@
+{
+  "common": {
+    "cancel": "Cancel·la"
+  },
+  "copyright": "© 2025 Suzhou Huiyang Liquor Technology Co., Ltd.",
+  "login": {
+    "account": "Introdueix el teu compte",
+    "credentials_required": "Introdueix el compte i la contrasenya",
+    "description": "Inicia la sessió i fes comandes fàcilment",
+    "failed": "No s'ha pogut iniciar la sessió. Torna-ho a provar.",
+    "hide_password": "Amaga la contrasenya",
+    "invalid_response": "No s'ha pogut iniciar la sessió: falten dades del compte",
+    "login_button": "Inicia la sessió",
+    "login_loading": "S'està iniciant la sessió…",
+    "login_success": "Sessió iniciada",
+    "other_login_way": "Altres formes d'accés",
+    "password": "Introdueix la contrasenya",
+    "password_null": "Introdueix la contrasenya",
+    "password_placeholder": "Contrasenya",
+    "register": "Crea un compte",
+    "remember_password": "Recorda la contrasenya",
+    "remember_username": "Recorda l'usuari",
+    "show_password": "Mostra la contrasenya",
+    "sub_title": "Sistema de gestió de fabricació intel·ligent",
+    "username_null": "Introdueix l'usuari o el telèfon",
+    "username_placeholder": "Usuari / telèfon",
+    "welcome": "Benvingut de nou"
+  },
+  "onboarding": {
+    "message": "Benvingut a Huiyang"
+  },
+  "profile": {
+    "about": "Qui som",
+    "feedback": "Comentaris",
+    "help": "Centre d'ajuda"
+  },
+  "settings": {
+    "about": {
+      "about_us": "Sobre Huiyang Liquor",
+      "contact_support": "Contacta amb suport",
+      "help": "Centre d'ajuda",
+      "title": "Quant a",
+      "user_agreement": "Acord d'usuari"
+    },
+    "app_name": "Nom de l'aplicació",
+    "arabic": "Àrab",
+    "data_storage": {
+      "auto_sync": "Sincronitza les dades automàticament",
+      "clear_cache": "Esborra la memòria cau",
+      "title": "Dades i emmagatzematge",
+      "wifi_only_sync": "Sincronitza només amb Wi-Fi"
+    },
+    "english": "Anglès",
+    "generale": "General",
+    "github": "GitHub",
+    "language": "Idioma",
+    "links": "Enllaços",
+    "logout": "Tanca la sessió",
+    "more": "Més",
+    "notification": {
+      "email": "Notificacions per correu",
+      "notification": "Notificacions push",
+      "sound": "Avisos sonors",
+      "sub_email": "Només notificacions importants",
+      "sub_notification": "Rep totes les notificacions",
+      "title": "Configuració de notificacions"
+    },
+    "privacy": "Política de privacitat",
+    "privacy_security": {
+      "2FA": "Autenticació de dos factors",
+      "password": "Canvia la contrasenya",
+      "privacy": "Configuració de privacitat",
+      "title": "Privacitat i seguretat"
+    },
+    "rate": "Valora l'aplicació",
+    "share": "Comparteix",
+    "support": "Suport",
+    "support_us": "Dona'ns suport",
+    "system": {
+      "font_size": "Mida de la lletra",
+      "language": "Idioma",
+      "theme": "Tema",
+      "title": "Configuració del sistema"
+    },
+    "terms": "Condicions del servei",
+    "theme": {
+      "dark": "Fosc",
+      "light": "Clar",
+      "system": "Sistema",
+      "title": "Tema"
+    },
+    "title": "Configuració",
+    "version": "Versió",
+    "website": "Lloc web"
+  },
+  "welcome": "Benvingut a Huiyang"
+}

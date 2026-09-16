@@ -1,115 +1,73 @@
 import React, { useState } from 'react';
-import { Pressable } from 'react-native';
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
+import { useTranslation } from 'react-i18next';
+import { Modal, Pressable, Text, View } from 'react-native';
 
-import { Text, View } from '@/components/ui';
-import { FontAwesome, GroupEnum } from '@/components/ui/icons';
+import { useSelectedLanguage } from '@/lib/i18n';
+import { languageOptions } from '@/lib/i18n/resources';
 
-type LanguageOption = {
-  code: string;
-  name: string;
-  nativeName: string;
-};
-
-const languageOptions: LanguageOption[] = [
-  {
-    code: 'zh',
-    name: '中文/China',
-    nativeName: '中文',
-  },
-  {
-    code: 'en',
-    name: '英文/English',
-    nativeName: 'English',
-  },
-];
-
-type LanguageSelectorProps = {
-  currentLanguage?: string;
-  onLanguageChange?: (languageCode: string) => void;
-  className?: string;
-};
-
-export const LanguageSelector = ({
-  currentLanguage = '中文',
-  onLanguageChange,
-  className = '',
-}: LanguageSelectorProps) => {
+export const LanguageSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handlePress = () => setIsOpen(!isOpen);
-
-  const handleLanguageSelect = (languageCode: string) => {
-    onLanguageChange?.(languageCode);
-    setIsOpen(false);
-  };
-
-  const getCurrentLanguageDisplay = () => {
-    const current = languageOptions.find(
-      (lang) => lang.code === currentLanguage.toLowerCase()
-    );
-    return current?.nativeName || currentLanguage;
-  };
+  const { language, setLanguage } = useSelectedLanguage();
+  const { t } = useTranslation();
+  const selected = languageOptions.find((option) => option.value === language);
 
   return (
-    <View className="relative">
+    <>
       <Pressable
-        onPress={handlePress}
-        className={`flex-row items-center bg-white px-3 py-2 ${className}`}
+        accessibilityRole="button"
+        accessibilityLabel={`${t('settings.language')}: ${selected?.label}`}
+        accessibilityState={{ expanded: isOpen }}
+        onPress={() => setIsOpen(true)}
+        className="min-h-11 flex-row items-center self-end rounded-lg px-3 py-2"
       >
-        {/* Chinese character "文" in a rounded square */}
-        <View className="mr-2 size-6 items-center justify-center rounded border border-gray-300 bg-gray-50">
-          <Text className="text-xs text-gray-500">文</Text>
-        </View>
-
-        {/* Language text */}
-        <Text className="mr-1 text-sm font-medium text-gray-500">
-          {getCurrentLanguageDisplay()}
-        </Text>
-
-        <FontAwesome
-          name={isOpen ? 'up' : 'down'}
-          size={14}
-          group={GroupEnum.AntDesign}
-          className=" text-gray-500"
-        />
+        <Text className="text-[14px] text-[#666]">{selected?.label} ▾</Text>
       </Pressable>
-
-      {/* Floating dropdown menu */}
-      {isOpen && (
-        <Animated.View
-          entering={FadeIn.duration(200)}
-          exiting={FadeOut.duration(200)}
-          className="absolute right-0 top-full z-50 mt-1 min-w-[160px] rounded-lg border border-gray-200 bg-white shadow-lg"
-        >
-          {languageOptions.map((language, index) => (
+      <Modal
+        visible={isOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setIsOpen(false)}
+      >
+        <View className="flex-1 justify-center bg-black/40 px-6">
+          <Pressable
+            accessibilityLabel={t('common.cancel')}
+            accessibilityRole="button"
+            onPress={() => setIsOpen(false)}
+            className="absolute inset-0"
+          />
+          <View accessibilityViewIsModal className="rounded-2xl bg-white p-5">
+            <Text className="mb-3 text-[18px] font-semibold text-[#222]">
+              {t('settings.language')}
+            </Text>
+            {languageOptions.map((option) => (
+              <Pressable
+                key={option.value}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: language === option.value }}
+                className="min-h-12 flex-row items-center justify-between py-3"
+                onPress={() => {
+                  setIsOpen(false);
+                  if (option.value !== language) setLanguage(option.value);
+                }}
+              >
+                <Text className="text-[16px] text-[#222]">{option.label}</Text>
+                {language === option.value && (
+                  <Text className="text-[18px] text-[#ff6b4a]">✓</Text>
+                )}
+              </Pressable>
+            ))}
             <Pressable
-              key={language.code}
-              onPress={() => handleLanguageSelect(language.code)}
-              className={`px-4 py-3 ${index === 0 ? 'rounded-t-lg' : ''} ${
-                index === languageOptions.length - 1 ? 'rounded-b-lg' : ''
-              } ${
-                currentLanguage.toLowerCase() === language.code
-                  ? 'bg-gray-100'
-                  : 'bg-white'
-              }`}
+              accessibilityRole="button"
+              onPress={() => setIsOpen(false)}
+              className="min-h-11 items-center justify-center"
             >
-              <Text className="text-base font-medium text-black">
-                {language.name}
+              <Text className="text-[14px] text-[#666]">
+                {t('common.cancel')}
               </Text>
             </Pressable>
-          ))}
-        </Animated.View>
-      )}
-
-      {/* Backdrop to close dropdown when clicking outside */}
-      {isOpen && (
-        <Pressable
-          onPress={() => setIsOpen(false)}
-          className="absolute inset-0 z-40"
-          style={{ top: -1000, left: -1000, right: -1000, bottom: -1000 }}
-        />
-      )}
-    </View>
+          </View>
+        </View>
+      </Modal>
+    </>
   );
 };

@@ -1,16 +1,30 @@
 {
+  "common": {
+    "cancel": "取消"
+  },
   "copyright": "© 2025 苏州汇洋酒水科技有限公司",
   "login": {
+    "account": "请输入账号",
+    "credentials_required": "请输入账号和密码",
+    "description": "登录账号，开启便捷下单体验",
+    "failed": "登录失败，请重试",
+    "hide_password": "隐藏密码",
+    "invalid_response": "登录失败：缺少账号信息",
     "login_button": "登 录",
     "login_loading": "用户验证中...",
     "login_success": "登录成功！",
     "other_login_way": "其他登录方式",
+    "password": "请输入密码",
     "password_null": "密码不能为空！",
     "password_placeholder": "密码",
+    "register": "账号注册",
     "remember_password": "记住密码",
+    "remember_username": "记住用户名",
+    "show_password": "显示密码",
     "sub_title": "智能制造管理系统",
     "username_null": "用户名/手机号不能为空！",
-    "username_placeholder": "用户名/手机号"
+    "username_placeholder": "用户名/手机号",
+    "welcome": "欢迎回来"
   },
   "onboarding": {
     "message": "Welcome to eu-cloud app site"

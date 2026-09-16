@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import type { OptionType } from '@/components/ui';
 import { Options, useModal } from '@/components/ui';
 import type { ColorSchemeType } from '@/lib';
-import { translate, useSelectedTheme } from '@/lib';
+import { useSelectedTheme } from '@/lib';
 
 import { Item } from './item';
 
 export const ThemeItem = () => {
+  const { t } = useTranslation();
   const { selectedTheme, setSelectedTheme } = useSelectedTheme();
   const modal = useModal();
 
@@ -21,11 +23,11 @@ export const ThemeItem = () => {
 
   const themes = React.useMemo(
     () => [
-      { label: `${translate('settings.theme.dark')} 🌙`, value: 'dark' },
-      { label: `${translate('settings.theme.light')} 🌞`, value: 'light' },
-      { label: `${translate('settings.theme.system')} ⚙️`, value: 'system' },
+      { label: `${t('settings.theme.dark')} 🌙`, value: 'dark' },
+      { label: `${t('settings.theme.light')} 🌞`, value: 'light' },
+      { label: `${t('settings.theme.system')} ⚙️`, value: 'system' },
     ],
-    []
+    [t]
   );
 
   const theme = React.useMemo(

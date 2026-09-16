@@ -3,8 +3,7 @@ import * as React from 'react';
 import type { OptionType } from '@/components/ui';
 import { Options, useModal } from '@/components/ui';
 import { useSelectedLanguage } from '@/lib';
-import { translate } from '@/lib';
-import type { Language } from '@/lib/i18n/resources';
+import { type Language, languageOptions } from '@/lib/i18n/resources';
 
 import { Item } from './item';
 
@@ -19,13 +18,7 @@ export const LanguageItem = () => {
     [setLanguage, modal]
   );
 
-  const langs = React.useMemo(
-    () => [
-      { label: translate('settings.english'), value: 'en' },
-      { label: translate('settings.arabic'), value: 'ar' },
-    ],
-    []
-  );
+  const langs = languageOptions;
 
   const selectedLanguage = React.useMemo(
     () => langs.find((lang) => lang.value === language),

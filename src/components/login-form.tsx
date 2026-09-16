@@ -1,9 +1,12 @@
 import { Env } from '@env';
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { TFunction } from 'i18next';
 import { MotiView } from 'moti';
 import React, { useEffect, useState } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+// import { useSelectedLanguage } from '@/lib';
+import { useTranslation } from 'react-i18next';
 import { ScrollView } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -23,30 +26,31 @@ import { Eye, EyeOff } from '@/components/ui/icons';
 // import type { Language } from '@/lib/i18n/resources';
 import { isIos } from '@/lib';
 import { useAppColorScheme } from '@/lib/hooks';
-// import { useSelectedLanguage } from '@/lib';
-import { translate } from '@/lib/i18n';
 import { getItem, removeItem, setItem } from '@/lib/storage';
 
-const schema = z.object({
-  account: z
-    .string({
-      required_error: translate('login.username_placeholder'),
-    })
-    .min(1, translate('login.username_placeholder')),
-  password: z
-    .string({
-      required_error: translate('login.password_placeholder'),
-    })
-    .min(1, translate('login.password_placeholder')),
-});
+const createSchema = (t: TFunction) =>
+  z.object({
+    account: z
+      .string({
+        required_error: t('login.username_placeholder'),
+      })
+      .min(1, t('login.username_placeholder')),
+    password: z
+      .string({
+        required_error: t('login.password_placeholder'),
+      })
+      .min(1, t('login.password_placeholder')),
+  });
 
-export type FormType = z.infer<typeof schema>;
+export type FormType = z.infer<ReturnType<typeof createSchema>>;
 
 export type LoginFormProps = {
   onSubmit?: SubmitHandler<FormType>;
 };
 
 export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
+  const { t } = useTranslation();
+  const schema = React.useMemo(() => createSchema(t), [t]);
   // const { language, setLanguage } = useSelectedLanguage();
   const { isDark } = useAppColorScheme();
   const insets = useSafeAreaInsets();
@@ -147,7 +151,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
                 testID="account-input"
                 control={control}
                 name="account"
-                placeholder={translate('login.username_placeholder')}
+                placeholder={t('login.username_placeholder')}
                 autoComplete="username"
                 autoCorrect={false}
                 returnKeyType="next"
@@ -160,7 +164,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
                 testID="password-input"
                 control={control}
                 name="password"
-                placeholder={translate('login.password_placeholder')}
+                placeholder={t('login.password_placeholder')}
                 secureTextEntry={!showPassword}
                 autoComplete="current-password"
                 returnKeyType="done"
@@ -188,7 +192,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
                 <Checkbox
                   checked={rememberPassword}
                   onChange={setRememberPassword}
-                  label={translate('login.remember_password')}
+                  label={t('login.remember_password')}
                   accessibilityLabel="Remember password"
                   className="self-start"
                 />
@@ -196,7 +200,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
 
               <Button
                 testID="login-button"
-                label={translate('login.login_button')}
+                label={t('login.login_button')}
                 onPress={handleSubmit(handleFormSubmit)}
                 loading={formState.isSubmitting}
                 disabled={formState.isSubmitting}
