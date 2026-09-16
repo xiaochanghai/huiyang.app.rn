@@ -1,5 +1,4 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { ShoppingCart } from 'lucide-react-native';
 import { useState } from 'react';
 import {
   Image,
@@ -10,6 +9,7 @@ import {
   View,
 } from 'react-native';
 
+import { FontAwesome } from '@/components/ui/icons';
 import {
   imageSource,
   money,
@@ -188,7 +188,7 @@ export default function DetailScreen() {
           onPress={() => router.navigate(paths.cart)}
           style={{ alignItems: 'center', padding: 8 }}
         >
-          <ShoppingCart size={24} color={accent} />
+          <FontAwesome name="shopping-cart" size={24} color={accent} />
           <Text style={{ color: accent, fontSize: 10 }}>订单</Text>
         </Pressable>
         {!!product?.wlsl && (

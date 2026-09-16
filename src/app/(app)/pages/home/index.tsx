@@ -1,5 +1,4 @@
 import { router } from 'expo-router';
-import { Search } from 'lucide-react-native';
 import { useEffect, useRef, useState } from 'react';
 import {
   Image,
@@ -12,6 +11,7 @@ import {
   View,
 } from 'react-native';
 
+import { FontAwesome } from '@/components/ui/icons';
 import {
   type HomeData,
   imageSource,
@@ -61,7 +61,7 @@ export default function HomeScreen() {
       >
         <View className="bg-white px-4 pb-4 pt-2">
           <View className="min-h-[52px] flex-row items-center gap-2 rounded-xl bg-neutral-100 pl-3 pr-1">
-            <Search size={18} color="#8b8b8b" />
+            <FontAwesome name="search" size={18} color="#8b8b8b" />
             <TextInput
               accessibilityLabel="搜索商品"
               placeholder="搜索商品 / Buscar artículos"

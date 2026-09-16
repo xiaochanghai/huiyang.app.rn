@@ -1,16 +1,6 @@
 import { useIsMutating } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import {
-  ArrowLeft,
-  Check,
-  Eye,
-  EyeOff,
-  LockKeyhole,
-  Minus,
-  Plus,
-  UserRound,
-} from 'lucide-react-native';
 import React, {
   useCallback,
   useContext,
@@ -29,6 +19,8 @@ import {
   type TextInputProps,
   View,
 } from 'react-native';
+
+import { FontAwesome } from '@/components/ui/icons';
 
 import { imageSource, money, type Product, productPrice } from './api';
 import { useQuantity } from './hooks';
@@ -64,7 +56,7 @@ export function Header({
           }
           className={s.back}
         >
-          <ArrowLeft size={21} color="#1a1a1a" />
+          <FontAwesome name="arrow-left" size={21} color="#1a1a1a" />
         </Pressable>
       )}
       <Text numberOfLines={1} className={s.headerTitle}>
@@ -149,9 +141,9 @@ export function Field({
       className={`${s.field} ${focused ? 'border-[#f5b6a8]' : 'border-[#f0e8e5]'}`}
     >
       {password ? (
-        <LockKeyhole size={20} color="#c5bdba" />
+        <FontAwesome name="lock" size={20} color="#c5bdba" />
       ) : (
-        <UserRound size={20} color="#c5bdba" />
+        <FontAwesome name="user-o" size={20} color="#c5bdba" />
       )}
       <View className={s.flex}>
         <TextInput
@@ -175,9 +167,9 @@ export function Field({
           onPress={() => setVisible(!visible)}
         >
           {visible ? (
-            <EyeOff size={20} color="#c5bdba" />
+            <FontAwesome name="eye-slash" size={20} color="#c5bdba" />
           ) : (
-            <Eye size={20} color="#c5bdba" />
+            <FontAwesome name="eye" size={20} color="#c5bdba" />
           )}
         </Pressable>
       )}
@@ -208,7 +200,7 @@ export function Checkbox({
           value ? { backgroundColor: accent, borderColor: accent } : undefined
         }
       >
-        {value && <Check size={12} color="white" />}
+        {value && <FontAwesome name="check" size={12} color="white" />}
       </View>
       <View>
         <Text className="text-[11px] text-[#666]">{title}</Text>
@@ -358,7 +350,11 @@ export function Quantity({
           onPress={() => update(quantity - 1, 'decrease')}
           className={s.qtyButton}
         >
-          <Minus size={17} color={Number(draft) <= 0 ? '#ccc' : '#666'} />
+          <FontAwesome
+            name="minus"
+            size={17}
+            color={Number(draft) <= 0 ? '#ccc' : '#666'}
+          />
         </Pressable>
         <TextInput
           accessibilityLabel="商品数量"
@@ -379,7 +375,7 @@ export function Quantity({
           onPress={() => update(quantity + 1, 'increase')}
           className={s.qtyButton}
         >
-          <Plus size={17} color="#666" />
+          <FontAwesome name="plus" size={17} color="#666" />
         </Pressable>
       </View>
       {mutation.error && (

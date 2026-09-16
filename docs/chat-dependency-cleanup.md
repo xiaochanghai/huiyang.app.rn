@@ -30,7 +30,7 @@
 | `expo-document-picker` | dependencies | 聊天文件附件；删除时同步移除 `app.config.ts` 中的插件配置 |
 | `expo-glass-effect` | dependencies | 原生玻璃效果 |
 | `expo-symbols` | dependencies | 聊天系统图标 |
-| `lucide-react` | dependencies | Web 聊天图标；与商城使用的 `lucide-react-native` 是不同的包 |
+| `lucide-react` | dependencies | 原 Web 聊天图标 |
 | `mdast-util-from-markdown` | dependencies | Markdown 解析 |
 | `mdast-util-gfm-table` | dependencies | Markdown 表格解析 |
 | `micromark-extension-gfm-table` | dependencies | Markdown 表格语法扩展 |
@@ -39,7 +39,7 @@
 
 ## 保留与另行评估
 
-- `lucide-react-native`：商城首页、商品详情路由文件和 `src/features/mall/ui.tsx` 仍在使用，保留。
+- `lucide-react-native`：商城图标已统一迁移至 `@/components/ui/icons` 的 `FontAwesome` 组件，依赖已移除。
 - `expo-image`、`expo-image-picker`、`expo-file-system`、`expo-haptics`、`moti`、`react-native-reanimated`、`react-native-keyboard-controller` 等公共依赖：仍有其他模块调用，保留。
 - `expo-system-ui`：虽然已无直接业务引用，但可能涉及主题与框架配置，不纳入本次待删除清单，另行核实。
 - `expo-web-browser`：仍在 `app.config.ts` 中注册插件，不纳入本次待删除清单，另行核实其用途。
