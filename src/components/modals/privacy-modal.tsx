@@ -1,4 +1,5 @@
 // import { Pressable } from '@/components/ui';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import {
@@ -148,13 +149,15 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({
               </Text>
             </Pressable>
             <Pressable
-              style={[
-                styles.button,
-                styles.agreeButton,
-                { backgroundColor: isDark ? '#1d4ed8' : '#2563eb' },
-              ]}
+              style={[styles.button, styles.agreeButton]}
               onPress={onAgree}
             >
+              <LinearGradient
+                colors={['#ff8a6e', '#ff6b4a']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={StyleSheet.absoluteFill}
+              />
               <Text style={styles.buttonTextAgree}>同意</Text>
             </Pressable>
           </View>
@@ -218,7 +221,7 @@ const styles = StyleSheet.create({
   disagreeButton: {
     borderWidth: 1,
   },
-  agreeButton: {},
+  agreeButton: { backgroundColor: '#ff694d', overflow: 'hidden' },
   buttonTextDisagree: {
     fontWeight: 'bold',
     textAlign: 'center',
