@@ -116,7 +116,7 @@ export default function HomeScreen() {
         {sections.map((section, index) => (
           <View key={section.bm || index} className="pb-4">
             {!!section.cpbq && (
-              <View className="flex-row items-center justify-between gap-3 px-4 pb-1 mb-1 pt-2  border-b border-gray-200">
+              <View className="mb-1 flex-row items-center justify-between gap-3 border-b border-gray-200 px-4  pb-1 pt-2">
                 <Text className="flex-1 text-[18px] font-bold text-[#222]">
                   {section.cpbq}
                 </Text>
@@ -135,7 +135,11 @@ export default function HomeScreen() {
                 </Pressable>
               </View>
             )}
-            <ProductGrid products={section.cpxxsyList || []} />
+            {section.cpxxsyList?.length ? (
+              <ProductGrid products={section.cpxxsyList} />
+            ) : (
+              <Status empty="暂无商品" />
+            )}
           </View>
         ))}
         <Status
@@ -202,8 +206,9 @@ function Banner({ tags }: { tags: Tag[] }) {
         {tags.map((tag, i) => (
           <View
             key={tag.bm}
-            className={`h-[5px] rounded-[3px] ${index === i ? 'w-4 bg-white' : 'w-[5px] bg-[#ffffff80]'
-              }`}
+            className={`h-[5px] rounded-[3px] ${
+              index === i ? 'w-4 bg-white' : 'w-[5px] bg-[#ffffff80]'
+            }`}
           />
         ))}
       </View>
