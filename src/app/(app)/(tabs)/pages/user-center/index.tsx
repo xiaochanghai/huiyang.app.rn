@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Modal, RefreshControl, ScrollView, Text, View } from 'react-native';
 
 import { NavHeader } from '@/components/ui/nav-header';
@@ -9,17 +10,18 @@ import { useMallQuery } from '@/features/mall/hooks';
 import { accent, Button, paths, s, Status } from '@/features/mall/ui';
 
 const fields = [
-  ['客户名称', 'Nombre del cliente', 'khmc'],
-  ['公司税号', 'NIF de la empresa', 'sh'],
-  ['店铺名称', 'Nombre de tienda', 'dpmc'],
-  ['店铺编号', 'Código de tienda', 'dpbm'],
-  ['联系电话', 'Teléfono', 'dpdh'],
-  ['邮箱', 'Correo electrónico', 'dpdzyx'],
-  ['店铺地址', 'Dirección de tienda', 'dpdz'],
-  ['登记日期', 'Fecha de registro', 'djrq'],
-  ['最后下单日期', 'Último pedido', 'zhxdrq'],
+  ['mall.profile.fields.customer_name', 'khmc'],
+  ['mall.profile.fields.tax_id', 'sh'],
+  ['mall.profile.fields.shop_name', 'dpmc'],
+  ['mall.profile.fields.shop_code', 'dpbm'],
+  ['mall.profile.fields.phone', 'dpdh'],
+  ['mall.profile.fields.email', 'dpdzyx'],
+  ['mall.profile.fields.address', 'dpdz'],
+  ['mall.profile.fields.registration_date', 'djrq'],
+  ['mall.profile.fields.last_order_date', 'zhxdrq'],
 ] as const;
 export default function UserCenterTabScreen() {
+  const { t } = useTranslation();
   const query = useMallQuery<{ khdpList?: Shop[] }>(
     'shop',
     '/xcx/Yw/Dpxx',
@@ -37,7 +39,7 @@ export default function UserCenterTabScreen() {
   };
   return (
     <View className={s.page}>
-      <NavHeader title="我的 (Mi cuenta)" leftShown={false} />
+      <NavHeader title={t('mall.tabs.profile')} leftShown={false} />
       <ScrollView
         refreshControl={
           <RefreshControl
@@ -54,17 +56,12 @@ export default function UserCenterTabScreen() {
           retry={() => query.refetch()}
         />
         <View className={s.card}>
-          {fields.map(([cn, es, key]) => (
+          {fields.map(([tx, key]) => (
             <View
               key={key}
               className={`${s.row} ${s.divider} justify-between gap-2`}
             >
-              <View
-                className={`shrink flex-wrap items-baseline gap-1 ${key === 'dpdz' ? 'flex-col' : 'flex-row'}`}
-              >
-                <Text className="text-[14px] font-medium">{cn}</Text>
-                <Text className="text-[10px] text-[#999]">{es}</Text>
-              </View>
+              <Text className="shrink text-[14px] font-medium">{t(tx)}</Text>
               <Text
                 numberOfLines={2}
                 className={`max-w-[48%] text-right text-[#666] ${key === 'dpdzyx' ? 'text-[11px]' : 'text-[13px]'}`}
@@ -76,20 +73,17 @@ export default function UserCenterTabScreen() {
         </View>
         <View className="mt-3 px-4">
           <Button
-            title="订单列表　›"
-            subtitle="LISTA DE PEDIDOS"
+            title={`${t('mall.profile.order_list')}　›`}
             onPress={() => router.push(paths.orders)}
           />
           <Button
-            title="修改密码"
-            subtitle="CAMBIAR CONTRASEÑA"
+            title={t('mall.profile.change_password')}
             muted
             onPress={() => router.push(paths.password)}
             outline
           />
           <Button
-            title="退出登录"
-            subtitle="CERRAR SESIÓN"
+            title={t('mall.profile.logout')}
             onPress={() => setConfirm(true)}
             outline
           />
@@ -104,14 +98,14 @@ export default function UserCenterTabScreen() {
         <View className="flex-1 justify-center bg-[#0005] p-[30px]">
           <View className="rounded-xl bg-white p-5">
             <Text className="mb-3 text-[16px] font-semibold">
-              退出登录 (Cerrar sesión)
+              {t('mall.profile.logout')}
             </Text>
             <Text className="leading-[22px]">
-              确认退出当前账号？{'\n'}¿Confirmas que deseas cerrar sesión?
+              {t('mall.profile.logout_confirm')}
             </Text>
-            <Button title="确认 / Confirmar" onPress={logout} />
+            <Button title={t('common.confirm')} onPress={logout} />
             <Button
-              title="取消 / Cancelar"
+              title={t('common.cancel')}
               onPress={() => setConfirm(false)}
               outline
             />

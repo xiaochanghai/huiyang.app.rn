@@ -1,6 +1,9 @@
 {
   "common": {
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading…",
+    "retry": "Retry"
   },
   "copyright": "© 2025 Suzhou Huiyang Liquor Technology Co., Ltd.",
   "login": {
@@ -27,6 +30,66 @@
     "welcome": "Welcome back"
   },
   "mall": {
+    "cart": {
+      "address": "Address",
+      "collapse": "Collapse",
+      "empty": "No current orders",
+      "postal_code": "Postal code",
+      "region": "Region",
+      "remark": "Notes",
+      "remark_placeholder": "Enter order notes",
+      "save_failed": "Failed to save order information",
+      "submit_failed": "Failed to submit order",
+      "submit_order": "Submit order",
+      "submitting": "Submitting…",
+      "summary": {
+        "discount": "Total discount",
+        "subtotal": "Subtotal before tax",
+        "sugar_tax": "Sugar tax",
+        "surcharge": "Surcharge",
+        "tax": "Tax"
+      },
+      "tax_id": "Tax ID",
+      "temporary_address": "Temporary delivery address",
+      "temporary_address_placeholder": "Enter a temporary delivery address",
+      "total": "Total amount",
+      "view_more": "View order details"
+    },
+    "category": {
+      "empty": "No product tags",
+      "product_tags": "Product tags",
+      "select_tag": "Select a product tag"
+    },
+    "home": {
+      "empty": "No products",
+      "search": "Search",
+      "search_placeholder": "Search products",
+      "view_more": "More",
+      "view_more_accessibility": "View more: {{name}}"
+    },
+    "profile": {
+      "change_password": "Change password",
+      "fields": {
+        "address": "Shop address",
+        "customer_name": "Customer name",
+        "email": "Email",
+        "last_order_date": "Last order date",
+        "phone": "Phone",
+        "registration_date": "Registration date",
+        "shop_code": "Shop code",
+        "shop_name": "Shop name",
+        "tax_id": "Company tax ID"
+      },
+      "logout": "Log out",
+      "logout_confirm": "Are you sure you want to log out of this account?",
+      "order_list": "Order list"
+    },
+    "quantity": {
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity",
+      "invalid": "Enter a valid product quantity",
+      "label": "Product quantity"
+    },
     "tabs": {
       "cart": "Cart",
       "category": "Categories",

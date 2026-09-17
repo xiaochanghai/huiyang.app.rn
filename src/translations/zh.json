@@ -1,6 +1,9 @@
 {
   "common": {
-    "cancel": "取消"
+    "cancel": "取消",
+    "confirm": "确认",
+    "loading": "加载中…",
+    "retry": "重试"
   },
   "copyright": "© 2025 苏州汇洋酒水科技有限公司",
   "login": {
@@ -27,6 +30,66 @@
     "welcome": "欢迎回来"
   },
   "mall": {
+    "cart": {
+      "address": "地址",
+      "collapse": "收起",
+      "empty": "当前暂无订单",
+      "postal_code": "邮编",
+      "region": "地区",
+      "remark": "备注",
+      "remark_placeholder": "请输入订单备注",
+      "save_failed": "订单信息保存失败",
+      "submit_failed": "提交失败",
+      "submit_order": "提交订单",
+      "submitting": "提交中…",
+      "summary": {
+        "discount": "优惠合计",
+        "subtotal": "税前合计",
+        "sugar_tax": "糖税金额",
+        "surcharge": "附加税",
+        "tax": "税金"
+      },
+      "tax_id": "税号",
+      "temporary_address": "临时地址",
+      "temporary_address_placeholder": "请输入临时送货地址",
+      "total": "金额总计",
+      "view_more": "查看更多订单信息"
+    },
+    "category": {
+      "empty": "暂无产品标签",
+      "product_tags": "产品标签",
+      "select_tag": "选择产品标签"
+    },
+    "home": {
+      "empty": "暂无商品",
+      "search": "搜索",
+      "search_placeholder": "搜索商品",
+      "view_more": "更多",
+      "view_more_accessibility": "查看更多：{{name}}"
+    },
+    "profile": {
+      "change_password": "修改密码",
+      "fields": {
+        "address": "店铺地址",
+        "customer_name": "客户名称",
+        "email": "邮箱",
+        "last_order_date": "最后下单日期",
+        "phone": "联系电话",
+        "registration_date": "登记日期",
+        "shop_code": "店铺编号",
+        "shop_name": "店铺名称",
+        "tax_id": "公司税号"
+      },
+      "logout": "退出登录",
+      "logout_confirm": "确认退出当前账号？",
+      "order_list": "订单列表"
+    },
+    "quantity": {
+      "decrease": "减少数量",
+      "increase": "增加数量",
+      "invalid": "请输入有效的商品数量",
+      "label": "商品数量"
+    },
     "tabs": {
       "cart": "订单",
       "category": "分类",

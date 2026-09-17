@@ -1,6 +1,7 @@
 import { useIsMutating, useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import React, { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Image,
   LayoutAnimation,
@@ -35,6 +36,7 @@ export function OrderBody({
   refresh: () => void;
   refreshing?: boolean;
 }) {
+  const { t } = useTranslation();
   const order = data.xsddList?.[0];
   const items = data.xsddmxList || [];
   const [address, setAddress] = useState(order?.lsdz || '');
@@ -71,7 +73,9 @@ export function OrderBody({
   };
   const saveOnBlur = () => {
     save().catch((cause) =>
-      setError(cause instanceof Error ? cause.message : '订单信息保存失败')
+      setError(
+        cause instanceof Error ? cause.message : t('mall.cart.save_failed')
+      )
     );
   };
   const submit = async () => {
@@ -88,7 +92,9 @@ export function OrderBody({
       await client.invalidateQueries({ queryKey: ['mall'] });
       router.push(paths.orders);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : '提交失败');
+      setError(
+        cause instanceof Error ? cause.message : t('mall.cart.submit_failed')
+      );
     } finally {
       submitting.current = false;
       setBusy(false);
@@ -114,7 +120,9 @@ export function OrderBody({
                 <Text style={o.customer}>
                   {String(order.kh_sw || order.kh || '')}
                 </Text>
-                <Text className={s.hint}>税号 {String(order.khsh || '')}</Text>
+                <Text className={s.hint}>
+                  {t('mall.cart.tax_id')} {String(order.khsh || '')}
+                </Text>
               </View>
               <Text style={o.shopCode}>{String(order.dp || order.xshth)}</Text>
             </View>
@@ -124,34 +132,36 @@ export function OrderBody({
                 style={{ justifyContent: 'space-between', marginBottom: 8 }}
               >
                 <Text style={o.small}>
-                  地区 Zona: {String(order.dq_sw || order.dq || '-')}
+                  {t('mall.cart.region')}:{' '}
+                  {String(order.dq_sw || order.dq || '-')}
                 </Text>
                 <Text style={o.small}>
-                  邮编 Cód. post. {String(order.lsyb || order.yb || '-')}
+                  {t('mall.cart.postal_code')}:{' '}
+                  {String(order.lsyb || order.yb || '-')}
                 </Text>
               </View>
               <Text style={[o.small, { marginBottom: 12 }]}>
-                地址 Dir.: {String(order.khdz || '-')}
+                {t('mall.cart.address')}: {String(order.khdz || '-')}
               </Text>
-              <Text style={o.small}>临时地址 Dir. temp.</Text>
+              <Text style={o.small}>{t('mall.cart.temporary_address')}</Text>
               <TextInput
-                accessibilityLabel="临时送货地址"
+                accessibilityLabel={t('mall.cart.temporary_address')}
                 editable={!readOnly && !busy}
                 value={address}
                 onChangeText={setAddress}
                 onBlur={saveOnBlur}
-                placeholder="请输入临时送货地址"
+                placeholder={t('mall.cart.temporary_address_placeholder')}
                 maxLength={200}
                 style={o.address}
               />
-              <Text style={o.small}>备注 Observaciones</Text>
+              <Text style={o.small}>{t('mall.cart.remark')}</Text>
               <TextInput
-                accessibilityLabel="订单备注"
+                accessibilityLabel={t('mall.cart.remark')}
                 editable={!readOnly && !busy}
                 value={remark}
                 onChangeText={setRemark}
                 onBlur={saveOnBlur}
-                placeholder="请输入订单备注"
+                placeholder={t('mall.cart.remark_placeholder')}
                 maxLength={200}
                 multiline
                 style={[o.address, { minHeight: 46, textAlignVertical: 'top' }]}
@@ -168,14 +178,15 @@ export function OrderBody({
               style={o.total}
             >
               <View>
-                <Text style={o.small}>金额总计 Tot. imp.</Text>
+                <Text style={o.small}>{t('mall.cart.total')}</Text>
                 <Text style={o.totalValue}>{money(order.jezj)}</Text>
               </View>
               <View>
                 <Text style={o.small}>
-                  {expanded ? '收起 ⌄' : '查看更多订单信息 ›'}
+                  {expanded
+                    ? `${t('mall.cart.collapse')} ⌄`
+                    : `${t('mall.cart.view_more')} ›`}
                 </Text>
-                {!expanded && <Text className={s.hint}>Ver más pedidos</Text>}
               </View>
             </Pressable>
           </View>
@@ -243,13 +254,14 @@ export function OrderBody({
             ))}
           </View>
         )}
-        {!order && !items.length && <Status empty="当前暂无订单" />}
+        {!order && !items.length && <Status empty={t('mall.cart.empty')} />}
       </ScrollView>
       {!readOnly && (
         <View style={o.submit}>
           <Button
-            title={busy ? '提交中...' : '提交订单'}
-            subtitle="ENVIAR PEDIDO"
+            title={
+              busy ? t('mall.cart.submitting') : t('mall.cart.submit_order')
+            }
             radius={14}
             disabled={busy || quantityBusy || !items.length || !order}
             onPress={submit}
@@ -260,25 +272,25 @@ export function OrderBody({
   );
 }
 function OrderSummary({ order }: { order: Order }) {
+  const { t } = useTranslation();
   const fields = [
-    ['税前合计', 'Base', order.bhshj],
-    ['税金', 'IVA', Number(order.sjhj || 0) + Number(order.tssjhj || 0)],
-    ['糖税金额', 'IBEE', order.tshj],
-    ['附加税', 'Imp. Equiv', order.fjs],
-    ['优惠合计', 'Tot. desc.', order.yhhj],
-  ];
+    ['mall.cart.summary.subtotal', order.bhshj],
+    [
+      'mall.cart.summary.tax',
+      Number(order.sjhj || 0) + Number(order.tssjhj || 0),
+    ],
+    ['mall.cart.summary.sugar_tax', order.tshj],
+    ['mall.cart.summary.surcharge', order.fjs],
+    ['mall.cart.summary.discount', order.yhhj],
+  ] as const;
   return (
     <View style={o.summary}>
-      {fields.map(([cn, es, value]) => (
-        <View key={String(cn)} style={{ width: '47%', paddingVertical: 9 }}>
-          <Text style={{ fontSize: 12 }}>{cn}</Text>
-          <View
-            className={s.row}
-            style={{ justifyContent: 'space-between', marginTop: 5 }}
-          >
-            <Text className={s.hint}>{es}</Text>
-            <Text style={{ fontSize: 12 }}>{money(value)}</Text>
-          </View>
+      {fields.map(([tx, value]) => (
+        <View key={tx} style={{ width: '47%', paddingVertical: 9 }}>
+          <Text style={{ fontSize: 12 }}>{t(tx)}</Text>
+          <Text style={{ marginTop: 5, fontSize: 12, textAlign: 'right' }}>
+            {money(value)}
+          </Text>
         </View>
       ))}
     </View>

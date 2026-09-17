@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Image,
   Pressable,
@@ -24,6 +25,7 @@ import { useMallQuery } from '@/features/mall/hooks';
 import { accent, paths, ProductGrid, Status } from '@/features/mall/ui';
 
 export default function HomeTabScreen() {
+  const { t } = useTranslation();
   const query = useMallQuery<HomeData>('home', '/xcx/Yw/Cxsy', {
     dpbm: useMallSession((state) => state.shop),
     cpbq: '',
@@ -46,7 +48,7 @@ export default function HomeTabScreen() {
   };
   return (
     <View className="flex-1 bg-white">
-      <NavHeader title="首页 (Inicio)" leftShown={false} />
+      <NavHeader title={t('mall.tabs.home')} leftShown={false} />
       <ScrollView
         refreshControl={
           <RefreshControl
@@ -64,8 +66,8 @@ export default function HomeTabScreen() {
           <View className="min-h-[52px] flex-row items-center gap-2 rounded-xl bg-neutral-100 pl-3 pr-1">
             <FontAwesome name="search" size={18} color="#8b8b8b" />
             <TextInput
-              accessibilityLabel="搜索商品"
-              placeholder="搜索商品 / Buscar artículos"
+              accessibilityLabel={t('mall.home.search_placeholder')}
+              placeholder={t('mall.home.search_placeholder')}
               value={keyword}
               onChangeText={setKeyword}
               onSubmitEditing={search}
@@ -77,13 +79,15 @@ export default function HomeTabScreen() {
             />
             <TouchableOpacity
               accessibilityRole="button"
-              accessibilityLabel="搜索商品"
+              accessibilityLabel={t('mall.home.search')}
               activeOpacity={0.75}
               className="min-h-11 min-w-[60px] items-center justify-center rounded-[9px] px-3.5"
               style={{ backgroundColor: accent }}
               onPress={search}
             >
-              <Text className="text-[14px] font-semibold text-white">搜索</Text>
+              <Text className="text-[14px] font-semibold text-white">
+                {t('mall.home.search')}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -123,7 +127,9 @@ export default function HomeTabScreen() {
                 </Text>
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`查看更多${section.cpbq}`}
+                  accessibilityLabel={t('mall.home.view_more_accessibility', {
+                    name: section.cpbq,
+                  })}
                   onPress={() => openTag(section)}
                   className="min-h-11 justify-center pl-2"
                 >
@@ -131,7 +137,7 @@ export default function HomeTabScreen() {
                     className="text-[13px] font-medium"
                     style={{ color: accent }}
                   >
-                    更多 &gt;
+                    {t('mall.home.view_more')} &gt;
                   </Text>
                 </Pressable>
               </View>
@@ -139,7 +145,7 @@ export default function HomeTabScreen() {
             {section.cpxxsyList?.length ? (
               <ProductGrid products={section.cpxxsyList} />
             ) : (
-              <Status empty="暂无商品" />
+              <Status empty={t('mall.home.empty')} />
             )}
           </View>
         ))}
@@ -147,7 +153,7 @@ export default function HomeTabScreen() {
           loading={query.isPending}
           error={query.error}
           retry={() => query.refetch()}
-          empty={!sections.length ? '暂无商品' : undefined}
+          empty={!sections.length ? t('mall.home.empty') : undefined}
         />
       </ScrollView>
     </View>

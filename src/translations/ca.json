@@ -1,6 +1,9 @@
 {
   "common": {
-    "cancel": "Cancel·la"
+    "cancel": "Cancel·la",
+    "confirm": "Confirma",
+    "loading": "Carregant…",
+    "retry": "Torna-ho a provar"
   },
   "copyright": "© 2025 Suzhou Huiyang Liquor Technology Co., Ltd.",
   "login": {
@@ -27,6 +30,66 @@
     "welcome": "Benvingut de nou"
   },
   "mall": {
+    "cart": {
+      "address": "Adreça",
+      "collapse": "Redueix",
+      "empty": "No hi ha comandes actuals",
+      "postal_code": "Codi postal",
+      "region": "Zona",
+      "remark": "Observacions",
+      "remark_placeholder": "Introdueix observacions de la comanda",
+      "save_failed": "No s’ha pogut desar la informació de la comanda",
+      "submit_failed": "No s’ha pogut enviar la comanda",
+      "submit_order": "Envia la comanda",
+      "submitting": "Enviant…",
+      "summary": {
+        "discount": "Descompte total",
+        "subtotal": "Subtotal abans d’impostos",
+        "sugar_tax": "Impost sobre el sucre",
+        "surcharge": "Recàrrec",
+        "tax": "Impost"
+      },
+      "tax_id": "NIF",
+      "temporary_address": "Adreça de lliurament temporal",
+      "temporary_address_placeholder": "Introdueix una adreça de lliurament temporal",
+      "total": "Import total",
+      "view_more": "Mostra els detalls de la comanda"
+    },
+    "category": {
+      "empty": "No hi ha etiquetes de producte",
+      "product_tags": "Etiquetes de producte",
+      "select_tag": "Selecciona una etiqueta de producte"
+    },
+    "home": {
+      "empty": "No hi ha productes",
+      "search": "Cerca",
+      "search_placeholder": "Cerca productes",
+      "view_more": "Més",
+      "view_more_accessibility": "Veure'n més: {{name}}"
+    },
+    "profile": {
+      "change_password": "Canvia la contrasenya",
+      "fields": {
+        "address": "Adreça de la botiga",
+        "customer_name": "Nom del client",
+        "email": "Correu electrònic",
+        "last_order_date": "Última comanda",
+        "phone": "Telèfon",
+        "registration_date": "Data de registre",
+        "shop_code": "Codi de la botiga",
+        "shop_name": "Nom de la botiga",
+        "tax_id": "NIF de l’empresa"
+      },
+      "logout": "Tanca la sessió",
+      "logout_confirm": "Segur que vols tancar la sessió d’aquest compte?",
+      "order_list": "Llista de comandes"
+    },
+    "quantity": {
+      "decrease": "Redueix la quantitat",
+      "increase": "Augmenta la quantitat",
+      "invalid": "Introdueix una quantitat de producte vàlida",
+      "label": "Quantitat del producte"
+    },
     "tabs": {
       "cart": "Carret",
       "category": "Categories",

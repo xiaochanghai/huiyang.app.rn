@@ -1,6 +1,9 @@
 {
   "common": {
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "loading": "Cargando…",
+    "retry": "Reintentar"
   },
   "copyright": "© 2025 Suzhou Huiyang Liquor Technology Co., Ltd.",
   "login": {
@@ -27,6 +30,66 @@
     "welcome": "Bienvenido de vuelta"
   },
   "mall": {
+    "cart": {
+      "address": "Dirección",
+      "collapse": "Ocultar",
+      "empty": "No hay pedidos actuales",
+      "postal_code": "Código postal",
+      "region": "Zona",
+      "remark": "Observaciones",
+      "remark_placeholder": "Introduce observaciones del pedido",
+      "save_failed": "No se pudo guardar la información del pedido",
+      "submit_failed": "No se pudo enviar el pedido",
+      "submit_order": "Enviar pedido",
+      "submitting": "Enviando…",
+      "summary": {
+        "discount": "Descuento total",
+        "subtotal": "Base imponible",
+        "sugar_tax": "Impuesto sobre el azúcar",
+        "surcharge": "Recargo de equivalencia",
+        "tax": "IVA"
+      },
+      "tax_id": "NIF",
+      "temporary_address": "Dirección temporal",
+      "temporary_address_placeholder": "Introduce una dirección de entrega temporal",
+      "total": "Importe total",
+      "view_more": "Ver detalles del pedido"
+    },
+    "category": {
+      "empty": "No hay etiquetas de producto",
+      "product_tags": "Etiquetas de producto",
+      "select_tag": "Selecciona una etiqueta de producto"
+    },
+    "home": {
+      "empty": "No hay productos",
+      "search": "Buscar",
+      "search_placeholder": "Buscar productos",
+      "view_more": "Más",
+      "view_more_accessibility": "Ver más: {{name}}"
+    },
+    "profile": {
+      "change_password": "Cambiar contraseña",
+      "fields": {
+        "address": "Dirección de tienda",
+        "customer_name": "Nombre del cliente",
+        "email": "Correo electrónico",
+        "last_order_date": "Último pedido",
+        "phone": "Teléfono",
+        "registration_date": "Fecha de registro",
+        "shop_code": "Código de tienda",
+        "shop_name": "Nombre de tienda",
+        "tax_id": "NIF de la empresa"
+      },
+      "logout": "Cerrar sesión",
+      "logout_confirm": "¿Confirmas que deseas cerrar sesión?",
+      "order_list": "Lista de pedidos"
+    },
+    "quantity": {
+      "decrease": "Reducir cantidad",
+      "increase": "Aumentar cantidad",
+      "invalid": "Introduce una cantidad de producto válida",
+      "label": "Cantidad del producto"
+    },
     "tabs": {
       "cart": "Carrito",
       "category": "Categorías",

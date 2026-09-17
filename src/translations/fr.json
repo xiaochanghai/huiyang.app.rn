@@ -1,6 +1,9 @@
 {
   "common": {
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "loading": "Chargement…",
+    "retry": "Réessayer"
   },
   "copyright": "© 2025 Suzhou Huiyang Liquor Technology Co., Ltd.",
   "login": {
@@ -27,6 +30,66 @@
     "welcome": "Heureux de vous revoir"
   },
   "mall": {
+    "cart": {
+      "address": "Adresse",
+      "collapse": "Réduire",
+      "empty": "Aucune commande en cours",
+      "postal_code": "Code postal",
+      "region": "Région",
+      "remark": "Remarques",
+      "remark_placeholder": "Saisissez les remarques de la commande",
+      "save_failed": "Échec de l’enregistrement de la commande",
+      "submit_failed": "Échec de l’envoi de la commande",
+      "submit_order": "Envoyer la commande",
+      "submitting": "Envoi…",
+      "summary": {
+        "discount": "Remise totale",
+        "subtotal": "Sous-total hors taxes",
+        "sugar_tax": "Taxe sur le sucre",
+        "surcharge": "Surtaxe",
+        "tax": "Taxe"
+      },
+      "tax_id": "Numéro fiscal",
+      "temporary_address": "Adresse de livraison temporaire",
+      "temporary_address_placeholder": "Saisissez une adresse de livraison temporaire",
+      "total": "Montant total",
+      "view_more": "Voir les détails de la commande"
+    },
+    "category": {
+      "empty": "Aucune étiquette de produit",
+      "product_tags": "Étiquettes de produit",
+      "select_tag": "Sélectionnez une étiquette de produit"
+    },
+    "home": {
+      "empty": "Aucun produit",
+      "search": "Rechercher",
+      "search_placeholder": "Rechercher des produits",
+      "view_more": "Plus",
+      "view_more_accessibility": "Voir plus : {{name}}"
+    },
+    "profile": {
+      "change_password": "Modifier le mot de passe",
+      "fields": {
+        "address": "Adresse du magasin",
+        "customer_name": "Nom du client",
+        "email": "E-mail",
+        "last_order_date": "Dernière commande",
+        "phone": "Téléphone",
+        "registration_date": "Date d’inscription",
+        "shop_code": "Code du magasin",
+        "shop_name": "Nom du magasin",
+        "tax_id": "Numéro fiscal de l’entreprise"
+      },
+      "logout": "Se déconnecter",
+      "logout_confirm": "Voulez-vous vraiment vous déconnecter de ce compte ?",
+      "order_list": "Liste des commandes"
+    },
+    "quantity": {
+      "decrease": "Réduire la quantité",
+      "increase": "Augmenter la quantité",
+      "invalid": "Saisissez une quantité de produit valide",
+      "label": "Quantité du produit"
+    },
     "tabs": {
       "cart": "Panier",
       "category": "Catégories",

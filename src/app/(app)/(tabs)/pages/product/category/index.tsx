@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Image, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { NavHeader } from '@/components/ui/nav-header';
@@ -12,6 +13,7 @@ import { useMallQuery } from '@/features/mall/hooks';
 import { accent, Status } from '@/features/mall/ui';
 
 export default function CategoryTabScreen() {
+  const { t } = useTranslation();
   const shop = useMallSession((state) => state.shop);
   const query = useMallQuery<CategoryData>('categories', '/xcx/Yw/Cxall');
   const [selected, setSelected] = useState('');
@@ -28,7 +30,7 @@ export default function CategoryTabScreen() {
   const tags = tagQuery.data?.cpbqList || [];
   return (
     <View className="flex-1 bg-neutral-100">
-      <NavHeader title="分类 (Categorías)" leftShown={false} />
+      <NavHeader title={t('mall.tabs.category')} leftShown={false} />
       <View className="flex-1 flex-row items-stretch">
         <ScrollView className="w-[95px] grow-0 bg-neutral-100">
           {query.data?.cpdlList?.map((item) => (
@@ -56,10 +58,10 @@ export default function CategoryTabScreen() {
             <RemoteImage uri={current.dlct || current.dlft} />
           )}
           <Text className="mt-3 text-[16px] font-semibold text-[#1a1a1a]">
-            {current?.cpdl || '产品标签'}
+            {current?.cpdl || t('mall.category.product_tags')}
           </Text>
           <Text className="mb-5 mt-[3px] text-[10px] text-[#b5adaa]">
-            选择产品标签 · Selecciona una etiqueta
+            {t('mall.category.select_tag')}
           </Text>
           <View className="flex-row flex-wrap gap-3">
             {tags.map((tag) => (
@@ -88,7 +90,7 @@ export default function CategoryTabScreen() {
               query.refetch();
               if (current) tagQuery.refetch();
             }}
-            empty={!tags.length ? '暂无产品标签' : undefined}
+            empty={!tags.length ? t('mall.category.empty') : undefined}
           />
         </ScrollView>
       </View>

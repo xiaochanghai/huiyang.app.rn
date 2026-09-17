@@ -194,11 +194,12 @@ export function Status({
   empty?: string;
   retry?: () => void;
 }) {
+  const { t } = useTranslation();
   if (loading)
     return (
       <View className={s.status}>
         <ActivityIndicator color={accent} />
-        <Text className={s.muted}>加载中...</Text>
+        <Text className={s.muted}>{t('common.loading')}</Text>
       </View>
     );
   if (error)
@@ -207,7 +208,7 @@ export function Status({
         <Text className={s.error}>{error.message}</Text>
         {retry && (
           <Pressable onPress={retry} className={s.retry}>
-            <Text style={{ color: accent }}>重试 / Reintentar</Text>
+            <Text style={{ color: accent }}>{t('common.retry')}</Text>
           </Pressable>
         )}
       </View>
@@ -225,6 +226,7 @@ export function Quantity({
   code: string;
   quantity: number;
 }) {
+  const { t } = useTranslation();
   const mutation = useQuantity();
   const busy = useIsMutating({ mutationKey: ['mall-quantity'] }) > 0;
   const [draft, setDraft] = useState(String(quantity));
@@ -245,7 +247,7 @@ export function Quantity({
   const commit = useCallback(
     (value: number, operation: 'set' | 'increase' | 'decrease' = 'set') => {
       if (!Number.isFinite(value))
-        return Promise.reject(new Error('请输入有效的商品数量'));
+        return Promise.reject(new Error(t('mall.quantity.invalid')));
       const apply = (current: number) =>
         Math.max(
           0,
@@ -273,15 +275,15 @@ export function Quantity({
       showPending();
       const previous = pending.current;
       const work = (async () => {
-        await previous?.catch(() => { });
+        await previous?.catch(() => {});
         try {
           const next = apply(confirmed.current);
           if (next === confirmed.current) return;
           const result = await mutateAsync({ code, quantity: next, operation });
           confirmed.current = Array.isArray(result?.xsddmxList)
             ? Number(
-              result.xsddmxList.find((item) => item.wlbm === code)?.sl ?? 0
-            )
+                result.xsddmxList.find((item) => item.wlbm === code)?.sl ?? 0
+              )
             : next;
         } finally {
           operations.current = operations.current.filter(
@@ -295,7 +297,7 @@ export function Quantity({
         if (pending.current === work) pending.current = null;
       });
     },
-    [code, mutateAsync]
+    [code, mutateAsync, t]
   );
   useEffect(
     () =>
@@ -320,7 +322,7 @@ export function Quantity({
         style={Number(draft) > 0 ? { borderColor: accent } : undefined}
       >
         <Pressable
-          accessibilityLabel="减少数量"
+          accessibilityLabel={t('mall.quantity.decrease')}
           onPress={() => update(quantity - 1, 'decrease')}
           className={s.qtyButton}
         >
@@ -332,7 +334,7 @@ export function Quantity({
           />
         </Pressable>
         <TextInput
-          accessibilityLabel="商品数量"
+          accessibilityLabel={t('mall.quantity.label')}
           editable={!busy}
           keyboardType="number-pad"
           value={draft}
@@ -346,11 +348,16 @@ export function Quantity({
           className={s.qtyInput}
         />
         <Pressable
-          accessibilityLabel="增加数量"
+          accessibilityLabel={t('mall.quantity.increase')}
           onPress={() => update(quantity + 1, 'increase')}
           className={s.qtyButton}
         >
-          <FontAwesome name="plus" size={17} color="#666" group={GroupEnum.AntDesign} />
+          <FontAwesome
+            name="plus"
+            size={17}
+            color="#666"
+            group={GroupEnum.AntDesign}
+          />
         </Pressable>
       </View>
       {mutation.error && (
