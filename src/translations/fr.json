@@ -67,10 +67,25 @@
       "view_more": "Plus",
       "view_more_accessibility": "Voir plus : {{name}}"
     },
+    "order_detail": {
+      "title": "Détails de la commande"
+    },
     "order_list": {
       "empty": "Aucun historique de commande",
       "order_number": "Numéro de commande",
       "title": "Liste des commandes"
+    },
+    "password": {
+      "confirm_password": "Confirmez le nouveau mot de passe",
+      "failed": "Échec de la modification du mot de passe",
+      "min_length": "Le nouveau mot de passe doit comporter au moins {{count}} caractères",
+      "mismatch": "Les mots de passe ne correspondent pas",
+      "new_password": "Saisissez le nouveau mot de passe",
+      "old_password": "Saisissez le mot de passe actuel",
+      "old_required": "Saisissez votre mot de passe actuel",
+      "submit": "Modifier le mot de passe",
+      "submitting": "Envoi…",
+      "title": "Modifier le mot de passe"
     },
     "product_detail": {
       "cart": "Panier",
@@ -85,6 +100,12 @@
       "tax_rate": "Taux de taxe",
       "title": "Détails du produit",
       "unit_price": "Prix unitaire"
+    },
+    "products": {
+      "empty": "Aucun produit",
+      "load_more": "Charger plus",
+      "search_title": "Recherche : {{keyword}}",
+      "title": "Liste des produits"
     },
     "profile": {
       "change_password": "Modifier le mot de passe",

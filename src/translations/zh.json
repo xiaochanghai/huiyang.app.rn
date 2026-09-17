@@ -67,10 +67,25 @@
       "view_more": "更多",
       "view_more_accessibility": "查看更多：{{name}}"
     },
+    "order_detail": {
+      "title": "订单详情"
+    },
     "order_list": {
       "empty": "暂无历史订单",
       "order_number": "销售合同号",
       "title": "订单列表"
+    },
+    "password": {
+      "confirm_password": "确认新密码",
+      "failed": "修改失败",
+      "min_length": "新密码长度不能少于 {{count}} 位",
+      "mismatch": "两次输入的密码不一致",
+      "new_password": "输入新密码",
+      "old_password": "输入旧密码",
+      "old_required": "请输入旧密码",
+      "submit": "确认修改",
+      "submitting": "提交中…",
+      "title": "修改密码"
     },
     "product_detail": {
       "cart": "订单",
@@ -85,6 +100,12 @@
       "tax_rate": "税率",
       "title": "商品详情",
       "unit_price": "单价"
+    },
+    "products": {
+      "empty": "暂无商品",
+      "load_more": "加载更多",
+      "search_title": "搜索：{{keyword}}",
+      "title": "商品列表"
     },
     "profile": {
       "change_password": "修改密码",

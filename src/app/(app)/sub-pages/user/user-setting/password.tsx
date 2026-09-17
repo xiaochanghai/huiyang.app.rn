@@ -1,14 +1,17 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
 
+import { NavHeader } from '@/components/ui/nav-header';
 import { request, useMallSession } from '@/features/mall/api';
-import { a, AuthFrame } from '@/features/mall/auth-frame';
+import { AuthFrame } from '@/features/mall/auth-frame';
 import { Button, Field, paths, s } from '@/features/mall/ui';
 import { setItem } from '@/lib/storage';
 
 export default function PasswordScreen() {
+  const { t } = useTranslation();
   const [oldPassword, setOld] = useState('');
   const [newPassword, setNew] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -18,15 +21,15 @@ export default function PasswordScreen() {
   const submit = async () => {
     if (busy) return;
     if (!oldPassword) {
-      setError('请输入旧密码');
+      setError(t('mall.password.old_required'));
       return;
     }
     if (newPassword.length < 6) {
-      setError('新密码长度不能少于 6 位');
+      setError(t('mall.password.min_length', { count: 6 }));
       return;
     }
     if (newPassword !== confirm) {
-      setError('两次输入的密码不一致');
+      setError(t('mall.password.mismatch'));
       return;
     }
     setBusy(true);
@@ -42,53 +45,52 @@ export default function PasswordScreen() {
       client.removeQueries({ queryKey: ['mall'] });
       router.replace(paths.login);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : '修改失败');
+      setError(
+        cause instanceof Error ? cause.message : t('mall.password.failed')
+      );
     } finally {
       setBusy(false);
     }
   };
   return (
-    <AuthFrame back compact>
-      <View className={a.heading}>
-        <Text className={a.title}>修改密码</Text>
-        <Text className={a.subtitle}>Modificación de contraseña</Text>
-      </View>
-      <Field
-        password
-        placeholder="输入旧密码"
-        hint="Introducir contraseña anterior"
-        value={oldPassword}
-        onChangeText={setOld}
-      />
-      <Field
-        password
-        placeholder="输入新密码"
-        hint="Introducir nueva contraseña"
-        value={newPassword}
-        onChangeText={setNew}
-      />
-      <Field
-        password
-        placeholder="确认新密码"
-        hint="Confirmar nueva contraseña"
-        value={confirm}
-        onChangeText={setConfirm}
-        onSubmitEditing={submit}
-      />
-      {!!error && (
-        <Text accessibilityRole="alert" className={s.error}>
-          {error}
-        </Text>
-      )}
-      <View style={{ marginTop: 20 }}>
-        <Button
-          title={busy ? '提交中...' : '确认修改'}
-          subtitle="CONF. MODIF."
-          onPress={submit}
-          disabled={busy}
-          outline
+    <>
+      <NavHeader title={t('mall.password.title')} />
+      <AuthFrame compact>
+        <Field
+          password
+          placeholder={t('mall.password.old_password')}
+          value={oldPassword}
+          onChangeText={setOld}
         />
-      </View>
-    </AuthFrame>
+        <Field
+          password
+          placeholder={t('mall.password.new_password')}
+          value={newPassword}
+          onChangeText={setNew}
+        />
+        <Field
+          password
+          placeholder={t('mall.password.confirm_password')}
+          value={confirm}
+          onChangeText={setConfirm}
+          onSubmitEditing={submit}
+        />
+        {!!error && (
+          <Text accessibilityRole="alert" className={s.error}>
+            {error}
+          </Text>
+        )}
+        <View style={{ marginTop: 20 }}>
+          <Button
+            title={
+              busy ? t('mall.password.submitting') : t('mall.password.submit')
+            }
+            onPress={submit}
+            disabled={busy}
+            outline
+          />
+        </View>
+      </AuthFrame>
+    </>
   );
 }

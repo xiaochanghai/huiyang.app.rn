@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useLocalSearchParams } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { NavHeader } from '@/components/ui/nav-header';
@@ -7,6 +8,7 @@ import { type Product, request, useMallSession } from '@/features/mall/api';
 import { accent, ProductGrid, s, Status } from '@/features/mall/ui';
 
 export default function ProductsScreen() {
+  const { t } = useTranslation();
   const { tagId, tagName, keyword } = useLocalSearchParams<{
     tagId?: string;
     tagName?: string;
@@ -40,15 +42,21 @@ export default function ProductsScreen() {
   ];
   return (
     <View className={s.page}>
-      <NavHeader title={keyword ? `搜索：${keyword}` : tagName || '商品列表'} />
+      <NavHeader
+        title={
+          keyword
+            ? t('mall.products.search_title', { keyword })
+            : tagName || t('mall.products.title')
+        }
+      />
       <ScrollView
         contentContainerStyle={{}}
         scrollEventThrottle={100}
         onScroll={({ nativeEvent }) => {
           if (
             nativeEvent.contentOffset.y +
-            nativeEvent.layoutMeasurement.height >=
-            nativeEvent.contentSize.height - 100 &&
+              nativeEvent.layoutMeasurement.height >=
+              nativeEvent.contentSize.height - 100 &&
             query.hasNextPage &&
             !query.isFetching &&
             !query.isFetchNextPageError
@@ -63,7 +71,7 @@ export default function ProductsScreen() {
           retry={() =>
             query.isFetchNextPageError ? query.fetchNextPage() : query.refetch()
           }
-          empty={!products.length ? '暂无商品' : undefined}
+          empty={!products.length ? t('mall.products.empty') : undefined}
         />
         {query.hasNextPage && (
           <Pressable
@@ -72,7 +80,9 @@ export default function ProductsScreen() {
             style={{ padding: 18, alignItems: 'center' }}
           >
             <Text style={{ color: accent }}>
-              {query.isFetchingNextPage ? '加载中...' : '加载更多 / Cargar más'}
+              {query.isFetchingNextPage
+                ? t('common.loading')
+                : t('mall.products.load_more')}
             </Text>
           </Pressable>
         )}

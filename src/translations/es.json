@@ -67,10 +67,25 @@
       "view_more": "Más",
       "view_more_accessibility": "Ver más: {{name}}"
     },
+    "order_detail": {
+      "title": "Detalle del pedido"
+    },
     "order_list": {
       "empty": "No hay pedidos anteriores",
       "order_number": "Número de pedido",
       "title": "Lista de pedidos"
+    },
+    "password": {
+      "confirm_password": "Confirma la nueva contraseña",
+      "failed": "No se pudo cambiar la contraseña",
+      "min_length": "La nueva contraseña debe tener al menos {{count}} caracteres",
+      "mismatch": "Las contraseñas no coinciden",
+      "new_password": "Introduce la nueva contraseña",
+      "old_password": "Introduce la contraseña actual",
+      "old_required": "Introduce tu contraseña actual",
+      "submit": "Cambiar contraseña",
+      "submitting": "Enviando…",
+      "title": "Cambiar contraseña"
     },
     "product_detail": {
       "cart": "Carrito",
@@ -85,6 +100,12 @@
       "tax_rate": "Tipo impositivo",
       "title": "Detalles del producto",
       "unit_price": "Precio unitario"
+    },
+    "products": {
+      "empty": "No hay productos",
+      "load_more": "Cargar más",
+      "search_title": "Búsqueda: {{keyword}}",
+      "title": "Lista de productos"
     },
     "profile": {
       "change_password": "Cambiar contraseña",

@@ -12,7 +12,7 @@ import {
   View,
 } from 'react-native';
 
-import { FontAwesome } from '@/components/ui/icons';
+import { FontAwesome, GroupEnum } from '@/components/ui/icons';
 import { NavHeader } from '@/components/ui/nav-header';
 import {
   type HomeData,
@@ -64,7 +64,7 @@ export default function HomeTabScreen() {
       >
         <View className="bg-white px-4 pb-4 pt-2">
           <View className="min-h-[52px] flex-row items-center gap-2 rounded-xl bg-neutral-100 pl-3 pr-1">
-            <FontAwesome name="search" size={18} color="#8b8b8b" />
+            <FontAwesome name="search" size={18} color="#8b8b8b" group={GroupEnum.Feather} />
             <TextInput
               accessibilityLabel={t('mall.home.search_placeholder')}
               placeholder={t('mall.home.search_placeholder')}
@@ -213,9 +213,8 @@ function Banner({ tags }: { tags: Tag[] }) {
         {tags.map((tag, i) => (
           <View
             key={tag.bm}
-            className={`h-[5px] rounded-[3px] ${
-              index === i ? 'w-4 bg-white' : 'w-[5px] bg-[#ffffff80]'
-            }`}
+            className={`h-[5px] rounded-[3px] ${index === i ? 'w-4 bg-white' : 'w-[5px] bg-[#ffffff80]'
+              }`}
           />
         ))}
       </View>

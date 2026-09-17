@@ -1,5 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { NavHeader } from '@/components/ui/nav-header';
@@ -9,6 +10,7 @@ import { OrderBody } from '@/features/mall/order-body';
 import { s, Status } from '@/features/mall/ui';
 
 export default function OrderDetailScreen() {
+  const { t } = useTranslation();
   const { id } = useLocalSearchParams<{ id: string }>();
   const shop = useMallSession((state) => state.shop);
   const query = useMallQuery<OrderData>(
@@ -20,7 +22,7 @@ export default function OrderDetailScreen() {
   );
   return (
     <View className={s.page}>
-      <NavHeader title="订单详情 (Detalle del pedido)" />
+      <NavHeader title={t('mall.order_detail.title')} />
       <Status
         loading={query.isPending}
         error={query.error}

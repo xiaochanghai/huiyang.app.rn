@@ -67,10 +67,25 @@
       "view_more": "More",
       "view_more_accessibility": "View more: {{name}}"
     },
+    "order_detail": {
+      "title": "Order details"
+    },
     "order_list": {
       "empty": "No order history",
       "order_number": "Order number",
       "title": "Order list"
+    },
+    "password": {
+      "confirm_password": "Confirm new password",
+      "failed": "Failed to change password",
+      "min_length": "New password must be at least {{count}} characters",
+      "mismatch": "The passwords do not match",
+      "new_password": "Enter new password",
+      "old_password": "Enter current password",
+      "old_required": "Enter your current password",
+      "submit": "Change password",
+      "submitting": "Submitting…",
+      "title": "Change password"
     },
     "product_detail": {
       "cart": "Cart",
@@ -85,6 +100,12 @@
       "tax_rate": "Tax rate",
       "title": "Product details",
       "unit_price": "Unit price"
+    },
+    "products": {
+      "empty": "No products",
+      "load_more": "Load more",
+      "search_title": "Search: {{keyword}}",
+      "title": "Product list"
     },
     "profile": {
       "change_password": "Change password",

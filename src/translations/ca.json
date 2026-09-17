@@ -67,10 +67,25 @@
       "view_more": "Més",
       "view_more_accessibility": "Veure'n més: {{name}}"
     },
+    "order_detail": {
+      "title": "Detalls de la comanda"
+    },
     "order_list": {
       "empty": "No hi ha comandes anteriors",
       "order_number": "Número de comanda",
       "title": "Llista de comandes"
+    },
+    "password": {
+      "confirm_password": "Confirma la contrasenya nova",
+      "failed": "No s’ha pogut canviar la contrasenya",
+      "min_length": "La contrasenya nova ha de tenir com a mínim {{count}} caràcters",
+      "mismatch": "Les contrasenyes no coincideixen",
+      "new_password": "Introdueix la contrasenya nova",
+      "old_password": "Introdueix la contrasenya actual",
+      "old_required": "Introdueix la contrasenya actual",
+      "submit": "Canvia la contrasenya",
+      "submitting": "Enviant…",
+      "title": "Canvia la contrasenya"
     },
     "product_detail": {
       "cart": "Carret",
@@ -85,6 +100,12 @@
       "tax_rate": "Tipus impositiu",
       "title": "Detalls del producte",
       "unit_price": "Preu unitari"
+    },
+    "products": {
+      "empty": "No hi ha productes",
+      "load_more": "Carrega'n més",
+      "search_title": "Cerca: {{keyword}}",
+      "title": "Llista de productes"
     },
     "profile": {
       "change_password": "Canvia la contrasenya",
