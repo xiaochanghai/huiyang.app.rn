@@ -32,7 +32,7 @@ export const paths = {
   category: '/(app)/pages/product/category',
   cart: '/(app)/pages/user/shopping-cart',
   profile: '/(app)/pages/user/user-center',
-  login: '/(app)/pages/login',
+  login: '/login',
   register: '/(app)/sub-pages/user/register',
   password: '/(app)/sub-pages/user/user-setting/password',
   orders: '/(app)/sub-pages/order/order-list',

@@ -48,7 +48,7 @@ export type LoginFormProps = {
   onSubmit?: SubmitHandler<FormType>;
 };
 
-export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
+export const LoginForm = ({ onSubmit = () => { } }: LoginFormProps) => {
   const { t } = useTranslation();
   const schema = React.useMemo(() => createSchema(t), [t]);
   // const { language, setLanguage } = useSelectedLanguage();
@@ -134,7 +134,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
                 />
               </View>
               <Text className="text-center text-[32px] font-semibold leading-10 tracking-[-0.6px] text-neutral-900 dark:text-white">
-                欢迎回来
+                欢迎回来1
               </Text>
               <Text className="mt-3 text-center text-base leading-6 text-neutral-500 dark:text-neutral-400">
                 登录 {Env.NAME}，继续你的工作

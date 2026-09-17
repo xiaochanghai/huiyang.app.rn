@@ -181,7 +181,7 @@ fs.mkdirSync(output, { recursive: true });
       });
       await visible(text);
     };
-    await go('/pages/login', '欢迎回来');
+    await go('/login', '欢迎回来');
     await page.getByRole('button', { name: /登 录/ }).click();
     await visible('请输入账号和密码');
     await snapshot('login');
@@ -303,15 +303,15 @@ fs.mkdirSync(output, { recursive: true });
       ''
     );
     await page.goto(base + '/login', { waitUntil: 'domcontentloaded' });
-    await page.getByTestId('account-input').waitFor({ state: 'visible' });
+    await visible('欢迎回来');
     assert.equal(
       new URL(page.url()).pathname,
       '/login',
-      'Legacy login was redirected to the mall'
+      'Mall login did not stay on the root login route'
     );
     assert.deepEqual(errors, [], 'Browser runtime errors');
     console.log(
-      'PASS: 9 pages, legacy links, authentication, search, category navigation, quantities and rollback, address saving, submit failure/success, password validation and logout.'
+      'PASS: 9 pages, legacy product links, authentication, search, category navigation, quantities and rollback, address saving, submit failure/success, password validation and logout.'
     );
   } finally {
     await browser.close();

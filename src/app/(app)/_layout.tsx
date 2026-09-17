@@ -56,8 +56,7 @@ export default function MallLayout() {
   useEffect(() => {
     hydrate();
   }, [hydrate]);
-  const isPublic =
-    pathname === '/pages/login' || pathname === '/sub-pages/user/register';
+  const isPublic = pathname === '/sub-pages/user/register';
   if (!ready) return <View style={{ flex: 1, backgroundColor: '#fff' }} />;
   if (!token && !isPublic) {
     const query = new URLSearchParams();
