@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Image, Pressable, ScrollView, Text, View } from 'react-native';
 
+import { NavHeader } from '@/components/ui/nav-header';
 import {
   type CategoryData,
   imageSource,
@@ -8,7 +9,7 @@ import {
 } from '@/features/mall/api';
 import { openTag, RemoteImage } from '@/features/mall/catalog-ui';
 import { useMallQuery } from '@/features/mall/hooks';
-import { accent, Header, Status } from '@/features/mall/ui';
+import { accent, Status } from '@/features/mall/ui';
 
 export default function CategoryScreen() {
   const shop = useMallSession((state) => state.shop);
@@ -27,7 +28,7 @@ export default function CategoryScreen() {
   const tags = tagQuery.data?.cpbqList || [];
   return (
     <View className="flex-1 bg-neutral-100">
-      <Header title="分类 (Categorías)" />
+      <NavHeader title="分类 (Categorías)" leftShown={false} />
       <View className="flex-1 flex-row items-stretch">
         <ScrollView className="w-[95px] grow-0 bg-neutral-100">
           {query.data?.cpdlList?.map((item) => (

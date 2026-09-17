@@ -2,8 +2,9 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { useLocalSearchParams } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
+import { NavHeader } from '@/components/ui/nav-header';
 import { type Product, request, useMallSession } from '@/features/mall/api';
-import { accent, Header, ProductGrid, s, Status } from '@/features/mall/ui';
+import { accent, ProductGrid, s, Status } from '@/features/mall/ui';
 
 export default function ProductsScreen() {
   const { tagId, tagName, keyword } = useLocalSearchParams<{
@@ -39,10 +40,7 @@ export default function ProductsScreen() {
   ];
   return (
     <View className={s.page}>
-      <Header
-        title={keyword ? `搜索：${keyword}` : tagName || '商品列表'}
-        back
-      />
+      <NavHeader title={keyword ? `搜索：${keyword}` : tagName || '商品列表'} />
       <ScrollView
         contentContainerStyle={{ paddingTop: 12, paddingBottom: 24 }}
         scrollEventThrottle={100}

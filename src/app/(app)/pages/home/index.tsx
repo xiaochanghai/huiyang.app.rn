@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import { FontAwesome } from '@/components/ui/icons';
+import { NavHeader } from '@/components/ui/nav-header';
 import {
   type HomeData,
   imageSource,
@@ -20,7 +21,7 @@ import {
 } from '@/features/mall/api';
 import { openTag, RemoteImage } from '@/features/mall/catalog-ui';
 import { useMallQuery } from '@/features/mall/hooks';
-import { accent, Header, paths, ProductGrid, Status } from '@/features/mall/ui';
+import { accent, paths, ProductGrid, Status } from '@/features/mall/ui';
 
 export default function HomeScreen() {
   const query = useMallQuery<HomeData>('home', '/xcx/Yw/Cxsy', {
@@ -45,7 +46,7 @@ export default function HomeScreen() {
   };
   return (
     <View className="flex-1 bg-white">
-      <Header title="首页 (Inicio)" />
+      <NavHeader title="首页 (Inicio)" leftShown={false} />
       <ScrollView
         refreshControl={
           <RefreshControl

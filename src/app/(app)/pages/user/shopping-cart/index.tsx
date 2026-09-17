@@ -1,15 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
 
+import { NavHeader } from '@/components/ui/nav-header';
 import { useCurrentOrder } from '@/features/mall/hooks';
 import { OrderBody } from '@/features/mall/order-body';
-import { Header, s, Status } from '@/features/mall/ui';
+import { s, Status } from '@/features/mall/ui';
 
 export default function CartScreen() {
   const query = useCurrentOrder();
   return (
     <View className={s.page}>
-      <Header title="订单 (Carrito)" />
+      <NavHeader title="订单 (Carrito)" leftShown={false} />
       <Status
         loading={query.isPending}
         error={query.error}

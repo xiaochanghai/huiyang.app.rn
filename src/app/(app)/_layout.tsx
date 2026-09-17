@@ -82,7 +82,7 @@ export default function MallLayout() {
       <View style={{ flex: 1 }}>
         <Stack
           screenOptions={{
-            headerShown: false,
+            // headerShown: false,
             animation: 'slide_from_right',
             contentStyle: { backgroundColor: '#fff' },
           }}

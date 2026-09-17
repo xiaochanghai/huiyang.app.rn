@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { FontAwesome } from '@/components/ui/icons';
+import { NavHeader } from '@/components/ui/nav-header';
 import {
   imageSource,
   money,
@@ -17,7 +18,7 @@ import {
   useMallSession,
 } from '@/features/mall/api';
 import { useMallQuery } from '@/features/mall/hooks';
-import { accent, Header, paths, Quantity, s, Status } from '@/features/mall/ui';
+import { accent, paths, Quantity, s, Status } from '@/features/mall/ui';
 
 export default function DetailScreen() {
   const { id } = useLocalSearchParams<{ id?: string }>();
@@ -44,7 +45,7 @@ export default function DetailScreen() {
     : !!product && Number(product.zhj) < Number(product.dj);
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <Header title={product?.wlmc || '商品详情'} back />
+      <NavHeader title={product?.wlmc || '商品详情'} />
       <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
         <Status
           loading={!!id && query.isPending}

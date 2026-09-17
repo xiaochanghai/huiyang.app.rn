@@ -1,17 +1,20 @@
+import { isLiquidGlassAvailable } from 'expo-glass-effect';
 import {
+  router,
   Stack,
-  // usePathname,
-  useRouter,
+  // useRouter
 } from 'expo-router';
+import { HeaderBackButton } from 'expo-router/build/react-navigation/elements';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { StatusBar, TouchableOpacity, View } from 'react-native';
+import { StatusBar, type StatusBarStyle } from 'react-native';
 
-import { isWeb } from '@/lib';
 import { useAppColorScheme } from '@/lib/hooks';
-import { type TxKeyPath } from '@/lib/i18n';
+import type { TxKeyPath } from '@/lib/i18n';
+import { translate } from '@/lib/i18n';
 
-import { FontAwesome, GroupEnum } from './icons';
+import { ChevronLeft } from './icons';
+
+// import { FontAwesome, GroupEnum } from './icons';
 
 export type NavHeaderProps = {
   leftShown?: boolean;
@@ -20,92 +23,73 @@ export type NavHeaderProps = {
   left?: React.ReactNode;
   right?: React.ReactNode;
   tx?: TxKeyPath;
+  backgroundColor?: string;
+  tintColor?: string;
+  statusBarStyle?: StatusBarStyle;
+  onBackPress?: () => void;
 };
 export const NavHeader = ({
   leftShown = true,
-  title = 'Demo',
+  title = '',
   headerBackTitle = '',
   left = null,
   right = null,
   tx,
+  backgroundColor,
+  tintColor,
+  statusBarStyle,
+  onBackPress,
 }: NavHeaderProps) => {
-  const { t } = useTranslation();
-  const router = useRouter();
-  // const pathName = usePathname();
+  // const router = useRouter();
+  const hasCustomLeft = !!left;
+  const resolvedTintColor = tintColor ?? '#000';
   const { isDark } = useAppColorScheme();
 
   return (
     <>
-      {/* <StatusBar
-        barStyle={isDark ? 'light-content' : 'dark-content'}
-        backgroundColor={isDark ? '#171717' : '#ffffff'}
-      /> */}
       <StatusBar
-        barStyle={isDark ? 'light-content' : 'dark-content'}
+        barStyle={statusBarStyle ?? 'dark-content'}
         backgroundColor="transparent"
         translucent
         animated={false}
       />
       <Stack.Screen
         options={{
-          title: tx ? t(tx) : title,
-          headerTintColor: isDark ? '#fff' : '#000',
+          title: tx ? translate(tx) : title,
+          headerTintColor: resolvedTintColor,
           headerBackTitle: headerBackTitle,
           headerBackButtonDisplayMode: 'minimal',
           headerTitleAlign: 'center',
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: isDark ? '#171717' : '#ffffff',
+            backgroundColor:
+              backgroundColor ?? (isDark ? '#171717' : '#ffffff'),
           },
+          headerBackVisible: false,
           headerRight: () => right && <>{right}</>,
-          headerLeft: () =>
-            left ? (
-              <View className="ml-4">{left && <>{left}</>}</View>
-            ) : (
-              leftShown && (
-                <TouchableOpacity
-                  onPress={() => router.back()}
-                  className={isWeb ? 'ml-4' : ''}
-                >
-                  <FontAwesome
-                    name="left"
-                    size={24}
-                    color={isDark ? '#fff' : '#000'}
-                    group={GroupEnum.AntDesign}
+          headerLeft: (props) =>
+            hasCustomLeft ? (
+              <>{left}</>
+            ) : leftShown && (onBackPress || props.canGoBack) ? (
+              <HeaderBackButton
+                {...props}
+                backImage={() => (
+                  <ChevronLeft
+                    color={
+                      isLiquidGlassAvailable() ? '#000' : resolvedTintColor
+                    }
                   />
-                </TouchableOpacity>
-              )
-            ),
+                )}
+                displayMode="minimal"
+                onPress={onBackPress ?? router.back}
+                pressColor="transparent"
+                // pressOpacity={1}
+                // tintColor={resolvedTintColor}
+                // tintColor={isLiquidGlassAvailable() ? '#000' : resolvedTintColor}
+              />
+            ) : null,
         }}
       />
     </>
   );
 };
-
-// const styles = StyleSheet.create({
-// headerCenter: {
-//   flex: 1,
-//   alignItems: 'center',
-//   justifyContent: 'center',
-// },
-// headerTitle: {
-//   fontSize: 18,
-//   fontWeight: '600',
-//   color: '#333',
-// },
-// headerRight1: {
-//   marginRight: 10,
-
-//   flexDirection: 'row',
-//   alignItems: 'center',
-//   width: 90, // 固定宽度，确保与左侧空白区域平衡
-//   justifyContent: 'flex-end',
-// },
-
-// headerRight2: {
-//   flexDirection: 'row',
-//   alignItems: 'center',
-//   width: 90, // 固定宽度，确保与左侧空白区域平衡
-//   justifyContent: 'flex-end',
-// },
-// });

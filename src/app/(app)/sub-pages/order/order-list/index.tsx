@@ -8,9 +8,10 @@ import {
   View,
 } from 'react-native';
 
+import { NavHeader } from '@/components/ui/nav-header';
 import { money, type OrderData, useMallSession } from '@/features/mall/api';
 import { useMallQuery } from '@/features/mall/hooks';
-import { accent, Header, s, Status } from '@/features/mall/ui';
+import { accent, s, Status } from '@/features/mall/ui';
 
 export default function OrdersScreen() {
   const shop = useMallSession((state) => state.shop);
@@ -19,7 +20,7 @@ export default function OrdersScreen() {
   });
   return (
     <View className={s.page}>
-      <Header title="订单列表 (Lista de pedidos)" back />
+      <NavHeader title="订单列表 (Lista de pedidos)" />
       <ScrollView
         refreshControl={
           <RefreshControl

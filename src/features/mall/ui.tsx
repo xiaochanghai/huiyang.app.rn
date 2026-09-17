@@ -39,32 +39,6 @@ export const paths = {
   detail: '/(app)/sub-pages/product/goods-detail',
   products: '/(app)/sub-pages/product/tag-products',
 } as const;
-export function Header({
-  title,
-  back = false,
-}: {
-  title: string;
-  back?: boolean;
-}) {
-  return (
-    <View className={s.header}>
-      {back && (
-        <Pressable
-          accessibilityLabel="返回"
-          onPress={() =>
-            router.canGoBack() ? router.back() : router.replace(paths.home)
-          }
-          className={s.back}
-        >
-          <FontAwesome name="arrow-left" size={21} color="#1a1a1a" />
-        </Pressable>
-      )}
-      <Text numberOfLines={1} className={s.headerTitle}>
-        {title}
-      </Text>
-    </View>
-  );
-}
 export function Button({
   title,
   subtitle,
@@ -437,10 +411,6 @@ export const s = {
   flex: 'flex-1',
   page: 'flex-1 bg-neutral-100',
   row: 'flex-row items-center',
-  header:
-    'h-11 items-center justify-center border-b-hairline web:border-b border-b-[#f0f0f0] bg-white',
-  headerTitle: 'max-w-[78%] text-[16px] font-semibold text-[#1a1a1a]',
-  back: 'absolute left-3 z-[1] p-2.5',
   button:
     'my-[7px] min-h-[52px] items-center justify-center overflow-hidden rounded-lg',
   buttonTitle: 'text-[16px] font-semibold tracking-[3px] text-white',

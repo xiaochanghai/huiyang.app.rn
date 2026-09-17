@@ -2,10 +2,11 @@ import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { View } from 'react-native';
 
+import { NavHeader } from '@/components/ui/nav-header';
 import { type OrderData, useMallSession } from '@/features/mall/api';
 import { useMallQuery } from '@/features/mall/hooks';
 import { OrderBody } from '@/features/mall/order-body';
-import { Header, s, Status } from '@/features/mall/ui';
+import { s, Status } from '@/features/mall/ui';
 
 export default function OrderDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -19,7 +20,7 @@ export default function OrderDetailScreen() {
   );
   return (
     <View className={s.page}>
-      <Header title="订单详情 (Detalle del pedido)" back />
+      <NavHeader title="订单详情 (Detalle del pedido)" />
       <Status
         loading={query.isPending}
         error={query.error}

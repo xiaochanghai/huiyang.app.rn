@@ -1,6 +1,7 @@
 export * from './arrow-right';
 export * from './caret-down';
 export * from './center-icon';
+export * from './chevron-left';
 export * from './excel';
 export * from './eye';
 export * from './eye-off';

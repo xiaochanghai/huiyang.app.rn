@@ -3,9 +3,10 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Modal, RefreshControl, ScrollView, Text, View } from 'react-native';
 
+import { NavHeader } from '@/components/ui/nav-header';
 import { type Shop, useMallSession } from '@/features/mall/api';
 import { useMallQuery } from '@/features/mall/hooks';
-import { accent, Button, Header, paths, s, Status } from '@/features/mall/ui';
+import { accent, Button, paths, s, Status } from '@/features/mall/ui';
 
 const fields = [
   ['客户名称', 'Nombre del cliente', 'khmc'],
@@ -36,7 +37,7 @@ export default function ProfileScreen() {
   };
   return (
     <View className={s.page}>
-      <Header title="我的 (Mi cuenta)" />
+      <NavHeader title="我的 (Mi cuenta)" leftShown={false} />
       <ScrollView
         refreshControl={
           <RefreshControl

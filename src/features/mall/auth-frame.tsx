@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Header } from './ui';
+import { NavHeader } from '@/components/ui/nav-header';
 
 export function AuthFrame({
   children,
@@ -29,7 +29,7 @@ export function AuthFrame({
         style={[StyleSheet.absoluteFill, { height: '65%' }]}
       />
       <SafeAreaView edges={['top']} className="flex-1">
-        {back && <Header title="" back />}
+        {back && <NavHeader title="" />}
         <ScrollView
           keyboardShouldPersistTaps="handled"
           contentContainerClassName={`grow px-[22px] pb-6 ${compact ? 'pt-5' : 'pt-[70px]'}`}
