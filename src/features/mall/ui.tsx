@@ -28,10 +28,10 @@ import { QuantityDraftContext } from './quantity-drafts';
 
 export const accent = '#ff6b4a';
 export const paths = {
-  home: '/(app)/pages/home',
-  category: '/(app)/pages/product/category',
-  cart: '/(app)/pages/user/shopping-cart',
-  profile: '/(app)/pages/user/user-center',
+  home: '/pages/home',
+  category: '/pages/product/category',
+  cart: '/pages/shopping-cart',
+  profile: '/pages/user-center',
   login: '/login',
   register: '/(app)/sub-pages/user/register',
   password: '/(app)/sub-pages/user/user-setting/password',

@@ -11,7 +11,7 @@ import { openTag, RemoteImage } from '@/features/mall/catalog-ui';
 import { useMallQuery } from '@/features/mall/hooks';
 import { accent, Status } from '@/features/mall/ui';
 
-export default function CategoryScreen() {
+export default function CategoryTabScreen() {
   const shop = useMallSession((state) => state.shop);
   const query = useMallQuery<CategoryData>('categories', '/xcx/Yw/Cxall');
   const [selected, setSelected] = useState('');

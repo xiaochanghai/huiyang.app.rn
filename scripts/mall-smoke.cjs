@@ -244,7 +244,7 @@ fs.mkdirSync(output, { recursive: true });
       )
     );
 
-    await go('/pages/user/shopping-cart/index', '订单 (Carrito)');
+    await go('/pages/shopping-cart/index', '订单 (Carrito)');
     await visible('测试客户');
     await page.getByLabel('临时送货地址').fill('临时测试地址');
     await page.getByLabel('订单备注').fill('测试备注');
@@ -280,7 +280,7 @@ fs.mkdirSync(output, { recursive: true });
     await visible('TEST-ORDER');
     await snapshot('orders');
 
-    await go('/pages/user/user-center/index', '我的 (Mi cuenta)');
+    await go('/pages/user-center/index', '我的 (Mi cuenta)');
     await visible('测试客户');
     await snapshot('profile');
     await page.getByRole('button', { name: /修改密码/ }).click();

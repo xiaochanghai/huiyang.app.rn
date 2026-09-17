@@ -23,7 +23,7 @@ import { openTag, RemoteImage } from '@/features/mall/catalog-ui';
 import { useMallQuery } from '@/features/mall/hooks';
 import { accent, paths, ProductGrid, Status } from '@/features/mall/ui';
 
-export default function HomeScreen() {
+export default function HomeTabScreen() {
   const query = useMallQuery<HomeData>('home', '/xcx/Yw/Cxsy', {
     dpbm: useMallSession((state) => state.shop),
     cpbq: '',

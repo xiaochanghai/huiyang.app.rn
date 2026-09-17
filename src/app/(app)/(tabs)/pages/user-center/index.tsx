@@ -19,7 +19,7 @@ const fields = [
   ['登记日期', 'Fecha de registro', 'djrq'],
   ['最后下单日期', 'Último pedido', 'zhxdrq'],
 ] as const;
-export default function ProfileScreen() {
+export default function UserCenterTabScreen() {
   const query = useMallQuery<{ khdpList?: Shop[] }>(
     'shop',
     '/xcx/Yw/Dpxx',

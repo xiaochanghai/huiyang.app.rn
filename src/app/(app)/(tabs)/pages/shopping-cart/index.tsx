@@ -6,7 +6,7 @@ import { useCurrentOrder } from '@/features/mall/hooks';
 import { OrderBody } from '@/features/mall/order-body';
 import { s, Status } from '@/features/mall/ui';
 
-export default function CartScreen() {
+export default function ShoppingCartTabScreen() {
   const query = useCurrentOrder();
   return (
     <View className={s.page}>

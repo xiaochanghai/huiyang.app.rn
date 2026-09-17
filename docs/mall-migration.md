@@ -10,8 +10,8 @@
 | 注册 | `/sub-pages/user/register` |
 | 首页 | `/pages/home` |
 | 分类 | `/pages/product/category` |
-| 订单购物车 | `/pages/user/shopping-cart` |
-| 我的 | `/pages/user/user-center` |
+| 订单购物车 | `/pages/shopping-cart` |
+| 我的 | `/pages/user-center` |
 | 历史订单 | `/sub-pages/order/order-list` |
 | 修改密码 | `/sub-pages/user/user-setting/password` |
 | 商品详情 | `/sub-pages/product/goods-detail?id=A002` |
