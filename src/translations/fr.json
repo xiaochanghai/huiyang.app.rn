@@ -26,6 +26,14 @@
     "username_placeholder": "Identifiant / téléphone",
     "welcome": "Heureux de vous revoir"
   },
+  "mall": {
+    "tabs": {
+      "cart": "Panier",
+      "category": "Catégories",
+      "home": "Accueil",
+      "profile": "Mon compte"
+    }
+  },
   "onboarding": {
     "message": "Bienvenue chez Huiyang"
   },

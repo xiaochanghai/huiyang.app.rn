@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import type { BottomTabBarProps } from 'expo-router/tabs';
+import { useTranslation } from 'react-i18next';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -10,38 +11,36 @@ const tabs = [
   {
     name: 'pages/home/index',
     path: paths.home,
-    title: '首页',
-    es: 'Inicio',
+    tx: 'mall.tabs.home',
     icon: require('../../../../assets/mall/tabbar/home.png'),
     selected: require('../../../../assets/mall/tabbar/home-selected.png'),
   },
   {
     name: 'pages/product/category/index',
     path: paths.category,
-    title: '分类',
-    es: 'Categorías',
+    tx: 'mall.tabs.category',
     icon: require('../../../../assets/mall/tabbar/category.png'),
     selected: require('../../../../assets/mall/tabbar/category-selected.png'),
   },
   {
     name: 'pages/shopping-cart/index',
     path: paths.cart,
-    title: '订单',
-    es: 'Carrito',
+    tx: 'mall.tabs.cart',
     icon: require('../../../../assets/mall/tabbar/cart.png'),
     selected: require('../../../../assets/mall/tabbar/cart-selected.png'),
   },
   {
     name: 'pages/user-center/index',
     path: paths.profile,
-    title: '我的',
-    es: 'Mi cuenta',
+    tx: 'mall.tabs.profile',
     icon: require('../../../../assets/mall/tabbar/user.png'),
     selected: require('../../../../assets/mall/tabbar/user-selected.png'),
   },
 ] as const;
 
 export default function MallTabLayout() {
+  const { t } = useTranslation();
+
   return (
     <Tabs tabBar={(props) => <MallTabBar {...props} />}>
       {tabs.map((tab) => (
@@ -49,7 +48,7 @@ export default function MallTabLayout() {
           key={tab.name}
           name={tab.name}
           options={{
-            title: `${tab.title} (${tab.es})`,
+            title: t(tab.tx),
             headerShadowVisible: false,
             animation: 'none',
           }}
@@ -60,6 +59,7 @@ export default function MallTabLayout() {
 }
 
 function MallTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
+  const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const order = useCurrentOrder();
   const count =
@@ -80,9 +80,7 @@ function MallTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
           <Pressable
             key={route.key}
             accessibilityRole="tab"
-            accessibilityLabel={
-              options.tabBarAccessibilityLabel || `${tab.title} ${tab.es}`
-            }
+            accessibilityLabel={options.tabBarAccessibilityLabel || t(tab.tx)}
             accessibilityState={{ selected: active }}
             onLongPress={() =>
               navigation.emit({
@@ -116,10 +114,7 @@ function MallTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
               )}
             </View>
             <Text style={[styles.title, active && { color: accent }]}>
-              {tab.title}
-            </Text>
-            <Text style={[styles.subtitle, active && { color: accent }]}>
-              {tab.es}
+              {t(tab.tx)}
             </Text>
           </Pressable>
         );
@@ -144,7 +139,6 @@ const styles = StyleSheet.create({
   },
   icon: { width: 24, height: 24 },
   title: { marginTop: 3, fontSize: 11, color: '#999' },
-  subtitle: { fontSize: 8, color: '#999' },
   badge: {
     position: 'absolute',
     right: -12,

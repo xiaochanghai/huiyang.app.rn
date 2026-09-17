@@ -26,6 +26,14 @@
     "username_placeholder": "用户名/手机号",
     "welcome": "欢迎回来"
   },
+  "mall": {
+    "tabs": {
+      "cart": "订单",
+      "category": "分类",
+      "home": "首页",
+      "profile": "我的"
+    }
+  },
   "onboarding": {
     "message": "Welcome to eu-cloud app site"
   },

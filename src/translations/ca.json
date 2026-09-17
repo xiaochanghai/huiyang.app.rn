@@ -26,6 +26,14 @@
     "username_placeholder": "Usuari / telèfon",
     "welcome": "Benvingut de nou"
   },
+  "mall": {
+    "tabs": {
+      "cart": "Carret",
+      "category": "Categories",
+      "home": "Inici",
+      "profile": "El meu compte"
+    }
+  },
   "onboarding": {
     "message": "Benvingut a Huiyang"
   },
