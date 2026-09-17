@@ -20,7 +20,7 @@ import {
   View,
 } from 'react-native';
 
-import { FontAwesome } from '@/components/ui/icons';
+import { FontAwesome, GroupEnum } from '@/components/ui/icons';
 
 import { imageSource, money, type Product, productPrice } from './api';
 import { useQuantity } from './hooks';
@@ -273,15 +273,15 @@ export function Quantity({
       showPending();
       const previous = pending.current;
       const work = (async () => {
-        await previous?.catch(() => {});
+        await previous?.catch(() => { });
         try {
           const next = apply(confirmed.current);
           if (next === confirmed.current) return;
           const result = await mutateAsync({ code, quantity: next, operation });
           confirmed.current = Array.isArray(result?.xsddmxList)
             ? Number(
-                result.xsddmxList.find((item) => item.wlbm === code)?.sl ?? 0
-              )
+              result.xsddmxList.find((item) => item.wlbm === code)?.sl ?? 0
+            )
             : next;
         } finally {
           operations.current = operations.current.filter(
@@ -327,6 +327,7 @@ export function Quantity({
           <FontAwesome
             name="minus"
             size={17}
+            group={GroupEnum.AntDesign}
             color={Number(draft) <= 0 ? '#ccc' : '#666'}
           />
         </Pressable>
@@ -349,7 +350,7 @@ export function Quantity({
           onPress={() => update(quantity + 1, 'increase')}
           className={s.qtyButton}
         >
-          <FontAwesome name="plus" size={17} color="#666" />
+          <FontAwesome name="plus" size={17} color="#666" group={GroupEnum.AntDesign} />
         </Pressable>
       </View>
       {mutation.error && (

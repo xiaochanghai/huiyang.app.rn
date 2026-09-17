@@ -129,7 +129,7 @@ const FA5_ICONS: string[] = [
   'spinner',
   'chevron-right',
   'fingerprint',
-  'plus',
+  // 'plus',
   'user-edit',
   'headset',
   // 注意：普通FontAwesome图标如'bell', 'search', 'filter', 'qrcode', 'weixin'等
