@@ -67,6 +67,25 @@
       "view_more": "更多",
       "view_more_accessibility": "查看更多：{{name}}"
     },
+    "order_list": {
+      "empty": "暂无历史订单",
+      "order_number": "销售合同号",
+      "title": "订单列表"
+    },
+    "product_detail": {
+      "cart": "订单",
+      "discount_rate": "折扣率",
+      "discounted_price": "折后价",
+      "incomplete": "商品信息不完整",
+      "not_found": "未查询到商品详情",
+      "price_with_tax": "税后价",
+      "product_code": "商品编号",
+      "sugar_tax": "糖税",
+      "tax": "税金",
+      "tax_rate": "税率",
+      "title": "商品详情",
+      "unit_price": "单价"
+    },
     "profile": {
       "change_password": "修改密码",
       "fields": {

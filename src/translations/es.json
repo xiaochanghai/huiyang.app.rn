@@ -67,6 +67,25 @@
       "view_more": "Más",
       "view_more_accessibility": "Ver más: {{name}}"
     },
+    "order_list": {
+      "empty": "No hay pedidos anteriores",
+      "order_number": "Número de pedido",
+      "title": "Lista de pedidos"
+    },
+    "product_detail": {
+      "cart": "Carrito",
+      "discount_rate": "Tasa de descuento",
+      "discounted_price": "Precio con descuento",
+      "incomplete": "La información del producto está incompleta",
+      "not_found": "No se encontraron los detalles del producto",
+      "price_with_tax": "Precio con impuestos",
+      "product_code": "Código de producto",
+      "sugar_tax": "IBEE",
+      "tax": "IVA",
+      "tax_rate": "Tipo impositivo",
+      "title": "Detalles del producto",
+      "unit_price": "Precio unitario"
+    },
     "profile": {
       "change_password": "Cambiar contraseña",
       "fields": {

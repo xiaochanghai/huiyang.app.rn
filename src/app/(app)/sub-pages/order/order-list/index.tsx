@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Pressable,
   RefreshControl,
@@ -14,13 +15,14 @@ import { useMallQuery } from '@/features/mall/hooks';
 import { accent, s, Status } from '@/features/mall/ui';
 
 export default function OrdersScreen() {
+  const { t } = useTranslation();
   const shop = useMallSession((state) => state.shop);
   const query = useMallQuery<OrderData>('orders', '/xcx/Yw/Ddlb', {
     xsddList: [{ dpbm: shop }],
   });
   return (
     <View className={s.page}>
-      <NavHeader title="订单列表 (Lista de pedidos)" />
+      <NavHeader title={t('mall.order_list.title')} />
       <ScrollView
         refreshControl={
           <RefreshControl
@@ -36,7 +38,7 @@ export default function OrdersScreen() {
           retry={() => query.refetch()}
           empty={
             !query.data?.xsddList?.length
-              ? '暂无历史订单\nNo hay pedidos'
+              ? t('mall.order_list.empty')
               : undefined
           }
         />
@@ -53,7 +55,9 @@ export default function OrdersScreen() {
             style={{ padding: 16, justifyContent: 'space-between' }}
           >
             <View className={s.flex}>
-              <Text className={s.muted}>销售合同号 / N.º pedido</Text>
+              <Text className={s.muted}>
+                {t('mall.order_list.order_number')}
+              </Text>
               <Text
                 style={{ fontWeight: '600', fontSize: 16, marginVertical: 7 }}
               >

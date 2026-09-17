@@ -1,5 +1,6 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Image,
   Pressable,
@@ -21,6 +22,7 @@ import { useMallQuery } from '@/features/mall/hooks';
 import { accent, paths, Quantity, s, Status } from '@/features/mall/ui';
 
 export default function DetailScreen() {
+  const { t } = useTranslation();
   const { id } = useLocalSearchParams<{ id?: string }>();
   const shop = useMallSession((state) => state.shop);
   const query = useMallQuery<{ cpxxList?: Product[] }>(
@@ -35,9 +37,9 @@ export default function DetailScreen() {
   const product = query.data?.cpxxList?.[0];
   const images = product?.cpgdtList?.length
     ? [...product.cpgdtList]
-        .sort((a, b) => a.bh - b.bh)
-        .map((item) => item.cpgdt)
-        .filter(Boolean)
+      .sort((a, b) => a.bh - b.bh)
+      .map((item) => item.cpgdt)
+      .filter(Boolean)
     : [product?.cpft];
   const rate = Number.parseFloat(product?.zkl_sw || '');
   const discount = Number.isFinite(rate)
@@ -45,7 +47,7 @@ export default function DetailScreen() {
     : !!product && Number(product.zhj) < Number(product.dj);
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <NavHeader title={product?.wlmc || '商品详情'} />
+      <NavHeader title={product?.wlmc || t('mall.product_detail.title')} />
       <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
         <Status
           loading={!!id && query.isPending}
@@ -53,9 +55,9 @@ export default function DetailScreen() {
           retry={() => query.refetch()}
           empty={
             !id
-              ? '商品信息不完整'
+              ? t('mall.product_detail.incomplete')
               : !product && !query.isPending
-                ? '未查询到商品详情'
+                ? t('mall.product_detail.not_found')
                 : undefined
           }
         />
@@ -112,15 +114,16 @@ export default function DetailScreen() {
                 {product.wlmc}
               </Text>
               <Text className={s.muted}>
-                商品编号 (Cód. prod.) · {product.wlbm}　{product.gystm}
+                {t('mall.product_detail.product_code')} · {product.wlbm}
+                {product.gystm}
               </Text>
               <View className={s.row} style={{ paddingTop: 18 }}>
                 <Meta
-                  title="税率 (T. impuesto)"
+                  title={t('mall.product_detail.tax_rate')}
                   value={product.iva_sw || '-'}
                 />
                 <Meta
-                  title="折扣率 (T. descuento)"
+                  title={t('mall.product_detail.discount_rate')}
                   value={product.zkl_sw || '-'}
                 />
                 <View
@@ -132,9 +135,17 @@ export default function DetailScreen() {
                   }}
                 >
                   {discount && (
-                    <Text className={s.oldPrice}>单价 {money(product.dj)}</Text>
+                    <Text className={s.oldPrice}>
+                      {t('mall.product_detail.unit_price')} {money(product.dj)}
+                    </Text>
                   )}
-                  <Text className={s.hint}>{discount ? '折后价' : '单价'}</Text>
+                  <Text className={s.hint}>
+                    {t(
+                      discount
+                        ? 'mall.product_detail.discounted_price'
+                        : 'mall.product_detail.unit_price'
+                    )}
+                  </Text>
                   <Text
                     style={{ color: accent, fontSize: 20, fontWeight: '700' }}
                   >
@@ -154,17 +165,18 @@ export default function DetailScreen() {
                 },
               ]}
             >
-              {[
-                ['税金', 'IVA', product.sj],
-                ['糖税', 'IBEE', product.tsje],
-                ['税后价', 'P. imp.', product.shj],
-              ].map(([cn, es, value]) => (
+              {(
+                [
+                  ['mall.product_detail.tax', product.sj],
+                  ['mall.product_detail.sugar_tax', product.tsje],
+                  ['mall.product_detail.price_with_tax', product.shj],
+                ] as const
+              ).map(([tx, value]) => (
                 <View
-                  key={String(cn)}
+                  key={String(tx)}
                   style={{ flex: 1, alignItems: 'center', gap: 5 }}
                 >
-                  <Text style={{ fontSize: 12 }}>{cn}</Text>
-                  <Text className={s.hint}>{es}</Text>
+                  <Text style={{ fontSize: 12 }}>{t(tx)}</Text>
                   <Text style={{ fontSize: 13 }}>{money(value)}</Text>
                 </View>
               ))}
@@ -185,12 +197,14 @@ export default function DetailScreen() {
         ]}
       >
         <Pressable
-          accessibilityLabel="订单"
+          accessibilityLabel={t('mall.product_detail.cart')}
           onPress={() => router.navigate(paths.cart)}
           style={{ alignItems: 'center', padding: 8 }}
         >
           <FontAwesome name="shopping-cart" size={24} color={accent} />
-          <Text style={{ color: accent, fontSize: 10 }}>订单</Text>
+          <Text style={{ color: accent, fontSize: 10 }}>
+            {t('mall.product_detail.cart')}
+          </Text>
         </Pressable>
         {!!product?.wlsl && (
           <Text style={{ fontSize: 18, color: '#ff3b30', fontWeight: '600' }}>

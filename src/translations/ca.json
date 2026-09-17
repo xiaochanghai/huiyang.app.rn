@@ -67,6 +67,25 @@
       "view_more": "Més",
       "view_more_accessibility": "Veure'n més: {{name}}"
     },
+    "order_list": {
+      "empty": "No hi ha comandes anteriors",
+      "order_number": "Número de comanda",
+      "title": "Llista de comandes"
+    },
+    "product_detail": {
+      "cart": "Carret",
+      "discount_rate": "Taxa de descompte",
+      "discounted_price": "Preu amb descompte",
+      "incomplete": "La informació del producte és incompleta",
+      "not_found": "No s’han trobat els detalls del producte",
+      "price_with_tax": "Preu amb impostos",
+      "product_code": "Codi de producte",
+      "sugar_tax": "IBEE",
+      "tax": "IVA",
+      "tax_rate": "Tipus impositiu",
+      "title": "Detalls del producte",
+      "unit_price": "Preu unitari"
+    },
     "profile": {
       "change_password": "Canvia la contrasenya",
       "fields": {
