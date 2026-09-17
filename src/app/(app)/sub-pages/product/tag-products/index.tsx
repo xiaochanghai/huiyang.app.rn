@@ -42,13 +42,13 @@ export default function ProductsScreen() {
     <View className={s.page}>
       <NavHeader title={keyword ? `搜索：${keyword}` : tagName || '商品列表'} />
       <ScrollView
-        contentContainerStyle={{ paddingTop: 12, paddingBottom: 24 }}
+        contentContainerStyle={{}}
         scrollEventThrottle={100}
         onScroll={({ nativeEvent }) => {
           if (
             nativeEvent.contentOffset.y +
-              nativeEvent.layoutMeasurement.height >=
-              nativeEvent.contentSize.height - 100 &&
+            nativeEvent.layoutMeasurement.height >=
+            nativeEvent.contentSize.height - 100 &&
             query.hasNextPage &&
             !query.isFetching &&
             !query.isFetchNextPageError
